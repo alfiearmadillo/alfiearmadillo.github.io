@@ -33,6 +33,3 @@ javascript: (function() {
         }
     })
 })();
-
-
-javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://raw.githubusercontent.com/alfiearmadillo/bootcamp/main/gatherClient.js';})();
