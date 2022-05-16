@@ -1,6 +1,6 @@
 javascript: (function() {
     'use strict';
-    //prompt('IJKL: Noclip movement keys.\nP: Spawn Go-Kart. (Disabled)\nT: Teleport to target user.\nY: Set speed.');
+    prompt('IJKL: Noclip movement keys.\nP: Spawn Go-Kart. (Disabled)\nT: Teleport to target user.\nY: Set speed.');
     document.addEventListener("keypress", function(i) {
         if (i.which == 105) {
             game.teleport(game.getMyPlayer().map, game.getMyPlayer().x, game.getMyPlayer().y-1);
