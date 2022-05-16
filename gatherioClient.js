@@ -33,9 +33,9 @@ javascript: (function() {
             peopleArray=[];
             targetIndex = null;
         }
-        // if (i.which == 121) {
-        //     let speedInput = prompt('Enter target speed.\n(Max recommended: 3 (over 3 about when disconnects start)');
-        //     game.setSpeedModifier(speedInput);
-        // }
+        if (i.which == 121) {
+            let speedInput = prompt('Enter target speed.\nMax recommended: 3 (over 3 about when disconnects start)');
+            game.setSpeedModifier(speedInput);
+        }
     });
 })();
