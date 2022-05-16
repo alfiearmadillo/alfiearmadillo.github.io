@@ -1,6 +1,6 @@
 javascript: (function() {
     'use strict';
-    prompt('IJKL: Noclip movement keys.\nP: Spawn Go-Kart. (Disabled)\nT: Teleport to target user.\nY: Set speed.');
+    //prompt('IJKL: Noclip movement keys.\nP: Spawn Go-Kart. (Disabled)\nT: Teleport to target user.\nY: Set speed.');
     document.addEventListener("keypress", function(i) {
         if (i.which == 105) {
             game.teleport(game.getMyPlayer().map, game.getMyPlayer().x, game.getMyPlayer().y-1);
@@ -35,7 +35,7 @@ javascript: (function() {
         }
         if (i.which == 121) {
             let speedInput = prompt('Enter target speed.\n(Max recommended: 3 (over 3 about when disconnects start)');
-            game.setSpeedModifier(setSpeedModifier);
+            game.setSpeedModifier(speedInput);
         }
     })
 })();
