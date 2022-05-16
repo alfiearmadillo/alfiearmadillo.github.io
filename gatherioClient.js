@@ -15,8 +15,10 @@ javascript: (function() {
             game.teleport(game.getMyPlayer().map, game.getMyPlayer().x+1, game.getMyPlayer().y);
         }
         if (i.which == 112) {
-            prompt('How about lets not spawn Go-Karts for now');
-            //game.setVehicleId('go-kart');
+            let confirmKart = prompt('How about lets not spawn Go-Karts for now');
+            if(confirmKart=='amogus'){
+                game.setVehicleId('go-kart');
+            }
         }
         if (i.which == 116) {
             let peopleString = "";
