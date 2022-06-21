@@ -1,0 +1,374 @@
+body {
+    background: rgb(40, 43, 44);
+  }
+
+  canvas {
+    display: block;
+    position:fixed;
+    margin: auto;
+    top: 0;
+    bottom: 250px;
+    left:0;
+    right:0;
+    border:1px solid #d3d3d3;
+    background-color: #9097d3;
+}
+
+#container {
+  position:fixed;
+  top:50%;
+  left: 50%;
+  min-width: 1024px;
+  max-width: 1024px;
+  float: inline-start;
+  }
+  
+  .button {
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+    padding: 20px 20px;
+    margin: 2px;
+    position: relative;
+    left: -502px;
+    bottom:-84px;
+  }
+  
+  #icon0 {
+    background-color: #ffff00;
+    padding: 5px 20px;
+    display: inline-block;
+    position: relative;
+    margin: 2px;
+    left: -453px;
+    bottom: -54px;
+  }
+
+  #icon1 {
+    background-color: #00ff00;
+    padding: 5px 20px;
+    display: inline-block;
+    position: relative;
+    margin: 2px;
+    left: -355px;
+    bottom: -54px;
+  }
+  
+  #icon2 {
+    background-color: #0000ff;
+    padding: 5px 20px;
+    display: inline-block;
+    position:relative;
+    margin: 2px;
+    left: -257px;
+    bottom: -54px;
+  }
+  
+  #icon3 {
+    background-color: #ff0000;
+    padding: 5px 20px;
+    display: inline-block;
+    position: relative;
+    margin: 2px;
+    left: -159px;
+    bottom: -54px;
+  }
+
+  #moneybox {
+    position: relative;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+    padding: 5px 5px;
+    min-width: 124px;
+  max-width: 124px;
+    left: -473px;
+    bottom: 434px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+
+  #sellItemBox {
+    position: relative;
+    z-index:1;
+    pointer-events: none;
+    padding: 5px 20px;
+    min-width: 104px;
+  max-width: 104px;
+    left: 420px;
+    bottom: -172px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+
+  #itemStatsBox {
+    position: relative;
+    z-index:1;
+    pointer-events: none;
+    padding: 5px 5px;
+    min-width: 192px;
+    max-width: 192px;
+    min-height: 148px;
+    max-height: 148px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: -324px;
+    bottom:174px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+
+  #itemStatsPic {
+    position: relative;
+    z-index:1;
+    pointer-events: none;
+    min-width: 202px;
+    max-width: 202px;
+    min-height: 10px;
+    max-height: 10px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: -324px;
+    bottom: 341px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+  
+  #playerStatsBox {
+    position: relative;
+    z-index:1;
+    pointer-events: none;
+    padding: 5px 5px;
+    min-width: 133px;
+    max-width: 133px;
+    min-height: 220px;
+    max-height: 220px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: -481px;
+    bottom: -14px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+
+  #playerStatsPic {
+    position: relative;
+    z-index:1;
+    pointer-events: none;
+    min-width: 143px;
+    max-width: 143px;
+    min-height: 10px;
+    max-height: 10px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: -481px;
+    bottom: 226px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+
+  #expBarUnder {
+    position: relative;
+    z-index:1;
+    pointer-events: none;
+    min-width: 131px;
+    max-width: 131px;
+    min-height: 10px;
+    max-height: 10px;
+    background-color: #666666;
+  
+    left: -470px;
+    bottom: 218px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+
+  #expBarOver {
+    position: relative;
+    z-index:1;
+    pointer-events: none;
+    min-width: 131px;
+    max-width: 131px;
+    min-height: 10px;
+    max-height: 10px;
+    background-color: #236b32;
+  
+    left: -470px;
+    bottom: 228px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+
+  #reviveButton {
+    position: relative;
+    z-index:1;
+    padding: 1px 5px;
+    min-width: 111px;
+    max-width: 111px;
+    min-height: 18px;
+    max-height: 18px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: -470px;
+    bottom: 316px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  
+  }
+
+  #dmgSPButton {
+    position: relative;
+    z-index:1;
+    min-width: 5px;
+    max-width: 5px;
+    min-height: 5px;
+    max-height: 5px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: -353px;
+    bottom: 438px;
+ 
+  }
+
+  #hpSPButton {
+    position: relative;
+    z-index:1;
+    min-width: 5px;
+    max-width: 5px;
+    min-height: 5px;
+    max-height: 5px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: -353px;
+    bottom: 471px;
+ 
+  }
+
+  #rangeSPButton {
+    position: relative;
+    z-index:1;
+    min-width: 5px;
+    max-width: 5px;
+    min-height: 5px;
+    max-height: 5px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: -353px;
+    bottom: 450px;
+  }
+
+  #delaySPButton {
+    position: relative;
+    z-index:1;
+    min-width: 5px;
+    max-width: 5px;
+    min-height: 5px;
+    max-height: 5px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: -353px;
+    bottom: 447px;
+  }
+
+  #mapButton {
+    position: relative;
+    z-index:1;
+    padding: 1px 5px;
+    min-width: 95px;
+    max-width: 95px;
+    min-height: 20px;
+    max-height: 20px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: 355px;
+    bottom: 1132px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+
+  #saveCodeDisplay{
+    position: relative;
+    color:#FFFFFF;
+    font-size: 20px;
+    height:40px;
+    width:820px;
+    border:1px solid;
+    overflow: auto;
+    white-space: nowrap;
+    left: -400px;
+    bottom: 1152px;
+  }
+
+  #saveCodeNameDisplay{
+    position: relative;
+    color:#FFFFFF;
+    font-size: 20px;
+    left: -40px;
+    bottom: 1155px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+  }
