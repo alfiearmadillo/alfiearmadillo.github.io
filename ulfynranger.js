@@ -1586,6 +1586,7 @@ function updateGameArea() {
 
         ctx.fillStyle = "#911616" //item sp
         ctx.fillRect(150, 150, 30, 30);
+        if(area[3].cleared===1){
         ctx.fillStyle = `${items[1].colour}` //item 1
         ctx.fillRect(190, 150, 30, 30);
         ctx.fillStyle = `${items[2].colour}` //item 2
@@ -1594,6 +1595,8 @@ function updateGameArea() {
         ctx.fillRect(270, 150, 30, 30);
         ctx.fillStyle = `${items[4].colour}` //item 4
         ctx.fillRect(310, 150, 30, 30);
+        }
+        if(area[4].cleared===1){
         ctx.fillStyle = `${items[14].colour}` //item 5
         ctx.fillRect(350, 150, 30, 30);
         ctx.fillStyle = `${items[15].colour}` //item 6
@@ -1602,6 +1605,7 @@ function updateGameArea() {
         ctx.fillRect(430, 150, 30, 30);
         ctx.fillStyle = `${items[17].colour}` //item 8
         ctx.fillRect(470, 150, 30, 30);
+        }
 
 
         if(level*10<=money){//respec
@@ -2044,6 +2048,7 @@ function drag(){ //Find which player clicked on / near, set to held
             if(pointerX>150&&pointerX<150+30&&pointerY>150&&pointerY<150+30){
                 itemToBuy="SP"
             }
+            if(area[3].cleared===1){
             if(pointerX>190&&pointerX<190+30&&pointerY>150&&pointerY<150+30){
                 itemToBuy=1
             }
@@ -2056,6 +2061,8 @@ function drag(){ //Find which player clicked on / near, set to held
             if(pointerX>310&&pointerX<310+30&&pointerY>150&&pointerY<150+30){
                 itemToBuy=4
             }
+        }
+            if(area[4].cleared===1){
             if(pointerX>350&&pointerX<350+30&&pointerY>150&&pointerY<150+30){
                 itemToBuy=14
             }
@@ -2068,6 +2075,7 @@ function drag(){ //Find which player clicked on / near, set to held
             if(pointerX>470&&pointerX<470+30&&pointerY>150&&pointerY<150+30){
                 itemToBuy=17
             }
+        }
             if(itemToBuy!==-1&&pointerX>433&&pointerX<433+105&&pointerY>395&&pointerY<395+38){
                     switch( itemToBuy){
                         case "SP":
