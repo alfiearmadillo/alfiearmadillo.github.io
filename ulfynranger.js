@@ -1,5 +1,7 @@
-//can join locked stages
-//xp bar messed up on load
+//enemies that track players
+//target nearest player, unless one has a shield, then target nearest shield
+
+
 
 //beating current highest stage
 //Projectiles for players & enemies (bows arc, wand straight)
@@ -131,6 +133,13 @@ items[9]={name:"CR_IntroAveWeak",damageMin:0,damageMax:1,range:45,atkRate:400,li
 
 items[10]={name:"CR_GrassyFieldFlyingMelee",damageMin:19,damageMax:25,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:300,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3}
+items[12]={name:"CR_GrassyFieldWeakMelee",damageMin:4,damageMax:6,range:45,atkRate:300,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:60,atkRate:50,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+
+items[14]={name:"Sharpened Flint",damageMin:6,damageMax:10,range:25,atkRate:50,lifeSteal:0,defence:0,type:"Sword", colour:'#872424', worth:33, multi:0, rangeMult:0.1}
+items[15]={name:"Decent Wooden Shield",damageMin:2,damageMax:3,range:15,atkRate:100,lifeSteal:0,defence:5,type:"Shield", colour:'#5a8224', worth:33, multi:0, rangeMult:0.1}
+items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:66,lifeSteal:0,defence:0,type:"Bow", colour:'#42330d', worth:10, multi:33, rangeMult:3}
+items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:3}
 
 function addItem(player, itemID){
     switch(player){
@@ -227,11 +236,13 @@ divcontainer.appendChild(saveCodeNameDisplay, divcontainer.firstChild)
 document.getElementById("saveCodeNameDisplay").innerHTML = `Save Code`
 
 function goToMap(){
+    if(gameover===500){
     loadedAreaID=2
     shopOpen=-1
     itemToBuy=-1
     subArea=1
     renderStage()
+    }
 }
 
 
@@ -690,10 +701,14 @@ function renderStage(){ //Stage loading
     if(area[loadedAreaID].name==="Grassy Fields"){//Main menu
         if(subArea===1){
             newLand(-1,510,1000,5400)
-            spawnEnemy(20,"#b56824",732,204,0,5,"Flying",3,10,3,55,0.2,10,1,0,2,0,3,0,4,0)
-            spawnEnemy(20,"#b56824",679,312,0,5,"Flying",3,10,3,55,0.2,10,1,0,2,0,3,0,4,0)
-            spawnEnemy(20,"#b56824",555,184,0,5,"Flying",3,10,3,55,0.2,10,1,0,2,0,3,0,4,0)
-            spawnEnemy(20,"#b56824",377,275,0,5,"Flying",3,10,3,55,0.2,10,1,0,2,0,3,0,4,0)//BasicFlyer
+            spawnEnemy(20,"#b56824",732,204,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",679,312,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",555,184,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",377,275,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)//BasicFlyer
+
+            spawnEnemy(25,"#574433",395,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",562,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",693,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)//random bouncing (flying w/ gravity)
             
 
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
@@ -704,19 +719,44 @@ function renderStage(){ //Stage loading
         }
         if(subArea===2){
             newLand(-1,510,1000,5400)
+            newLand(-1,495,673,5400)
+            newLand(797,485,1000,5400)
+            spawnEnemy(20,"#b56824",712,184,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",639,112,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",575,284,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",347,235,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)//BasicFlyer
+            spawnEnemy(20,"#b56824",639,332,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",585,164,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+
+            spawnEnemy(25,"#574433",445,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",472,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",563,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)//random bouncing (flying w/ gravity)
+            
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
             playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
-            signY=478
+            signY=453
         }
         if(subArea===3){
             newLand(-1,510,1000,5400)
+            newLand(-1,485,1000,5400)
+            newLand(632,460,1000,5400)
+
+            spawnEnemy(25,"#574433",435,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",442,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",563,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",475,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",482,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",521,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",507,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",588,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",609,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
             playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
-            signY=478
+            signY=428
         }
         if(subArea===4){
             newLand(-1,510,1000,5400)
@@ -744,6 +784,69 @@ function renderStage(){ //Stage loading
         }
         if(subArea===7){
             newLand(-1,510,1000,5400)
+            spawnEnemy(8,"#80223d",619,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",629,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",639,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",649,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",659,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",669,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",679,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",689,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",699,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",719,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",729,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",739,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",749,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",759,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",769,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",779,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",789,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",799,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",709,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",509,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",519,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",529,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",539,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",549,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",559,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",569,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",579,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",589,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",599,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",499,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",489,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",479,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",469,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",459,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",449,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",439,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",429,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",419,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",409,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",399,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",389,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",379,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",369,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",359,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",349,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",339,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",329,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",319,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",309,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",899,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",889,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",879,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",869,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",859,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",849,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",839,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",829,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",819,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",809,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",279,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",289,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",299,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -1053,7 +1156,7 @@ function component(width, height, color, x, y) {//draw new boxes
                         this.speedX=this.speedX-this.speedX*0.3
 
                         if(this.type==="player" && this.hp>0){//logic to do only while on floor
-                            nearTarget = closestEnemy(enemy, this.x)
+                            nearTarget = closestEnemy(enemy, this.x, this.y)
                             if(enemy.length!==0){
                                 if (Math.abs(enemy[nearTarget].x+(enemy[nearTarget].size/2-(this.size/2)) - this.x) < this.item.range+(this.rangePoints*this.item.rangeMult)+(enemy[nearTarget].size/2)+(this.size/2)&&
                                    ((Math.abs(enemy[nearTarget].y+(enemy[nearTarget].size/2) - this.y) < this.item.range+(this.rangePoints*this.item.rangeMult)+(enemy[nearTarget].size/2)) || (enemy[nearTarget].gravity>0))) {
@@ -1211,7 +1314,7 @@ function component(width, height, color, x, y) {//draw new boxes
     }
 }
 
-function closestEnemy(enemy, playerpos){//finding closesnt enemy to given coordinate
+function closestEnemy(enemy, playerposX, playerposY){//finding closesnt enemy to given coordinate
     var closest={
         x : 99999,
         Dist : 99999
@@ -1219,13 +1322,13 @@ function closestEnemy(enemy, playerpos){//finding closesnt enemy to given coordi
     var indexLoop = 0
     for (let k = 0; k < enemy.length ; k++) {
 
-        if(Math.abs(enemy[k].x-playerpos)<closest.Dist){
-            closest.Dist=Math.abs(enemy[k].x-playerpos)
+        if(Math.abs(enemy[k].x-playerposX)+Math.abs(enemy[k].y-playerposY)<closest.Dist){
+            closest.Dist=Math.abs(enemy[k].x-playerposX)+Math.abs(enemy[k].y-playerposY)
             closest.x = enemy[k].x
             indexLoop=k
         } 
-        if(Math.abs(playerpos-enemy[k].x)<closest.Dist){
-            closest.Dist=Math.abs(playerpos-enemy[k].x)
+        if(Math.abs(playerposX-enemy[k].x)+Math.abs(enemy[k].y-playerposY)<closest.Dist){
+            closest.Dist=Math.abs(playerposX-enemy[k].x)+Math.abs(enemy[k].y-playerposY)
             closest.x = enemy[k].x
             indexLoop=k
         }
@@ -1253,8 +1356,8 @@ function updateGameArea() {
                 enemy[j].speedY+=1
             }
             if(Math.floor(Math.random()*40)===10){
-                enemy[j].speedX=enemy[j].speedX+(Math.floor(Math.random()*5)-2.5)
-                enemy[j].speedY=enemy[j].speedY+(Math.floor(Math.random()*5)-2.5)
+                enemy[j].speedX=enemy[j].speedX+(Math.floor(Math.random()*5)-2)
+                enemy[j].speedY=enemy[j].speedY+(Math.floor(Math.random()*5)-2)
                 if(enemy[j].speedX>5){
                     enemy[j].speedX=3
                 }else if(enemy[j].speedX<-5){
@@ -1492,6 +1595,14 @@ function updateGameArea() {
         ctx.fillRect(270, 150, 30, 30);
         ctx.fillStyle = `${items[4].colour}` //item 4
         ctx.fillRect(310, 150, 30, 30);
+        ctx.fillStyle = `${items[14].colour}` //item 5
+        ctx.fillRect(350, 150, 30, 30);
+        ctx.fillStyle = `${items[15].colour}` //item 6
+        ctx.fillRect(390, 150, 30, 30);
+        ctx.fillStyle = `${items[16].colour}` //item 7
+        ctx.fillRect(430, 150, 30, 30);
+        ctx.fillStyle = `${items[17].colour}` //item 8
+        ctx.fillRect(470, 150, 30, 30);
 
 
         if(level*10<=money){//respec
@@ -1527,46 +1638,7 @@ function updateGameArea() {
                         ctx.fillRect( 438, 400,95,28)
                     }
                 break
-                case 1:
-                    if(items[itemToBuy].worth*3<=money){
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#25801b"
-                        ctx.fillRect( 438, 400,95,28)
-                    }else{
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#7d2323"
-                        ctx.fillRect( 438, 400,95,28)
-                    }
-                break
-                case 2:
-                    if(items[itemToBuy].worth*3<=money){
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#25801b"
-                        ctx.fillRect( 438, 400,95,28)
-                    }else{
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#7d2323"
-                        ctx.fillRect( 438, 400,95,28)
-                    }
-                break
-                case 3:
-                    if(items[itemToBuy].worth*3<=money){
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#25801b"
-                        ctx.fillRect( 438, 400,95,28)
-                    }else{
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#7d2323"
-                        ctx.fillRect( 438, 400,95,28)
-                    }
-                break
-                case 4:
+                default:
                     if(items[itemToBuy].worth*3<=money){
                         ctx.fillStyle = "#6b6b6b"
                         ctx.fillRect( 433, 395,105,38)
@@ -1587,24 +1659,12 @@ function updateGameArea() {
 
         switch(itemToBuy){
             case "SP":
-            ctx.fillText("+1 Skill Point", 438, 140)
+            ctx.fillText("+1 Skill Point", 431, 140)
             ctx.fillText(`${spPrice}`, 443, 420)
             break;
-            case 1:
-            ctx.fillText(`${items[1].name}`, 438, 140)
-            ctx.fillText(`${items[1].worth*3}`, 443, 420)
-            break;
-            case 2:
-            ctx.fillText(`${items[2].name}`, 438, 140)
-            ctx.fillText(`${items[2].worth*3}`, 443, 420)
-            break;
-            case 3:
-            ctx.fillText(`${items[3].name}`, 438, 140)
-            ctx.fillText(`${items[3].worth*3}`, 443, 420)
-            break;
-            case 4:
-            ctx.fillText(`${items[4].name}`, 438, 140)
-            ctx.fillText(`${items[4].worth*3}`, 443, 420)
+            default:
+            ctx.fillText(`${items[itemToBuy].name}`, 438-(items[itemToBuy].name.length*2), 140)
+            ctx.fillText(`${items[itemToBuy].worth*3}`, 443, 420)
             break;
         }
     }
@@ -1997,6 +2057,18 @@ function drag(){ //Find which player clicked on / near, set to held
             if(pointerX>310&&pointerX<310+30&&pointerY>150&&pointerY<150+30){
                 itemToBuy=4
             }
+            if(pointerX>350&&pointerX<350+30&&pointerY>150&&pointerY<150+30){
+                itemToBuy=14
+            }
+            if(pointerX>390&&pointerX<390+30&&pointerY>150&&pointerY<150+30){
+                itemToBuy=15
+            }
+            if(pointerX>430&&pointerX<430+30&&pointerY>150&&pointerY<150+30){
+                itemToBuy=16
+            }
+            if(pointerX>470&&pointerX<470+30&&pointerY>150&&pointerY<150+30){
+                itemToBuy=17
+            }
             if(itemToBuy!==-1&&pointerX>433&&pointerX<433+105&&pointerY>395&&pointerY<395+38){
                     switch( itemToBuy){
                         case "SP":
@@ -2009,7 +2081,7 @@ function drag(){ //Find which player clicked on / near, set to held
                                 playerNumber4.skillPoints++
                             }
                         break
-                        case 1:
+                        default:
                             if(items[itemToBuy].worth*3<=money){
                                 money=money-items[itemToBuy].worth*3
                                 droppedItem[droppedItem.length] = new component(15, 15, items[itemToBuy].colour, 480, 270);
@@ -2024,51 +2096,7 @@ function drag(){ //Find which player clicked on / near, set to held
                                 droppedItem[droppedItem.length-1].speedY=-Math.random()*15
                             }
                         break
-                        case 2:
-                            if(items[itemToBuy].worth*3<=money){
-                                money=money-items[itemToBuy].worth*3
-                                droppedItem[droppedItem.length] = new component(15, 15, items[itemToBuy].colour, 480, 270);
-                                droppedItem[droppedItem.length-1].data={
-                                    value:itemToBuy,
-                                    cooldown:150
-                                }
-                                droppedItem[droppedItem.length-1].size=15
-                                droppedItem[droppedItem.length-1].type="item"
-                                droppedItem[droppedItem.length-1].gravity = 0.5;
-                                droppedItem[droppedItem.length-1].speedX=Math.random()*8-4
-                                droppedItem[droppedItem.length-1].speedY=-Math.random()*15
-                            }
-                        break
-                        case 3:
-                            if(items[itemToBuy].worth*3<=money){
-                                money=money-items[itemToBuy].worth*3
-                                droppedItem[droppedItem.length] = new component(15, 15, items[itemToBuy].colour, 480, 270);
-                                droppedItem[droppedItem.length-1].data={
-                                    value:itemToBuy,
-                                    cooldown:150
-                                }
-                                droppedItem[droppedItem.length-1].size=15
-                                droppedItem[droppedItem.length-1].type="item"
-                                droppedItem[droppedItem.length-1].gravity = 0.5;
-                                droppedItem[droppedItem.length-1].speedX=Math.random()*8-4
-                                droppedItem[droppedItem.length-1].speedY=-Math.random()*15
-                            }
-                        break
-                        case 4:
-                            if(items[itemToBuy].worth*3<=money){
-                                money=money-items[itemToBuy].worth*3
-                                droppedItem[droppedItem.length] = new component(15, 15, items[itemToBuy].colour, 480, 270);
-                                droppedItem[droppedItem.length-1].data={
-                                    value:itemToBuy,
-                                    cooldown:150
-                                }
-                                droppedItem[droppedItem.length-1].size=15
-                                droppedItem[droppedItem.length-1].type="item"
-                                droppedItem[droppedItem.length-1].gravity = 0.5;
-                                droppedItem[droppedItem.length-1].speedX=Math.random()*8-4
-                                droppedItem[droppedItem.length-1].speedY=-Math.random()*15
-                            }
-                        break
+                        
             }
         }
     }
@@ -2081,7 +2109,7 @@ function drag(){ //Find which player clicked on / near, set to held
 
 function checkClickOnLevelOnMap(){
     for(aa=0;aa<area.length;aa++){
-        if(area[aa].cleared>-1){
+        if(area[aa].cleared>-1&&area[aa].unlocked>0){
     if(area[loadedAreaID].name==="Map"&&pointerX>area[aa].x&&pointerX<area[aa].x+20&&pointerY>area[aa].y&&pointerY<area[aa].y+20){
         loadedAreaID=aa
         renderStage()
@@ -2139,7 +2167,7 @@ function spawnEnemy(_size,_colour,_posX,_posY,_gravity,_hp,_movementType,_exp,_w
     enemy[i].movementType=_movementType
     enemy[i].exp=_exp
     enemy[i].weapon=items[_weapon]
-    enemy[i].atkCD=0
+    enemy[i].atkCD=200
     enemy[i].speedX=0
     enemy[i].speedY=0
     enemy[i].drops={
