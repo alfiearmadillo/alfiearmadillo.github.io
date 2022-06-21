@@ -133,7 +133,7 @@ items[9]={name:"CR_IntroAveWeak",damageMin:0,damageMax:1,range:45,atkRate:400,li
 items[10]={name:"CR_GrassyFieldFlyingMelee",damageMin:19,damageMax:25,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:300,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3}
 items[12]={name:"CR_GrassyFieldWeakMelee",damageMin:4,damageMax:6,range:45,atkRate:300,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:60,atkRate:50,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:200,atkRate:50,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 items[14]={name:"Sharpened Flint",damageMin:6,damageMax:10,range:25,atkRate:50,lifeSteal:0,defence:0,type:"Sword", colour:'#872424', worth:33, multi:0, rangeMult:0.1}
 items[15]={name:"Decent Wood Shield",damageMin:2,damageMax:3,range:15,atkRate:100,lifeSteal:0,defence:5,type:"Shield", colour:'#5a8224', worth:33, multi:0, rangeMult:0.1}
@@ -759,6 +759,18 @@ function renderStage(){ //Stage loading
         }
         if(subArea===4){
             newLand(-1,510,1000,5400)
+            newLand(-1,480,775,5400)
+            newLand(-1,460,424,5400)
+
+            spawnEnemy(15,"#944c0c",732,204,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+            spawnEnemy(15,"#944c0c",679,312,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+            spawnEnemy(15,"#944c0c",555,184,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+            spawnEnemy(15,"#944c0c",377,275,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+            spawnEnemy(15,"#944c0c",585,164,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+
+            spawnEnemy(25,"#574433",395,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",562,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",693,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -767,6 +779,20 @@ function renderStage(){ //Stage loading
         }
         if(subArea===5){
             newLand(-1,510,1000,5400)
+            newLand(480,495,570,5400)
+
+            spawnEnemy(15,"#944c0c",432,104,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+            spawnEnemy(15,"#944c0c",579,212,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+            spawnEnemy(15,"#944c0c",255,384,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+            spawnEnemy(15,"#944c0c",777,175,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+            spawnEnemy(15,"#944c0c",385,264,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+
+            spawnEnemy(20,"#b56824",612,184,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",339,112,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",875,284,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",147,235,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)//BasicFlyer
+            spawnEnemy(20,"#b56824",239,332,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",485,164,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -775,34 +801,29 @@ function renderStage(){ //Stage loading
         }
         if(subArea===6){
             newLand(-1,510,1000,5400)
+            newLand(570,490,1000,5400)
+            newLand(610,470,1000,5400)
+
+            spawnEnemy(15,"#944c0c",377,275,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+            spawnEnemy(15,"#944c0c",585,364,0,5,"Flying",3,11,3,55,0.2,10,16,5,2,0,3,0,4,0)
+
+            spawnEnemy(20,"#b56824",412,284,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+            spawnEnemy(20,"#b56824",739,212,0,5,"Flying",3,10,3,55,0.2,10,14,5,2,0,3,0,4,0)
+
+            spawnEnemy(25,"#574433",435,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",452,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",573,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",325,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",562,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
+            spawnEnemy(25,"#574433",633,400,0.5,90,"Flying",5,12,3,55,0.2,10,15,5,2,0,3,0,4,0)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
             playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
-            signY=478
+            signY=438
         }
         if(subArea===7){
             newLand(-1,510,1000,5400)
-            spawnEnemy(8,"#80223d",619,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",629,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",639,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",649,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",659,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",669,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",679,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",689,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",699,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",719,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",729,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",739,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",749,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",759,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",769,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",779,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",789,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",799,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",709,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",509,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",519,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",529,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",539,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
@@ -812,16 +833,26 @@ function renderStage(){ //Stage loading
             spawnEnemy(8,"#80223d",579,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",589,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",599,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",499,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",489,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",479,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",469,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",459,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",449,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",439,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",429,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",419,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",519,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",629,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",639,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",649,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",659,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",669,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",679,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",689,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",699,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",609,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",409,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",419,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",429,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",439,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",449,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",459,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",469,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",479,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",489,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",499,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",399,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",389,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",379,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
@@ -832,19 +863,29 @@ function renderStage(){ //Stage loading
             spawnEnemy(8,"#80223d",329,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",319,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",309,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",899,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",889,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",879,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",869,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",859,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",849,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",839,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",829,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",819,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",809,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",279,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",289,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             spawnEnemy(8,"#80223d",299,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",289,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",279,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",269,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",259,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",249,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",239,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",229,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",219,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",209,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",799,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",789,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",779,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",769,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",759,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",749,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",739,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",729,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",719,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",709,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",179,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",189,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",199,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
@@ -2177,8 +2218,13 @@ function spawnEnemy(_size,_colour,_posX,_posY,_gravity,_hp,_movementType,_exp,_w
     enemy[i].exp=_exp
     enemy[i].weapon=items[_weapon]
     enemy[i].atkCD=200
+    if(_movementType="Flying"){
+        enemy[i].speedX=(Math.floor(Math.random()*5)-2)
+        enemy[i].speedY=(Math.floor(Math.random()*5)-2)
+    }else{
     enemy[i].speedX=0
     enemy[i].speedY=0
+    }
     enemy[i].drops={
         coin:_coinValue,
         coinChance:_coinChance,
