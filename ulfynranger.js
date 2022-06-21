@@ -1665,6 +1665,8 @@ function updateGameArea() {
             ctx.fillText("+1 Skill Point", 431, 140)
             ctx.fillText(`${spPrice}`, 443, 420)
             break;
+            case -1:
+            break
             default:
             ctx.fillText(`${items[itemToBuy].name}`, 438-(items[itemToBuy].name.length*2), 140)
             ctx.fillText(`${items[itemToBuy].worth*3}`, 443, 420)
