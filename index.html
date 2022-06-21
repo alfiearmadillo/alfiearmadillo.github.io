@@ -5,17 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
     <title>Homepage</title>
 </head>
 <body>
+    <div id="buttons">
     <form action="https://alfiearmadillo.github.io/ulfynranger">
-        <input type="submit" value="Block Ranger" />
+        <input type="submit" value="Block Ranger" id="button1"/>
     </form>
     <form action="https://alfiearmadillo.github.io/gatherioClient.js">
-        <input type="submit" value="GatherIO Client" />
+        <input type="submit" value="GatherIO Client" id="button2"/>
     </form>
 
-    <button onclick="addClipboard()">Copy bookmarklet to clipboard</button>
+    <button onclick="addClipboard()" id="button3">Copy GatherIO Client bookmarklet to clipboard</button>
+    <div id="title">Projects</div>
+</div>
 
 </body>
 </html>
