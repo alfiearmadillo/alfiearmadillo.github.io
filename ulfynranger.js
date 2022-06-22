@@ -1,4 +1,5 @@
-
+//xmas make all grass snow, rain to snow
+//only highest speed is 30, other is lowered to arrive at cursor at same time as higher speed one 
 
 
 //beating current highest stage
@@ -509,8 +510,8 @@ area[4]={name:"Grassy Fields",subAreaCount:7,unlocked:0,x:180,y:250,cleared:0,st
 area[5]={name:"Shaded Woods",subAreaCount:4,unlocked:0,x:230,y:270,cleared:0,stageToUnlock1:6,stageToUnlock2:7, special:"LowDark", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
 area[6]={name:"Hidden Cave",subAreaCount:6,unlocked:0,x:240,y:320,cleared:0,stageToUnlock1:8,stageToUnlock2:1, special:"MidDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
 area[7]={name:"Rainy Woods",subAreaCount:5,unlocked:0,x:280,y:275,cleared:0,stageToUnlock1:9,stageToUnlock2:1, special:"Rain", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#6d6f82"}
-area[8]={name:"Deep Dark",subAreaCount:4,unlocked:0,x:235,y:370,cleared:0,stageToUnlock1:10,stageToUnlock2:1, special:"Dark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
-area[9]={name:"Forest's Exit",subAreaCount:2,unlocked:0,x:325,y:285,cleared:0,stageToUnlock1:11,stageToUnlock2:1, dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
+area[8]={name:"Deep Dark",subAreaCount:4,unlocked:0,x:235,y:370,cleared:0,stageToUnlock1:10,stageToUnlock2:1, special:"HighDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
+area[9]={name:"Foggy Clearing",subAreaCount:2,unlocked:0,x:325,y:285,cleared:0,stageToUnlock1:11,stageToUnlock2:1, special:"Fog", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
 
 function renderStage(){ //Stage loading
     land=[]
@@ -940,7 +941,7 @@ function renderStage(){ //Stage loading
             signY=478
         }
     }
-    if(area[loadedAreaID].name==="Forest's Exit"){
+    if(area[loadedAreaID].name==="Foggy Clearing"){
         if(subArea===1){
             newLand(-1,510,1000,5400)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
@@ -1095,6 +1096,11 @@ function component(width, height, color, x, y) {//draw new boxes
             if(this.hp<=0){//draw dead player
                 ctx.fillStyle = "#666666"
                 ctx.fillRect(this.x+1, this.y+2, this.width-2, this.height-2);
+            }else if(this.type==="Rain"){
+                ctx.globalCompositeOperation='destination-over';
+                ctx.fillStyle = color;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.globalCompositeOperation='source-over';
             }else{
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -1890,7 +1896,7 @@ function updateGameArea() {
                             ctx.lineTo(area[6].x+10, area[6].y+10)
                             ctx.stroke();
                         }
-                        if(area[r].name==="Forest's Exit"){
+                        if(area[r].name==="Foggy Clearing"){
                             ctx.beginPath()
                             ctx.moveTo(area[r].x+10, area[r].y+10)
                             ctx.lineTo(area[7].x+10, area[7].y+10)
@@ -1957,18 +1963,7 @@ function updateGameArea() {
         ctx.fillText("NEXT", 900, signY)
     }
 
-    ctx = myGameArea.context;
-    ctx.fillStyle = "#8a8a8a"
-    ctx.fillRect(7, 50, 144,35);
-    ctx.fillStyle = "#b4b4b4"
-    ctx.fillRect(12, 55, 134, 25);
-    ctx.font = '16px serif';
-    ctx.fillStyle = "#000000"
-    if(area[loadedAreaID].subAreaCount>1){
-        ctx.fillText(`${area[loadedAreaID].name}:${subArea}`, 18,72)
-    }else{
-        ctx.fillText(`${area[loadedAreaID].name}`, 18,72)
-    }
+    
 
 
 
@@ -2050,6 +2045,60 @@ function updateGameArea() {
             renderStage()
         }
     }
+
+     //static effects
+     if(area[loadedAreaID].special==="LowDark"){
+        ctx = myGameArea.context;
+        ctx.globalAlpha = 0.2
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, 960, 540);
+        ctx.globalAlpha = 1
+    }
+    if(area[loadedAreaID].special==="MidDark"){
+        ctx = myGameArea.context;
+        ctx.globalAlpha = 0.4
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, 960, 540);
+        ctx.globalAlpha = 1
+    }
+    if(area[loadedAreaID].special==="HighDark"){
+        ctx = myGameArea.context;
+        ctx.globalAlpha = 0.6
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, 960, 540);
+        ctx.globalAlpha = 1
+    }
+    if(area[loadedAreaID].special==="Fog"){
+        ctx = myGameArea.context;
+        ctx.globalAlpha = 0.4
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, 960, 540);
+        ctx.globalAlpha = 1
+    }
+    if(area[loadedAreaID].special==="Rain"){
+        spawnRain()
+        for(ae=0;ae<rain.length;ae++){
+            rain[ae].newPos();
+            rain[ae].update();
+            if(rain[ae].y>600){
+                rain.splice(ae,1)
+            }
+        }
+    }
+
+    ctx = myGameArea.context;
+    ctx.fillStyle = "#8a8a8a"
+    ctx.fillRect(7, 50, 144,35);
+    ctx.fillStyle = "#b4b4b4"
+    ctx.fillRect(12, 55, 134, 25);
+    ctx.font = '16px serif';
+    ctx.fillStyle = "#000000"
+    if(area[loadedAreaID].subAreaCount>1){
+        ctx.fillText(`${area[loadedAreaID].name}:${subArea}`, 18,72)
+    }else{
+        ctx.fillText(`${area[loadedAreaID].name}`, 18,72)
+    }
+    
 }
 
 function updateSaveCode(){
@@ -2294,6 +2343,19 @@ function playerMoveToMouse(playerHeld, event){ //Move player currently held towa
             if(playerHeld.y>pointerY){
                 playerHeld.speedY = -blockToMouseY/8
             };
+}
+let rain = []
+function spawnRain(){
+    rain[rain.length] = new component(2, 8, "#a0a6b8", Math.random()*960, -95);
+    rain[rain.length-1].gravity=0.5+(Math.floor(Math.random()*2)/5)
+    rain[rain.length-1].speedX=0
+    rain[rain.length-1].speedY=0
+    rain[rain.length-1].type="Rain"
+    rain[rain.length] = new component(2, 8, "#a0a6b8", Math.random()*960, -95);
+    rain[rain.length-1].gravity=0.5-(Math.floor(Math.random()*2)/5)
+    rain[rain.length-1].speedX=0
+    rain[rain.length-1].speedY=0
+    rain[rain.length-1].type="Rain"
 }
 
 let i = 0
