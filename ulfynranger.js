@@ -911,7 +911,7 @@ function renderStage(){ //Stage loading
     if(area[loadedAreaID].name==="Hidden Cave"){
         if(subArea===1){
             newLand(-1,510,1000,5400)
-            newLand(-1,30,-1000,5400)
+            newLand(-1,-1000,1000,30)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -932,7 +932,7 @@ function renderStage(){ //Stage loading
     if(area[loadedAreaID].name==="Deep Dark"){
         if(subArea===1){
             newLand(-1,510,1000,5400)
-            newLand(-1,30,-1000,5400)
+            newLand(-1,-1000,1000,30)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
