@@ -1,13 +1,15 @@
 //xmas make all grass snow, rain to snow
 //only highest speed is 30, other is lowered to arrive at cursor at same time as higher speed one 
+//path of the swordsman, tanky enemies, full range
+//path of the archer, fairly melee enemies
+//path of the caster, mid range v high dps enemies
+//path of the tank, swarms of mid damage(reduced to 1 with shield) low hp mid atk speed enemies (mid range also)
 
 
 //beating current highest stage
 //Projectiles for players & enemies (bows arc, wand straight)
-//enemy types (flying random movent every x time), player like walker
 //terrain side collision?
 //textures?
-//lines between unlocked stages?
 //more levels, enemies, weapons, content
 let canvasVar
 let saveString=""
@@ -141,7 +143,7 @@ items[15]={name:"Decent Wood Shield",damageMin:2,damageMax:3,range:15,atkRate:10
 items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:66,lifeSteal:0,defence:0,type:"Bow", colour:'#42330d', worth:10, multi:33, rangeMult:3}
 items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:3}
 
-function addItem(player, itemID){
+function addItem(player, itemID){//clean this
     switch(player){
         case 0:
             player=playerNumber4
@@ -1857,7 +1859,7 @@ function updateGameArea() {
                     case 0:
                         break;
                     case 1:
-                        ctx.globalCompositeOperation='destination-over';
+                        ctx.globalCompositeOperation='destination-over';//new stage add here :)
                         ctx.lineWidth = 2;
                         ctx.setLineDash([4, 2]);
                         if(area[r].name==="Intro Avenue"){
@@ -2101,7 +2103,7 @@ function updateGameArea() {
     
 }
 
-function updateSaveCode(){
+function updateSaveCode(){// update if add new stage :)
     saveString=`${inv[0].storedItem};${inv[1].storedItem};${inv[2].storedItem};${inv[3].storedItem};${inv[4].storedItem};${inv[5].storedItem};${inv[6].storedItem};${inv[7].storedItem};${inv[8].storedItem};${inv[9].storedItem};${inv[10].storedItem};${inv[11].storedItem};${inv[12].storedItem};${inv[13].storedItem};${playerNumber.hp};${playerNumber.hpPoints};${playerNumber.dmgPoints};${playerNumber.rangePoints};${playerNumber.cdPoints};${playerNumber.skillPoints};${playerNumber2.hp};${playerNumber2.hpPoints};${playerNumber2.dmgPoints};${playerNumber2.rangePoints};${playerNumber2.cdPoints};${playerNumber2.skillPoints};${playerNumber3.hp};${playerNumber3.hpPoints};${playerNumber3.dmgPoints};${playerNumber3.rangePoints};${playerNumber3.cdPoints};${playerNumber3.skillPoints};${playerNumber4.hp};${playerNumber4.hpPoints};${playerNumber4.dmgPoints};${playerNumber4.rangePoints};${playerNumber4.cdPoints};${playerNumber4.skillPoints};${money};${area[3].cleared};${area[4].cleared};${spPrice};${totalEXP};${level};${expToLevelUp};${area[5].cleared};${area[6].cleared};${area[7].cleared};${area[8].cleared};${area[9].cleared}`
     document.getElementById("saveCodeDisplay").innerHTML = `${saveString}`
 }
