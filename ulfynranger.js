@@ -1,4 +1,6 @@
 
+
+
 //beating current highest stage
 //Projectiles for players & enemies (bows arc, wand straight)
 //enemy types (flying random movent every x time), player like walker
@@ -6,6 +8,7 @@
 //textures?
 //lines between unlocked stages?
 //more levels, enemies, weapons, content
+let canvasVar
 let saveString=""
 let splitSaveString=[]
 let itemToBuy=-1
@@ -234,6 +237,7 @@ document.getElementById("saveCodeNameDisplay").innerHTML = `Save Code`
 function goToMap(){
     if(gameover===500){
     loadedAreaID=2
+    canvasVar.style.background=area[loadedAreaID].skyColour
     shopOpen=-1
     itemToBuy=-1
     subArea=1
@@ -492,20 +496,21 @@ function loadSaveFromCode(){//saveload
     clickButton(3)
     clickButton(3)
     loadedAreaID=1
+    canvasVar.style.background=area[loadedAreaID].skyColour
     renderStage()
 }
 
 //update for each new level when make level making levels
-area[0]={name:"Menu",subAreaCount:1,unlocked:0,cleared:-1} //Stage list
-area[1]={name:"Town",subAreaCount:1,unlocked:1,x:100,y:300,cleared:2,stageToUnlock1:3,stageToUnlock2:1}
-area[2]={name:"Map",subAreaCount:1,unlocked:0,cleared:-1}
-area[3]={name:"Intro Avenue",subAreaCount:9,unlocked:1,x:150,y:300,cleared:0,stageToUnlock1:4,stageToUnlock2:1}
-area[4]={name:"Grassy Fields",subAreaCount:7,unlocked:0,x:180,y:250,cleared:0,stageToUnlock1:5,stageToUnlock2:1}
-area[5]={name:"Shaded Woods",subAreaCount:4,unlocked:0,x:230,y:270,cleared:0,stageToUnlock1:6,stageToUnlock2:7, special:"LowDark"}
-area[6]={name:"Hidden Cave",subAreaCount:6,unlocked:0,x:240,y:320,cleared:0,stageToUnlock1:8,stageToUnlock2:1, special:"MidDark"}
-area[7]={name:"Rainy Woods",subAreaCount:5,unlocked:0,x:280,y:275,cleared:0,stageToUnlock1:9,stageToUnlock2:1, special:"Rain"}
-area[8]={name:"Deep Dark",subAreaCount:4,unlocked:0,x:235,y:370,cleared:0,stageToUnlock1:10,stageToUnlock2:1, special:"Dark"}
-area[9]={name:"Forest's Exit",subAreaCount:2,unlocked:0,x:325,y:285,cleared:0,stageToUnlock1:11,stageToUnlock2:1}
+area[0]={name:"Menu",subAreaCount:1,unlocked:0,cleared:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"} //Stage list
+area[1]={name:"Town",subAreaCount:1,unlocked:1,x:100,y:300,cleared:2,stageToUnlock1:3,stageToUnlock2:1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
+area[2]={name:"Map",subAreaCount:1,unlocked:0,cleared:-1, skyColour:"#658a5a"}
+area[3]={name:"Intro Avenue",subAreaCount:9,unlocked:1,x:150,y:300,cleared:0,stageToUnlock1:4,stageToUnlock2:1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
+area[4]={name:"Grassy Fields",subAreaCount:7,unlocked:0,x:180,y:250,cleared:0,stageToUnlock1:5,stageToUnlock2:1, dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
+area[5]={name:"Shaded Woods",subAreaCount:4,unlocked:0,x:230,y:270,cleared:0,stageToUnlock1:6,stageToUnlock2:7, special:"LowDark", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
+area[6]={name:"Hidden Cave",subAreaCount:6,unlocked:0,x:240,y:320,cleared:0,stageToUnlock1:8,stageToUnlock2:1, special:"MidDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
+area[7]={name:"Rainy Woods",subAreaCount:5,unlocked:0,x:280,y:275,cleared:0,stageToUnlock1:9,stageToUnlock2:1, special:"Rain", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#6d6f82"}
+area[8]={name:"Deep Dark",subAreaCount:4,unlocked:0,x:235,y:370,cleared:0,stageToUnlock1:10,stageToUnlock2:1, special:"Dark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
+area[9]={name:"Forest's Exit",subAreaCount:2,unlocked:0,x:325,y:285,cleared:0,stageToUnlock1:11,stageToUnlock2:1, dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
 
 function renderStage(){ //Stage loading
     land=[]
@@ -906,6 +911,7 @@ function renderStage(){ //Stage loading
     if(area[loadedAreaID].name==="Hidden Cave"){
         if(subArea===1){
             newLand(-1,510,1000,5400)
+            newLand(-1,30,-1000,5400)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -926,6 +932,7 @@ function renderStage(){ //Stage loading
     if(area[loadedAreaID].name==="Deep Dark"){
         if(subArea===1){
             newLand(-1,510,1000,5400)
+            newLand(-1,30,-1000,5400)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -964,12 +971,14 @@ land[land.length]={
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
+        this.canvas.id="canvas"
         this.canvas.width = 960;
         this.canvas.height = 540;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
+        canvasVar = document.getElementById("canvas");
         },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -1646,6 +1655,7 @@ function updateGameArea() {
             i=0
             droppedItem=[]
             loadedAreaID=1
+            canvasVar.style.background=area[loadedAreaID].skyColour
             playerNumber.hp=1
             playerNumber2.hp=1
             playerNumber3.hp=1
@@ -1671,10 +1681,10 @@ function updateGameArea() {
     if(land.length>0){//draw new land
         for(w=0;w<land.length;w++){
             ctx = myGameArea.context;
-            ctx.fillStyle = "#7b531b"
+            ctx.fillStyle = area[loadedAreaID].dirtColour
             ctx.fillRect(land[w].x1+1, land[w].y1+1, land[w].x2-land[w].x1-2, land[w].y2-land[w].y1-2);
             ctx = myGameArea.context;
-            ctx.fillStyle = "#17740b"
+            ctx.fillStyle = area[loadedAreaID].grassColour
             ctx.fillRect(land[w].x1, land[w].y1, land[w].x2-land[w].x1, 10);
         }
     }
@@ -2029,6 +2039,7 @@ function updateGameArea() {
             clearStage() 
             updateSaveCode()
             loadedAreaID=2
+            canvasVar.style.background=area[loadedAreaID].skyColour
             shopOpen=-1
             itemToBuy=-1
             subArea=1
@@ -2114,6 +2125,7 @@ function drag(){ //Find which player clicked on / near, set to held
             document.getElementById("mapButton").innerHTML="Return to Map"
 
             loadedAreaID=1
+            canvasVar.style.background=area[loadedAreaID].skyColour
             renderStage()
         }
         if(area[loadedAreaID].name==="Menu"&&pointerX>381&&pointerX<381+224&&pointerY>330&&pointerY<330+48){
@@ -2241,6 +2253,7 @@ function checkClickOnLevelOnMap(){
         if(area[aa].cleared>-1&&area[aa].unlocked>0){
     if(area[loadedAreaID].name==="Map"&&pointerX>area[aa].x&&pointerX<area[aa].x+20&&pointerY>area[aa].y&&pointerY<area[aa].y+20){
         loadedAreaID=aa
+        canvasVar.style.background=area[loadedAreaID].skyColour
         renderStage()
     }
     }
