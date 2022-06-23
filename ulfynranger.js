@@ -1,5 +1,5 @@
-//xmas make all grass snow, rain to snow
-//only highest speed is 30, other is lowered to arrive at cursor at same time as higher speed one 
+//xmas make all grass snow, rain to snow ,/
+//only highest speed is 30, other is lowered to arrive at cursor at same time as higher speed one //pain
 //path of the swordsman, tanky enemies, full range
 //path of the archer, fairly melee enemies
 //path of the caster, mid range v high dps enemies
@@ -11,6 +11,8 @@
 //terrain side collision?
 //textures?
 //more levels, enemies, weapons, content
+let day = new Date();
+let debugXmas=0
 let canvasVar
 let saveString=""
 let splitSaveString=[]
@@ -119,7 +121,7 @@ function startGame() {
     myGameArea.start();
 }
 
-
+//update for new level
 
 items[0]={name:"None",damageMin:1,damageMax:1,range:11,atkRate:100,lifeSteal:0,defence:0,type:"None", colour:'#b4b4b4', worth:0, multi:0, rangeMult:0.1}
 
@@ -142,6 +144,12 @@ items[14]={name:"Sharpened Flint",damageMin:6,damageMax:10,range:25,atkRate:50,l
 items[15]={name:"Decent Wood Shield",damageMin:2,damageMax:3,range:15,atkRate:100,lifeSteal:0,defence:5,type:"Shield", colour:'#5a8224', worth:33, multi:0, rangeMult:0.1}
 items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:66,lifeSteal:0,defence:0,type:"Bow", colour:'#42330d', worth:10, multi:33, rangeMult:3}
 items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:3}
+
+items[18]={name:"CR_ShadedWoodMelee",damageMin:3,damageMax:8,range:60,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[19]={name:"CR_ShadedWoodFlying",damageMin:1,damageMax:20,range:80,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[20]={name:"CR_ShadedWoodBoss",damageMin:30,damageMax:50,range:60,atkRate:1000,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+
+items[21]={name:"Present",damageMin:-10,damageMax:-10,range:100,atkRate:10,lifeSteal:0,defence:10,type:"Special", colour:'#9c0012', worth:10, multi:0, rangeMult:0}
 
 function addItem(player, itemID){//clean this
     switch(player){
@@ -902,8 +910,69 @@ function renderStage(){ //Stage loading
     if(area[loadedAreaID].name==="Shaded Woods"){
         if(subArea===1){
             newLand(-1,510,1000,5400)
+            newLand(-1,495,432,5400)
+            newLand(-1,475,377,5400)
 
-            spawnEnemy(30,"#0e5578",779,400,0.5,1000,"Playerlike",5,5,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(30,"#0e5578",869,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(30,"#0e5578",779,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(30,"#0e5578",719,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(30,"#0e5578",649,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===2){
+            newLand(-1,510,1000,5400)
+            newLand(621,487,1000,5400)
+            newLand(684,452,1000,5400)
+            newLand(793,427,1000,5400)
+            newLand(846,392,1000,5400)
+            newLand(882,364,1000,5400)
+
+            spawnEnemy(30,"#0e5578",769,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(30,"#0e5578",679,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(30,"#0e5578",519,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(30,"#0e5578",449,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(30,"#0e5578",319,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(30,"#0e5578",249,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+
+            spawnEnemy(24,"#2e4073",249,400,0,100,"Flying",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478-510+364
+        }
+        if(subArea===3){
+            newLand(-1,510,1000,5400)
+            newLand(-1,495,411,5400)
+            newLand(-1,472,398,5400)
+            newLand(-1,441,342,5400)
+            newLand(-1,399,291,5400)
+            newLand(-1,364,230,5400)
+
+            newLand(741,315,1000,355)
+            newLand(798,293,1000,372)
+            newLand(873,278,1000,391)
+
+            newLand(642,490,1000,5400)
+
+            //2 melee mostly flying
+            
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=458
+        }
+        if(subArea===4){
+            newLand(-1,510,1000,5400)
+
+            //buffed last boss with tracking ai
+
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -911,10 +980,10 @@ function renderStage(){ //Stage loading
             signY=478
         }
     }
-    if(area[loadedAreaID].name==="Hidden Cave"){
+    if(area[loadedAreaID].name==="Hidden Cave"){//6
         if(subArea===1){
             newLand(-1,510,1000,5400)
-            newLand(-1,-1000,1000,30)
+            newLand(-1,-1000,1000,30) //all flying
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -922,9 +991,9 @@ function renderStage(){ //Stage loading
             signY=478
         }
     }
-    if(area[loadedAreaID].name==="Rainy Woods"){
+    if(area[loadedAreaID].name==="Rainy Woods"){//5
         if(subArea===1){
-            newLand(-1,510,1000,5400)
+            newLand(-1,510,1000,5400) //none flying
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -932,10 +1001,10 @@ function renderStage(){ //Stage loading
             signY=478
         }
     }
-    if(area[loadedAreaID].name==="Deep Dark"){
+    if(area[loadedAreaID].name==="Deep Dark"){//4
         if(subArea===1){
             newLand(-1,510,1000,5400)
-            newLand(-1,-1000,1000,30)
+            newLand(-1,-1000,1000,30)//enemies that blend in with bg
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -943,9 +1012,9 @@ function renderStage(){ //Stage loading
             signY=478
         }
     }
-    if(area[loadedAreaID].name==="Foggy Clearing"){
+    if(area[loadedAreaID].name==="Foggy Clearing"){//2
         if(subArea===1){
-            newLand(-1,510,1000,5400)
+            newLand(-1,510,1000,5400) //swarm stage1, 1 big tanky stage 2
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -964,12 +1033,7 @@ land[land.length]={
     x2:x2,
     y2:y2
 }
-
-
-
 }
-
-
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
@@ -1038,12 +1102,12 @@ function refreshPlayerStatsBox(){
 
     playerStatsBox.innerHTML=`
     <br />
-    Health: ${playerNumberStatsShown.hp}/${(playerNumberStatsShown.maxhp+playerNumberStatsShown.hpPoints*20)}<br/>
-    Damage: ${Math.floor((playerNumberStatsShown.item.damageMin+(playerNumberStatsShown.dmgPoints*0.2))*((100+playerNumberStatsShown.dmgPoints)/100))} - ${Math.floor((playerNumberStatsShown.item.damageMax+(playerNumberStatsShown.dmgPoints*0.3))*((100+playerNumberStatsShown.dmgPoints)/100))}<br/>
-    Range: ${playerNumberStatsShown.item.range+Math.round((playerNumberStatsShown.rangePoints*playerNumberStatsShown.item.rangeMult) * 10) / 10}<br/>
-    Attack Delay: ${Math.floor(playerNumberStatsShown.item.atkRate/((100+playerNumberStatsShown.cdPoints*2.5)/100))}<br/>
-    Defence: ${playerNumberStatsShown.item.defence}<br/>
-    Lifesteal: ${playerNumberStatsShown.item.lifeSteal}<br/>
+    Health:${playerNumberStatsShown.hp}/${(playerNumberStatsShown.maxhp+playerNumberStatsShown.hpPoints*20)}<br/>
+    Damage:${Math.floor((playerNumberStatsShown.item.damageMin+(playerNumberStatsShown.dmgPoints*0.2))*((100+playerNumberStatsShown.dmgPoints)/100))}–${Math.floor((playerNumberStatsShown.item.damageMax+(playerNumberStatsShown.dmgPoints*0.3))*((100+playerNumberStatsShown.dmgPoints)/100))}<br/>
+    Range:${playerNumberStatsShown.item.range+Math.round((playerNumberStatsShown.rangePoints*playerNumberStatsShown.item.rangeMult) * 10) / 10}<br/>
+    Attack Delay:${Math.floor(playerNumberStatsShown.item.atkRate/((100+playerNumberStatsShown.cdPoints*2.5)/100))}<br/>
+    Defence:${playerNumberStatsShown.item.defence}<br/>
+    Lifesteal:${playerNumberStatsShown.item.lifeSteal}<br/>
     <br/>
     <br/>
     Level: ${level} SP: ${playerNumberStatsShown.skillPoints}<br/>
@@ -1060,7 +1124,7 @@ function refreshItemStatsBox(){
     itemStatsBox.innerHTML=`
     <br/>
     Name: ${items[inv[lastslot].storedItem].name}<br/>
-    Damage: ${items[inv[lastslot].storedItem].damageMin} - ${items[inv[lastslot].storedItem].damageMax}<br/>
+    Damage: ${items[inv[lastslot].storedItem].damageMin}–${items[inv[lastslot].storedItem].damageMax}<br/>
     Range: ${items[inv[lastslot].storedItem].range}<br/>
     Attack Delay: ${items[inv[lastslot].storedItem].atkRate}<br/>
     Defence: ${items[inv[lastslot].storedItem].defence}<br/>
@@ -1098,7 +1162,7 @@ function component(width, height, color, x, y) {//draw new boxes
             if(this.hp<=0){//draw dead player
                 ctx.fillStyle = "#666666"
                 ctx.fillRect(this.x+1, this.y+2, this.width-2, this.height-2);
-            }else if(this.type==="Rain"){
+            }else if(this.type==="Rain"||this.type==="Snow"){
                 ctx.globalCompositeOperation='destination-over';
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -1136,6 +1200,7 @@ function component(width, height, color, x, y) {//draw new boxes
         if(this.speedY<-30){
             this.speedY=-30
         }
+        
         this.x += this.speedX;
         this.y += this.speedY;
 
@@ -1220,7 +1285,9 @@ function component(width, height, color, x, y) {//draw new boxes
                                 if(this.atkCD<=0){
                 
                                     enemy[nearTarget].hp=enemy[nearTarget].hp-randomDmg(Math.floor((this.item.damageMin+(this.dmgPoints*0.2))*((100+this.dmgPoints)/100)), Math.floor((this.item.damageMax+(this.dmgPoints*0.3))*((100+this.dmgPoints)/100)))//damage enemy, will need to be changed for ranged
-                
+                                    if(enemy[nearTarget].hp>enemy[nearTarget].maxhp){
+                                        enemy[nearTarget].hp=enemy[nearTarget].maxhp
+                                    }
                                     this.atkCD=Math.floor(this.item.atkRate/((100+this.cdPoints*2.5)/100))
                                 }else{
                                     this.atkCD=this.atkCD-1
@@ -1230,6 +1297,21 @@ function component(width, height, color, x, y) {//draw new boxes
                                     
                                     if(Object.keys(enemy[nearTarget].drops).length>0){ //enemy dropping items
                 
+                                        
+                                        lootRoll=Math.floor(Math.random()*50)
+                                        if((debugXmas===1||debugXmas===2)&&lootRoll===25){
+                                            droppedItem[droppedItem.length] = new component(17, 17, items[21].colour, enemy[nearTarget].x, enemy[nearTarget].y);
+                                            droppedItem[droppedItem.length-1].data={
+                                                value:21,
+                                                cooldown:150
+                                            }
+                                            droppedItem[droppedItem.length-1].size=16
+                                            droppedItem[droppedItem.length-1].type="item"
+                                            droppedItem[droppedItem.length-1].gravity = 0.1;
+                                            droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[nearTarget].size/200)
+                                            droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[nearTarget].size/100)
+                                        }
+
                                         lootRoll=Math.random()*100
                                         if(enemy[nearTarget].drops.coinChance!==0){
                                             if(lootRoll<enemy[nearTarget].drops.coinChance){
@@ -1397,7 +1479,12 @@ function updateGameArea() {
     myGameArea.clear();
     myGameArea.frameNo += 1;
 
-
+    if(day.getMonth()===11&&(day.getDate()===25||day.getDate()===24||day.getDate()===26)){
+        debugXmas=1
+    }else if(debugXmas===2){
+    }else{
+        debugXmas=0
+    }
 
     for(j=0;j<enemy.length;j++){
 
@@ -1441,12 +1528,13 @@ function updateGameArea() {
             }
         }
         if(enemy[j].movementType==="Playerlike"){
-            if(Math.floor(Math.random()*4)===0&&Math.abs(Math.round(enemy[j].speedY))===0&&Math.abs(Math.round(enemy[j].speedX))===0){
+            if(Math.floor(Math.random()*4)===0&&Math.abs(Math.round(enemy[j].speedY*10)/10)<0.4&&Math.abs(Math.round(enemy[j].speedX*10)/10)===0){
             if((playerNumber.item.type!=="Shield"&&playerNumber2.item.type!=="Shield"&&playerNumber3.item.type!=="Shield"&&
             playerNumber4.item.type!=="Shield")||
             (playerNumber.item.type==="Shield"&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
             playerNumber4.item.type==="Shield")){
                 if((redPDist>enemy[j].weapon.range&&bluPDist>enemy[j].weapon.range&&grnPDist>enemy[j].weapon.range&&ylwPDist>enemy[j].weapon.range)&&(redPDist<bluPDist||playerNumber2.hp===0)&&(redPDist<grnPDist||playerNumber3.hp===0)&&(redPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber.hp>0){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
                     if((playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1454,7 +1542,12 @@ function updateGameArea() {
                         enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                     }
+                }else{
+                    enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
+                }
                 }else if((redPDist>enemy[j].weapon.range&&bluPDist>enemy[j].weapon.range&&grnPDist>enemy[j].weapon.range&&ylwPDist>enemy[j].weapon.range)&&(bluPDist<grnPDist||playerNumber3.hp===0)&&(bluPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber2.hp>0){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
                     if((playerNumber2.x-(enemy[j].x-(playerNumber2.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1462,7 +1555,12 @@ function updateGameArea() {
                         enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                     }
+                }else{
+                    enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
+                }
                 }else if((redPDist>enemy[j].weapon.range&&bluPDist>enemy[j].weapon.range&&grnPDist>enemy[j].weapon.range&&ylwPDist>enemy[j].weapon.range)&&(grnPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber3.hp>0){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
                     if((playerNumber3.x-(enemy[j].x-(playerNumber3.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1470,7 +1568,12 @@ function updateGameArea() {
                         enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                     }
+                }else{
+                    enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
+                }
                 }else if((redPDist>enemy[j].weapon.range&&bluPDist>enemy[j].weapon.range&&grnPDist>enemy[j].weapon.range&&ylwPDist>enemy[j].weapon.range)&&playerNumber4.hp>0){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
                     if((playerNumber4.x-(enemy[j].x-(playerNumber4.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1478,9 +1581,14 @@ function updateGameArea() {
                         enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                     }
+                }else{
+                    enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
+                }
                 }
             }else{
                 if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield")&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield")&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield")&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"))&&(redPDist<bluPDist||playerNumber2.hp===0||playerNumber2.item.type!=="Shield")&&(redPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(redPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber.hp>0&&playerNumber.item.type==="Shield"){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
                     if((playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1488,7 +1596,12 @@ function updateGameArea() {
                         enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                     }
+                }else{
+                    enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
+                }
                 }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield")&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield")&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield")&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"))&&(bluPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(bluPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber2.hp>0&&playerNumber2.item.type==="Shield"){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
                     if((playerNumber2.x-(enemy[j].x-(playerNumber2.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1496,7 +1609,12 @@ function updateGameArea() {
                         enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                     }
+                }else{
+                    enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
+                }
                 }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield")&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield")&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield")&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"))&&(grnPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber3.hp>0&&playerNumber3.item.type==="Shield"){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
                     if((playerNumber3.x-(enemy[j].x-(playerNumber3.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1504,7 +1622,12 @@ function updateGameArea() {
                         enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                     }
+                }else{
+                    enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
+                }
                 }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield")&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield")&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield")&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"))&&playerNumber4.hp>0&&playerNumber4.item.type==="Shield"){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
                     if((playerNumber4.x-(enemy[j].x-(playerNumber4.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1512,6 +1635,10 @@ function updateGameArea() {
                         enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                     }
+                }else{
+                    enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
+                }
             }
         }
     }
@@ -1692,7 +1819,11 @@ function updateGameArea() {
             ctx.fillStyle = area[loadedAreaID].dirtColour
             ctx.fillRect(land[w].x1+1, land[w].y1+1, land[w].x2-land[w].x1-2, land[w].y2-land[w].y1-2);
             ctx = myGameArea.context;
+            if(debugXmas!==1&&debugXmas!==2){
             ctx.fillStyle = area[loadedAreaID].grassColour
+            }else{
+                ctx.fillStyle="#ededed"
+            }
             ctx.fillRect(land[w].x1, land[w].y1, land[w].x2-land[w].x1, 10);
         }
     }
@@ -1859,7 +1990,7 @@ function updateGameArea() {
                     case 0:
                         break;
                     case 1:
-                        ctx.globalCompositeOperation='destination-over';//new stage add here :)
+                        ctx.globalCompositeOperation='destination-over';//new stage add here :) new level
                         ctx.lineWidth = 2;
                         ctx.setLineDash([4, 2]);
                         if(area[r].name==="Intro Avenue"){
@@ -2087,6 +2218,16 @@ function updateGameArea() {
             }
         }
     }
+    if(area[loadedAreaID].special==="Snow"||((debugXmas===1||debugXmas===2)&&area[loadedAreaID].name!=="Map")){
+        spawnSnow()
+        for(af=0;af<snow.length;af++){
+            snow[af].newPos();
+            snow[af].update();
+            if(snow[af].y>600||snow[af].x<0.5){
+                snow.splice(af,1)
+            }
+        }
+    }
 
     ctx = myGameArea.context;
     ctx.fillStyle = "#8a8a8a"
@@ -2103,7 +2244,7 @@ function updateGameArea() {
     
 }
 
-function updateSaveCode(){// update if add new stage :)
+function updateSaveCode(){// update if add new stage :) new level
     saveString=`${inv[0].storedItem};${inv[1].storedItem};${inv[2].storedItem};${inv[3].storedItem};${inv[4].storedItem};${inv[5].storedItem};${inv[6].storedItem};${inv[7].storedItem};${inv[8].storedItem};${inv[9].storedItem};${inv[10].storedItem};${inv[11].storedItem};${inv[12].storedItem};${inv[13].storedItem};${playerNumber.hp};${playerNumber.hpPoints};${playerNumber.dmgPoints};${playerNumber.rangePoints};${playerNumber.cdPoints};${playerNumber.skillPoints};${playerNumber2.hp};${playerNumber2.hpPoints};${playerNumber2.dmgPoints};${playerNumber2.rangePoints};${playerNumber2.cdPoints};${playerNumber2.skillPoints};${playerNumber3.hp};${playerNumber3.hpPoints};${playerNumber3.dmgPoints};${playerNumber3.rangePoints};${playerNumber3.cdPoints};${playerNumber3.skillPoints};${playerNumber4.hp};${playerNumber4.hpPoints};${playerNumber4.dmgPoints};${playerNumber4.rangePoints};${playerNumber4.cdPoints};${playerNumber4.skillPoints};${money};${area[3].cleared};${area[4].cleared};${spPrice};${totalEXP};${level};${expToLevelUp};${area[5].cleared};${area[6].cleared};${area[7].cleared};${area[8].cleared};${area[9].cleared}`
     document.getElementById("saveCodeDisplay").innerHTML = `${saveString}`
 }
@@ -2358,6 +2499,20 @@ function spawnRain(){
     rain[rain.length-1].speedX=0
     rain[rain.length-1].speedY=0
     rain[rain.length-1].type="Rain"
+}
+
+let snow = []
+function spawnSnow(){
+    snow[snow.length] = new component(2, 2, "#d7dae0", Math.random()*960, -10);
+    snow[snow.length-1].gravity=0
+    snow[snow.length-1].speedX=(Math.random()-0.5)/2
+    snow[snow.length-1].speedY=0.5-(Math.floor(Math.random()*2)/15)
+    snow[snow.length-1].type="Snow"
+    snow[snow.length] = new component(2, 2, "#d7dae0", Math.random()*960, -10);
+    snow[snow.length-1].gravity=0
+    snow[snow.length-1].speedX=(Math.random()-0.5)/2
+    snow[snow.length-1].speedY=0.5-(Math.floor(Math.random()*2)/15)
+    snow[snow.length-1].type="Snow"
 }
 
 let i = 0
