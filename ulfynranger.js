@@ -146,7 +146,7 @@ items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:66,life
 items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:3}
 
 items[18]={name:"CR_ShadedWoodMelee",damageMin:3,damageMax:8,range:60,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[19]={name:"CR_ShadedWoodFlying",damageMin:1,damageMax:20,range:80,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[19]={name:"CR_ShadedWoodFlying",damageMin:1,damageMax:20,range:50,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[20]={name:"CR_ShadedWoodBoss",damageMin:30,damageMax:50,range:60,atkRate:1000,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 items[21]={name:"Present",damageMin:-10,damageMax:-10,range:100,atkRate:10,lifeSteal:0,defence:10,type:"Special", colour:'#9c0012', worth:10, multi:0, rangeMult:0}
@@ -938,7 +938,7 @@ function renderStage(){ //Stage loading
             spawnEnemy(30,"#0e5578",319,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
             spawnEnemy(30,"#0e5578",249,400,0.5,100,"Playerlike",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
 
-            spawnEnemy(24,"#2e4073",249,400,0,100,"Flying",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(24,"#2e4073",249,400,0,100,"PlayerlikeFlying",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
             
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
@@ -960,7 +960,9 @@ function renderStage(){ //Stage loading
 
             newLand(642,490,1000,5400)
 
-            //2 melee mostly flying
+            spawnEnemy(24,"#2e4073",249,450,0,100,"PlayerlikeFlying",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(24,"#2e4073",549,500,0,100,"PlayerlikeFlying",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
+            spawnEnemy(24,"#2e4073",879,300,0,100,"PlayerlikeFlying",10,18,10,10,0.1,10,17,0,2,0,3,0,4,0)
             
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
@@ -1642,6 +1644,212 @@ function updateGameArea() {
             }
         }
     }
+}
+
+if(enemy[j].movementType==="PlayerlikeFlying"){
+    if(enemy[j].y<0){
+        enemy[j].y=0
+        enemy[j].speedY+=1
+    }
+    if(enemy[j].x+enemy[j].size>900){
+        enemy[j].speedX-=0.5
+    }
+    if(Math.round(Math.abs(enemy[j].speedX)*10)/10<1){
+        enemy[j].speedX=enemy[j].speedX*1.2
+    }
+    if(Math.round(Math.abs(enemy[j].speedY)*10)/10<1){
+        enemy[j].speedY=enemy[j].speedY*1.2
+    }
+    if(enemy[j].speedX>5){
+        enemy[j].speedX=5
+    }
+    if(enemy[j].speedY>5){
+        enemy[j].speedY=5
+    }
+    if(enemy[j].speedX<-5){
+        enemy[j].speedX=-5
+    }
+    if(enemy[j].speedY<-5){
+        enemy[j].speedY=-5
+    }
+    if(Math.floor(Math.random()*40)===0){
+    if((playerNumber.item.type!=="Shield"&&playerNumber2.item.type!=="Shield"&&playerNumber3.item.type!=="Shield"&&
+    playerNumber4.item.type!=="Shield")||
+    (playerNumber.item.type==="Shield"&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
+    playerNumber4.item.type==="Shield")){
+        if(((redPDist>enemy[j].weapon.range||redPDistY>enemy[j].weapon.range)&&(bluPDist>enemy[j].weapon.range||bluPDistY>enemy[j].weapon.range)&&(grnPDist>enemy[j].weapon.range||grnPDistY>enemy[j].weapon.range)&&(ylwPDist>enemy[j].weapon.range||ylwPDistY>enemy[j].weapon.range))&&(redPDist<bluPDist||playerNumber2.hp===0)&&(redPDist<grnPDist||playerNumber3.hp===0)&&(redPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber.hp>0){
+            if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+450){
+            if((playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))>0){
+                enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
+                if(enemy[j].y<playerNumber.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }else{
+                enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
+                if(enemy[j].y<playerNumber.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }
+        }else{
+            enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+            enemy[j].speedY=enemy[j].speedY-Math.random()*4-2
+        }
+        }else if(((redPDist>enemy[j].weapon.range||redPDistY>enemy[j].weapon.range)&&(bluPDist>enemy[j].weapon.range||bluPDistY>enemy[j].weapon.range)&&(grnPDist>enemy[j].weapon.range||grnPDistY>enemy[j].weapon.range)&&(ylwPDist>enemy[j].weapon.range||ylwPDistY>enemy[j].weapon.range))&&(bluPDist<grnPDist||playerNumber3.hp===0)&&(bluPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber2.hp>0){
+            if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+450){
+            if((playerNumber2.x-(enemy[j].x-(playerNumber2.size/2)+(enemy[j].size/2)))>0){
+                enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
+                if(enemy[j].y<playerNumber2.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }else{
+                enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
+                if(enemy[j].y<playerNumber2.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }
+        }else{
+            enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+            enemy[j].speedY=enemy[j].speedY-Math.random()*4-2
+        }
+        }else if(((redPDist>enemy[j].weapon.range||redPDistY>enemy[j].weapon.range)&&(bluPDist>enemy[j].weapon.range||bluPDistY>enemy[j].weapon.range)&&(grnPDist>enemy[j].weapon.range||grnPDistY>enemy[j].weapon.range)&&(ylwPDist>enemy[j].weapon.range||ylwPDistY>enemy[j].weapon.range))&&(grnPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber3.hp>0){
+            if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+450){
+            if((playerNumber3.x-(enemy[j].x-(playerNumber3.size/2)+(enemy[j].size/2)))>0){
+                enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
+                if(enemy[j].y<playerNumber3.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }else{
+                enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
+                if(enemy[j].y<playerNumber3.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }
+        }else{
+            enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+            enemy[j].speedY=enemy[j].speedY-Math.random()*4-2
+        }
+        }else if(((redPDist>enemy[j].weapon.range||redPDistY>enemy[j].weapon.range)&&(bluPDist>enemy[j].weapon.range||bluPDistY>enemy[j].weapon.range)&&(grnPDist>enemy[j].weapon.range||grnPDistY>enemy[j].weapon.range)&&(ylwPDist>enemy[j].weapon.range||ylwPDistY>enemy[j].weapon.range))&&playerNumber4.hp>0){
+            if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+450){
+            if((playerNumber4.x-(enemy[j].x-(playerNumber4.size/2)+(enemy[j].size/2)))>0){
+                enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
+                if(enemy[j].y<playerNumber4.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }else{
+                enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
+                if(enemy[j].y<playerNumber4.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }
+        }else{
+            enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+            enemy[j].speedY=enemy[j].speedY-Math.random()*4-2
+        }
+        }
+    }else{
+        if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield"||redPDistY>enemy[j].weapon.range)&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield"||bluPDistY>enemy[j].weapon.range)&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield"||grnPDistY>enemy[j].weapon.range)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"||ylwPDistY>enemy[j].weapon.range))&&(redPDist<bluPDist||playerNumber2.hp===0||playerNumber2.item.type!=="Shield")&&(redPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(redPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber.hp>0&&playerNumber.item.type==="Shield"){
+            if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+450){
+            if((playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))>0){
+                enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
+                if(enemy[j].y<playerNumber.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }else{
+                enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
+                if(enemy[j].y<playerNumber.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }
+        }else{
+            enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+            enemy[j].speedY=enemy[j].speedY-Math.random()*4-2
+        }
+        }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield"||redPDistY>enemy[j].weapon.range)&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield"||bluPDistY>enemy[j].weapon.range)&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield"||grnPDistY>enemy[j].weapon.range)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"||ylwPDistY>enemy[j].weapon.range))&&(bluPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber2.hp>0&&playerNumber2.item.type==="Shield"){
+            if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+450){
+            if((playerNumber2.x-(enemy[j].x-(playerNumber2.size/2)+(enemy[j].size/2)))>0){
+                enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
+                if(enemy[j].y<playerNumber2.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }else{
+                enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
+                if(enemy[j].y<playerNumber2.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }
+        }else{
+            enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+            enemy[j].speedY=enemy[j].speedY-Math.random()*4-2
+        }
+        }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield"||redPDistY>enemy[j].weapon.range)&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield"||bluPDistY>enemy[j].weapon.range)&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield"||grnPDistY>enemy[j].weapon.range)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"||ylwPDistY>enemy[j].weapon.range))&&(grnPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber3.hp>0&&playerNumber3.item.type==="Shield"){
+            if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+450){
+            if((playerNumber3.x-(enemy[j].x-(playerNumber3.size/2)+(enemy[j].size/2)))>0){
+                enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
+                if(enemy[j].y<playerNumber3.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }else{
+                enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
+                if(enemy[j].y<playerNumber3.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }
+        }else{
+            enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+            enemy[j].speedY=enemy[j].speedY-Math.random()*4-2
+        }
+        }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield"||redPDistY>enemy[j].weapon.range)&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield"||bluPDistY>enemy[j].weapon.range)&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield"||grnPDistY>enemy[j].weapon.range)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"||ylwPDistY>enemy[j].weapon.range))&&playerNumber4.hp>0&&playerNumber4.item.type==="Shield"){
+            if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+450){
+            if((playerNumber4.x-(enemy[j].x-(playerNumber4.size/2)+(enemy[j].size/2)))>0){
+                enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
+                if(enemy[j].y<playerNumber4.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }else{
+                enemy[j].speedX=enemy[j].speedX-Math.random()*2-1
+                if(enemy[j].y<playerNumber4.y){
+                    enemy[j].speedY=enemy[j].speedY+Math.random()*2
+                }else{
+                    enemy[j].speedY=enemy[j].speedY-Math.random()*2
+                }
+            }
+        }else{
+            enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
+            enemy[j].speedY=enemy[j].speedY+Math.random()*4-2
+        }
+    }
+}
+}
 }
 
         enemy[j].update()
@@ -2529,9 +2737,9 @@ function spawnEnemy(_size,_colour,_posX,_posY,_gravity,_hp,_movementType,_exp,_w
     enemy[i].exp=_exp
     enemy[i].weapon=items[_weapon]
     enemy[i].atkCD=200
-    if(_movementType="Flying"){
-        enemy[i].speedX=(Math.floor(Math.random()*5)-2)
-        enemy[i].speedY=(Math.floor(Math.random()*5)-2)
+    if(_movementType==="Flying"||_movementType==="PlayerlikeFlying"){
+        enemy[i].speedX=(Math.random()*5)-2.5
+        enemy[i].speedY=(Math.random()*5)-2.5
     }else{
     enemy[i].speedX=0
     enemy[i].speedY=0
