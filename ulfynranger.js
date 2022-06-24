@@ -147,7 +147,7 @@ items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:
 
 items[18]={name:"CR_ShadedWoodMelee",damageMin:3,damageMax:8,range:60,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[19]={name:"CR_ShadedWoodFlying",damageMin:1,damageMax:20,range:50,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[20]={name:"CR_ShadedWoodBoss",damageMin:30,damageMax:50,range:60,atkRate:1000,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[20]={name:"CR_ShadedWoodBoss",damageMin:8,damageMax:8,range:50,atkRate:100,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 items[21]={name:"Present",damageMin:-10,damageMax:-10,range:100,atkRate:10,lifeSteal:0,defence:10,type:"Special", colour:'#9c0012', worth:10, multi:0, rangeMult:0}
 
@@ -513,15 +513,15 @@ function loadSaveFromCode(){//saveload
 
 //update for each new level when make level making levels
 area[0]={name:"Menu",subAreaCount:1,unlocked:0,cleared:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"} //Stage list
-area[1]={name:"Town",subAreaCount:1,unlocked:1,x:100,y:300,cleared:2,stageToUnlock1:3,stageToUnlock2:1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
+area[1]={name:"Town",subAreaCount:1,unlocked:1,x:100,y:300,cleared:2,stageToUnlock1:3,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
 area[2]={name:"Map",subAreaCount:1,unlocked:0,cleared:-1, skyColour:"#658a5a"}
-area[3]={name:"Intro Avenue",subAreaCount:9,unlocked:1,x:150,y:300,cleared:0,stageToUnlock1:4,stageToUnlock2:1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
-area[4]={name:"Grassy Fields",subAreaCount:7,unlocked:0,x:180,y:250,cleared:0,stageToUnlock1:5,stageToUnlock2:1, dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
+area[3]={name:"Intro Avenue",subAreaCount:9,unlocked:1,x:150,y:300,cleared:0,stageToUnlock1:4,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
+area[4]={name:"Grassy Fields",subAreaCount:7,unlocked:0,x:180,y:250,cleared:0,stageToUnlock1:5,stageToUnlock2:-1, dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
 area[5]={name:"Shaded Woods",subAreaCount:4,unlocked:0,x:230,y:270,cleared:0,stageToUnlock1:6,stageToUnlock2:7, special:"LowDark", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
-area[6]={name:"Hidden Cave",subAreaCount:6,unlocked:0,x:240,y:320,cleared:0,stageToUnlock1:8,stageToUnlock2:1, special:"MidDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
-area[7]={name:"Rainy Woods",subAreaCount:5,unlocked:0,x:280,y:275,cleared:0,stageToUnlock1:9,stageToUnlock2:1, special:"Rain", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#6d6f82"}
-area[8]={name:"Deep Dark",subAreaCount:4,unlocked:0,x:235,y:370,cleared:0,stageToUnlock1:10,stageToUnlock2:1, special:"HighDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
-area[9]={name:"Foggy Clearing",subAreaCount:2,unlocked:0,x:325,y:285,cleared:0,stageToUnlock1:11,stageToUnlock2:1, special:"Fog", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
+area[6]={name:"Hidden Cave",subAreaCount:6,unlocked:0,x:240,y:320,cleared:0,stageToUnlock1:8,stageToUnlock2:-1, special:"MidDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
+area[7]={name:"Rainy Woods",subAreaCount:5,unlocked:0,x:280,y:275,cleared:0,stageToUnlock1:9,stageToUnlock2:-1, special:"Rain", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#6d6f82"}
+area[8]={name:"Deep Dark",subAreaCount:4,unlocked:0,x:235,y:370,cleared:0,stageToUnlock1:10,stageToUnlock2:-1, special:"HighDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
+area[9]={name:"Foggy Clearing",subAreaCount:2,unlocked:0,x:325,y:285,cleared:0,stageToUnlock1:11,stageToUnlock2:-1, special:"Fog", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
 
 function renderStage(){ //Stage loading
     land=[]
@@ -837,68 +837,68 @@ function renderStage(){ //Stage loading
         }
         if(subArea===7){
             newLand(-1,510,1000,5400)
-            spawnEnemy(8,"#80223d",519,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",529,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",539,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",549,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",559,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",569,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",579,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",589,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",599,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",519,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",629,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",639,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",649,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",659,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",669,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",679,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",689,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",699,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",609,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",409,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",419,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",429,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",439,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",449,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",459,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",469,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",479,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",489,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",499,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",399,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",389,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",379,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",369,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",359,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",349,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",339,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",329,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",319,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",309,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",299,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",289,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",279,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",269,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",259,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",249,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",239,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",229,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",219,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",209,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",799,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",789,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",779,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",769,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",759,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",749,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",739,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",729,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",719,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",709,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",179,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",189,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
-            spawnEnemy(8,"#80223d",199,400,0.15,1,"Flying",5,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",519,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",529,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",539,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",549,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",559,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",569,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",579,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",589,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",599,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",519,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",629,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",639,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",649,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",659,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",669,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",679,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",689,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",699,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",609,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",409,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",419,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",429,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",439,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",449,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",459,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",469,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",479,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",489,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",499,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",399,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",389,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",379,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",369,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",359,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",349,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",339,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",329,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",319,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",309,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",299,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",289,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",279,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",269,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",259,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",249,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",239,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",229,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",219,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",209,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",799,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",789,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",779,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",769,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",759,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",749,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",739,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",729,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",719,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",709,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",179,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",189,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
+            spawnEnemy(8,"#80223d",199,400,0.15,1,"Flying",1,13,15,10,0.2,2,17,1,2,0,3,0,4,0)
             
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
@@ -974,7 +974,68 @@ function renderStage(){ //Stage loading
             newLand(-1,510,1000,5400)
 
             //buffed last boss with tracking ai
-
+            spawnEnemy(11,"#502a82",519,420,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",529,470,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",539,400,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",549,420,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",559,400,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",569,440,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",579,470,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",589,480,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",599,490,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",519,420,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",629,410,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",639,440,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",649,470,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",659,400,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",669,430,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",679,450,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",689,460,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",699,400,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",609,420,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",409,440,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",419,400,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",429,400,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",439,450,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",449,460,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",459,420,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",469,430,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",479,460,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",489,450,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",499,420,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",399,400,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",389,420,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",379,460,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",369,430,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",359,480,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",349,490,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",339,430,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",329,460,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",319,470,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",309,400,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",299,400,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",289,420,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",279,440,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",269,460,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",259,420,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",249,410,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(11,"#502a82",239,430,0.35,1,"Playerlike",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",229,330,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",219,310,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",209,350,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",799,370,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",789,310,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",779,330,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",769,350,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",759,320,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",749,330,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",739,350,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",729,380,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",719,360,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",709,390,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",179,300,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",189,310,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
+            spawnEnemy(10,"#5e2c6e",199,330,0,1,"PlayerlikeFlying",2,20,20,10,0.2,5,17,0,2,0,3,0,4,0)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
             playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
@@ -1535,8 +1596,8 @@ function updateGameArea() {
             playerNumber4.item.type!=="Shield")||
             (playerNumber.item.type==="Shield"&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
             playerNumber4.item.type==="Shield")){
-                if((redPDist>enemy[j].weapon.range&&bluPDist>enemy[j].weapon.range&&grnPDist>enemy[j].weapon.range&&ylwPDist>enemy[j].weapon.range)&&(redPDist<bluPDist||playerNumber2.hp===0)&&(redPDist<grnPDist||playerNumber3.hp===0)&&(redPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber.hp>0){
-                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
+                if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber2.hp===0))&&(redPDist<bluPDist||playerNumber2.hp===0)&&(redPDist<grnPDist||playerNumber3.hp===0)&&(redPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber.hp>0){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1548,8 +1609,8 @@ function updateGameArea() {
                     enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
                     enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                 }
-                }else if((redPDist>enemy[j].weapon.range&&bluPDist>enemy[j].weapon.range&&grnPDist>enemy[j].weapon.range&&ylwPDist>enemy[j].weapon.range)&&(bluPDist<grnPDist||playerNumber3.hp===0)&&(bluPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber2.hp>0){
-                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
+                }else if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber2.hp===0))&&(bluPDist<grnPDist||playerNumber3.hp===0)&&(bluPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber2.hp>0){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber2.x-(enemy[j].x-(playerNumber2.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1561,8 +1622,8 @@ function updateGameArea() {
                     enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
                     enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                 }
-                }else if((redPDist>enemy[j].weapon.range&&bluPDist>enemy[j].weapon.range&&grnPDist>enemy[j].weapon.range&&ylwPDist>enemy[j].weapon.range)&&(grnPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber3.hp>0){
-                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
+                }else if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber2.hp===0))&&(grnPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber3.hp>0){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber3.x-(enemy[j].x-(playerNumber3.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1574,8 +1635,8 @@ function updateGameArea() {
                     enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
                     enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                 }
-                }else if((redPDist>enemy[j].weapon.range&&bluPDist>enemy[j].weapon.range&&grnPDist>enemy[j].weapon.range&&ylwPDist>enemy[j].weapon.range)&&playerNumber4.hp>0){
-                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
+                }else if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber2.hp===0))&&playerNumber4.hp>0){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber4.x-(enemy[j].x-(playerNumber4.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1589,8 +1650,8 @@ function updateGameArea() {
                 }
                 }
             }else{
-                if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield")&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield")&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield")&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"))&&(redPDist<bluPDist||playerNumber2.hp===0||playerNumber2.item.type!=="Shield")&&(redPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(redPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber.hp>0&&playerNumber.item.type==="Shield"){
-                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
+                if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield"||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield"||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield"||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"||playerNumber4.hp===0))&&(redPDist<bluPDist||playerNumber2.hp===0||playerNumber2.item.type!=="Shield")&&(redPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(redPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber.hp>0&&playerNumber.item.type==="Shield"){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1602,8 +1663,8 @@ function updateGameArea() {
                     enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
                     enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                 }
-                }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield")&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield")&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield")&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"))&&(bluPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(bluPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber2.hp>0&&playerNumber2.item.type==="Shield"){
-                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
+                }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield"||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield"||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield"||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"||playerNumber4.hp===0))&&(bluPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(bluPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber2.hp>0&&playerNumber2.item.type==="Shield"){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber2.x-(enemy[j].x-(playerNumber2.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1615,8 +1676,8 @@ function updateGameArea() {
                     enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
                     enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                 }
-                }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield")&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield")&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield")&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"))&&(grnPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber3.hp>0&&playerNumber3.item.type==="Shield"){
-                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
+                }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield"||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield"||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield"||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"||playerNumber4.hp===0))&&(grnPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber3.hp>0&&playerNumber3.item.type==="Shield"){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber3.x-(enemy[j].x-(playerNumber3.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1628,8 +1689,8 @@ function updateGameArea() {
                     enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
                     enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                 }
-                }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield")&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield")&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield")&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"))&&playerNumber4.hp>0&&playerNumber4.item.type==="Shield"){
-                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+350){
+                }else if(((redPDist>enemy[j].weapon.range||playerNumber.item.type!=="Shield"||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.item.type!=="Shield"||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.item.type!=="Shield"||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.item.type!=="Shield"||playerNumber4.hp===0))&&playerNumber4.hp>0&&playerNumber4.item.type==="Shield"){
+                    if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber4.x-(enemy[j].x-(playerNumber4.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
                         enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
@@ -1996,6 +2057,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             land=[]
             enemy=[]
             i=0
+            subArea=1
             droppedItem=[]
             loadedAreaID=1
             canvasVar.style.background=area[loadedAreaID].skyColour
@@ -2053,7 +2115,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         ctx.globalCompositeOperation="source-over";
     }
 
-    if(area[loadedAreaID].name==="Town" && shopOpen===1){
+    if(area[loadedAreaID].name==="Town" && shopOpen===1){//new item new level update shop pics
         ctx = myGameArea.context;
         ctx.fillStyle = "#4a4a4a" //shop bg
         ctx.fillRect(100, 100, 760, 340);
@@ -2194,56 +2256,25 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         for(r=0;r<area.length;r++){
             if(area[r].unlocked===1){
                 ctx = myGameArea.context;
-                switch(area[r].unlocked){
-                    case 0:
-                        break;
-                    case 1:
-                        ctx.globalCompositeOperation='destination-over';//new stage add here :) new level
+
+                        if(area[r].cleared>0){
+                        
                         ctx.lineWidth = 2;
                         ctx.setLineDash([4, 2]);
-                        if(area[r].name==="Intro Avenue"){
-                            ctx.beginPath()
+
+                        ctx.beginPath()
+                        
+                        if(area[r].stageToUnlock1>-1&&area[r].stageToUnlock1<area.length){
                             ctx.moveTo(area[r].x+10, area[r].y+10)
-                            ctx.lineTo(area[1].x+10, area[1].y+10)
-                            ctx.stroke();  
+                            ctx.lineTo(area[area[r].stageToUnlock1].x+10, area[area[r].stageToUnlock1].y+10)
                         }
-                        if(area[r].name==="Grassy Fields"){
-                            ctx.beginPath()
+                        if(area[r].stageToUnlock2>-1&&area[r].stageToUnlock2<area.length){
                             ctx.moveTo(area[r].x+10, area[r].y+10)
-                            ctx.lineTo(area[3].x+10, area[3].y+10)
-                            ctx.stroke();
+                            ctx.lineTo(area[area[r].stageToUnlock2].x+10, area[area[r].stageToUnlock2].y+10)
                         }
-                        if(area[r].name==="Shaded Woods"){
-                            ctx.beginPath()
-                            ctx.moveTo(area[r].x+10, area[r].y+10)
-                            ctx.lineTo(area[4].x+10, area[4].y+10)
-                            ctx.stroke();
+                        ctx.stroke();  
+                    
                         }
-                        if(area[r].name==="Hidden Cave"){
-                            ctx.beginPath()
-                            ctx.moveTo(area[r].x+10, area[r].y+10)
-                            ctx.lineTo(area[5].x+10, area[5].y+10)
-                            ctx.stroke();
-                        }
-                        if(area[r].name==="Rainy Woods"){
-                            ctx.beginPath()
-                            ctx.moveTo(area[r].x+10, area[r].y+10)
-                            ctx.lineTo(area[5].x+10, area[5].y+10)
-                            ctx.stroke();
-                        }
-                        if(area[r].name==="Deep Dark"){
-                            ctx.beginPath()
-                            ctx.moveTo(area[r].x+10, area[r].y+10)
-                            ctx.lineTo(area[6].x+10, area[6].y+10)
-                            ctx.stroke();
-                        }
-                        if(area[r].name==="Foggy Clearing"){
-                            ctx.beginPath()
-                            ctx.moveTo(area[r].x+10, area[r].y+10)
-                            ctx.lineTo(area[7].x+10, area[7].y+10)
-                            ctx.stroke();
-                        }
-                        ctx.globalCompositeOperation="source-over";
 
                         if(area[r].cleared===0){//draw stages on map
                             ctx.fillStyle = "#e0dd1d"
@@ -2282,17 +2313,10 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                                 ctx.fillText(`${area[r].name}`, area[r].x-area[r].name.length*2, area[r].y-16)
                             }
                         }
-
-                        
-                        break;
-                    default:
-                        break;
-                }
-                
-                
+                } 
             }
         }
-    }
+    
 
     if(signY>0 && (enemy.length===0||area[loadedAreaID].subAreaCount!==subArea)){
         ctx = myGameArea.context;
@@ -2421,7 +2445,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         for(ae=0;ae<rain.length;ae++){
             rain[ae].newPos();
             rain[ae].update();
-            if(rain[ae].y>600){
+            if(rain[ae].y>600||rain[ae].x===0){
                 rain.splice(ae,1)
             }
         }
@@ -2431,7 +2455,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         for(af=0;af<snow.length;af++){
             snow[af].newPos();
             snow[af].update();
-            if(snow[af].y>600||snow[af].x<0.5){
+            if(snow[af].y>600||snow[af].x===0||snow[af].x>962){
                 snow.splice(af,1)
             }
         }
@@ -2465,8 +2489,12 @@ function clearStage(){
     if(area[loadedAreaID].stageToUnlock1>=area.length||area[loadedAreaID].stageToUnlock2>=area.length){
         alert("More stages to come!")//todo
     }else{
+        if(area[loadedAreaID].stageToUnlock1>-1){
     area[area[loadedAreaID].stageToUnlock1].unlocked=1
+        }
+        if(area[loadedAreaID].stageToUnlock2>-1){
     area[area[loadedAreaID].stageToUnlock2].unlocked=1
+        }
     }
 }
 }
@@ -2547,7 +2575,7 @@ function drag(){ //Find which player clicked on / near, set to held
 
         
 
-        if(area[loadedAreaID].name==="Town"&&shopOpen===1){
+        if(area[loadedAreaID].name==="Town"&&shopOpen===1){//new item new level update shop buying
             if(pointerX>223&&pointerX<223+115&&pointerY>395&&pointerY<395+38){
                 money=money-level*10
                 playerNumber.skillPoints=playerNumber.skillPoints+playerNumber.hpPoints+playerNumber.dmgPoints+playerNumber.rangePoints+playerNumber.cdPoints
@@ -2697,16 +2725,27 @@ function playerMoveToMouse(playerHeld, event){ //Move player currently held towa
 }
 let rain = []
 function spawnRain(){
-    rain[rain.length] = new component(2, 8, "#a0a6b8", Math.random()*960, -95);
-    rain[rain.length-1].gravity=0.5+(Math.floor(Math.random()*2)/5)
-    rain[rain.length-1].speedX=0
-    rain[rain.length-1].speedY=0
+    rain[rain.length] = new component(2, 8, "#a0a6b8", Math.random()*1160, -95);
+    rain[rain.length-1].gravity=0
+    rain[rain.length-1].speedX=-2
+    rain[rain.length-1].speedY=Math.random()*10+8
     rain[rain.length-1].type="Rain"
-    rain[rain.length] = new component(2, 8, "#a0a6b8", Math.random()*960, -95);
-    rain[rain.length-1].gravity=0.5-(Math.floor(Math.random()*2)/5)
-    rain[rain.length-1].speedX=0
-    rain[rain.length-1].speedY=0
+    rain[rain.length] = new component(2, 8, "#a0a6b8", Math.random()*1160, -95);
+    rain[rain.length-1].gravity=0
+    rain[rain.length-1].speedX=-2
+    rain[rain.length-1].speedY=Math.random()*10+8
     rain[rain.length-1].type="Rain"
+    rain[rain.length] = new component(2, 8, "#a0a6b8", Math.random()*1160, -95);
+    rain[rain.length-1].gravity=0
+    rain[rain.length-1].speedX=-2
+    rain[rain.length-1].speedY=Math.random()*10+8
+    rain[rain.length-1].type="Rain"
+    rain[rain.length] = new component(2, 8, "#a0a6b8", Math.random()*1160, -95);
+    rain[rain.length-1].gravity=0
+    rain[rain.length-1].speedX=-2
+    rain[rain.length-1].speedY=Math.random()*10+8
+    rain[rain.length-1].type="Rain"
+    
 }
 
 let snow = []
