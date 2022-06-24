@@ -2089,10 +2089,11 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             ctx.fillStyle = area[loadedAreaID].dirtColour
             ctx.fillRect(land[w].x1+1, land[w].y1+1, land[w].x2-land[w].x1-2, land[w].y2-land[w].y1-2);
             ctx = myGameArea.context;
-            if(debugXmas!==1&&debugXmas!==2){
-            ctx.fillStyle = area[loadedAreaID].grassColour
-            }else{
+            if((debugXmas===1||debugXmas===2)&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Rainy Woods"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave"){
                 ctx.fillStyle="#ededed"
+            }else{
+                ctx.fillStyle = area[loadedAreaID].grassColour
+                
             }
             ctx.fillRect(land[w].x1, land[w].y1, land[w].x2-land[w].x1, 10);
         }
@@ -2450,7 +2451,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             }
         }
     }
-    if(area[loadedAreaID].special==="Snow"||((debugXmas===1||debugXmas===2)&&area[loadedAreaID].name!=="Map")){
+    if(area[loadedAreaID].special==="Snow"||((debugXmas===1||debugXmas===2)&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Rainy Woods"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave")){
         spawnSnow()
         for(af=0;af<snow.length;af++){
             snow[af].newPos();
