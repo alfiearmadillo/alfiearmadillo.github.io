@@ -5,7 +5,7 @@
 //path of the archer, fairly melee enemies
 //path of the caster, mid range v high dps enemies
 //path of the tank, swarms of mid damage(reduced to 1 with shield) low hp mid atk speed enemies (mid range also)
-
+//legendary weapons, very rare global drop, changed which one every 5 levels
 
 //beating current highest stage
 //Projectiles for players & enemies (bows arc, wand straight)
@@ -2545,16 +2545,16 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                 for(ah=0;ah<enemy.length;ah++){
                     if(projectiles.length>ag){
                 if(projectiles[ag].x<enemy[ah].x+enemy[ah].size+projectiles[ag].projSpeedcap&&projectiles[ag].x>enemy[ah].x-projectiles[ag].projSpeedcap&&projectiles[ag].y<enemy[ah].y+enemy[ah].size+projectiles[ag].projSpeedcap&&projectiles[ag].y>enemy[ah].y-projectiles[ag].projSpeedcap){
-                    if(!projectiles[ag].hit.includes(enemy[ah].id)){
+                    
                     enemy[ah].hp=enemy[ah].hp-randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
-                    projectiles[ag].hit[projectiles[ag].hit.length]=enemy[ah].id
-                    }
-                    if(enemy[ah].hp>0){
+                    
+                    
+                    if(enemy[ah].hp<0){
                         enemy[ah].hp=0
                     }
-                    if(projectiles[ag].multi===0){
-                        projectiles.splice(ag,1)
-                        }
+                    
+                    projectiles.splice(ag,1)
+                        
                 }else if(projectiles[ag].y>600||projectiles[ag].x<1||projectiles[ag].y<-10||projectiles[ag].x>1000){
                     projectiles.splice(ag,1)
                 }
