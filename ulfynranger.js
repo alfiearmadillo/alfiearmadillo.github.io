@@ -137,7 +137,7 @@ items[8]={name:"CR_IntroAveStrong",damageMin:5,damageMax:10,range:45,atkRate:200
 items[9]={name:"CR_IntroAveWeak",damageMin:0,damageMax:1,range:45,atkRate:400,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 items[10]={name:"CR_GrassyFieldFlyingMelee",damageMin:19,damageMax:25,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:300,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:3,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
 items[12]={name:"CR_GrassyFieldWeakMelee",damageMin:4,damageMax:6,range:45,atkRate:300,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:200,atkRate:50,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
@@ -1924,7 +1924,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         enemy[j].newPos()
 
         if(enemy[j].atkCD<=0&&(playerNumber.hp>0||playerNumber2.hp>0||playerNumber3.hp>0||playerNumber4.hp>0)){
-            closestPlayer=findClosestPlayer()
+            closestPlayer=findClosestPlayer(enemy[j])
             closestDist=Math.abs(closestPlayer.x-(enemy[j].x-(closestPlayer.size/2)+(enemy[j].size/2)))
             closestDistY=Math.abs(closestPlayer.y-(enemy[j].y-(closestPlayer.size/2)+(enemy[j].size/2)))
             if(enemy[j].weapon.rangeMult===3&&(closestDistY<enemy[j].weapon.range&&closestDist<enemy[j].weapon.range&&closestPlayer.hp>0)){//todo Projectile logic
@@ -2479,7 +2479,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         for(ag=0;ag<projectiles.length;ag++){
             projectiles[ag].newPos()
             projectiles[ag].update()
-            closeGuy=findClosestPlayer()
+            closeGuy=findClosestPlayer(projectiles[ag])
             if(projectiles[ag].affiliation==="Enemy"){
                 
                 if(projectiles[ag].multi===1){
@@ -3003,6 +3003,7 @@ function spawnProjectile(user,speedCap,size,shape,colour,damageMin,damageMax,mul
     }else if(shape==="Square"){
     projectiles[projectiles.length] = new component(size,size,colour,user.x+user.size/2-size/2,user.y+user.size/2-size/2)
     }
+    projectiles[projectiles.length-1].size=size
     projectiles[projectiles.length-1].damageMax=damageMax
     projectiles[projectiles.length-1].damageMin=damageMin
     projectiles[projectiles.length-1].multi=multi
@@ -3081,26 +3082,30 @@ function spawnEnemy(_size,_colour,_posX,_posY,_gravity,_hp,_movementType,_exp,_w
     i++
 }
 
-function findClosestPlayer(){
+function findClosestPlayer(me){
+    redMeDist=Math.abs(playerNumber.x-(me.x-(playerNumber.size/2)+(me.size/2)))
+    bluMeDist=Math.abs(playerNumber2.x-(me.x-(playerNumber2.size/2)+(me.size/2)))
+    grnMeDist=Math.abs(playerNumber3.x-(me.x-(playerNumber3.size/2)+(me.size/2)))
+    ylwMeDist=Math.abs(playerNumber4.x-(me.x-(playerNumber4.size/2)+(me.size/2)))
     if((playerNumber.item.type!=="Shield"&&playerNumber2.item.type!=="Shield"&&playerNumber3.item.type!=="Shield"&&
             playerNumber4.item.type!=="Shield")||
             (playerNumber.item.type==="Shield"&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
             playerNumber4.item.type==="Shield")){
-                if((redPDist<bluPDist||playerNumber2.hp===0)&&(redPDist<grnPDist||playerNumber3.hp===0)&&(redPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber.hp>0){
+                if((redMeDist<bluMeDist||playerNumber2.hp===0)&&(redMeDist<grnMeDist||playerNumber3.hp===0)&&(redMeDist<ylwMeDist||playerNumber4.hp===0)&&playerNumber.hp>0){
                     return playerNumber
-                }else if((bluPDist<grnPDist||playerNumber3.hp===0)&&(bluPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber2.hp>0){
+                }else if((bluMeDist<grnMeDist||playerNumber3.hp===0)&&(bluMeDist<ylwMeDist||playerNumber4.hp===0)&&playerNumber2.hp>0){
                     return playerNumber2
-                }else if((grnPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber3.hp>0){
+                }else if((grnMeDist<ylwMeDist||playerNumber4.hp===0)&&playerNumber3.hp>0){
                     return playerNumber3
                 }else if(playerNumber4.hp>0){
                     return playerNumber4
                 }
             }else{
-                if((redPDist<bluPDist||playerNumber2.hp===0||playerNumber2.item.type!=="Shield")&&(redPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(redPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber.hp>0&&playerNumber.item.type==="Shield"){
+                if((redMeDist<bluMeDist||playerNumber2.hp===0||playerNumber2.item.type!=="Shield")&&(redMeDist<grnMeDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(redMeDist<ylwMeDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber.hp>0&&playerNumber.item.type==="Shield"){
                     return playerNumber
-                }else if((bluPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(bluPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber2.hp>0&&playerNumber2.item.type==="Shield"){
+                }else if((bluMeDist<grnMeDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(bluMeDist<ylwMeDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber2.hp>0&&playerNumber2.item.type==="Shield"){
                     return playerNumber2
-                }else if((grnPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber3.hp>0&&playerNumber3.item.type==="Shield"){
+                }else if((grnMeDist<ylwMeDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber3.hp>0&&playerNumber3.item.type==="Shield"){
                     return playerNumber3
                 }else if(playerNumber4.hp>0&&playerNumber4.item.type==="Shield"){
                     return playerNumber4
