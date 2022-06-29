@@ -1,4 +1,5 @@
-
+//projectiles die on hitting terrain
+//player multihit projectiles only hit once
 //only highest speed is 30, other is lowered to arrive at cursor at same time as higher speed one //pain
 //path of the swordsman, tanky enemies, full range
 //path of the archer, fairly melee enemies
@@ -127,23 +128,23 @@ items[0]={name:"None",damageMin:1,damageMax:1,range:11,atkRate:100,lifeSteal:0,d
 
 items[1]={name:"Slightly Sharp Stick",damageMin:2,damageMax:4,range:25,atkRate:50,lifeSteal:0,defence:0,type:"Sword", colour:'#a83232', worth:10, multi:0, rangeMult:0.1}
 items[2]={name:"Cardboard Shield",damageMin:1,damageMax:1,range:15,atkRate:100,lifeSteal:0,defence:1,type:"Shield", colour:'#75a832', worth:10, multi:0, rangeMult:0.1}
-items[3]={name:"Cheap Toy Bow",damageMin:1,damageMax:3,range:160,atkRate:66,lifeSteal:0,defence:0,type:"Bow", colour:'#634f1c', worth:10, multi:0, rangeMult:3}
-items[4]={name:"Small Plastic Wand",damageMin:0,damageMax:1,range:300,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#660033', worth:10, multi:0, rangeMult:3}
+items[3]={name:"Cheap Toy Bow",damageMin:1,damageMax:3,range:160,atkRate:66,lifeSteal:0,defence:0,type:"Bow", colour:'#634f1c', worth:10, multi:0, rangeMult:3, projSpeedcap:10, projSize:10, projShape:"Rect", projColour:"#d6d198"}
+items[4]={name:"Small Plastic Wand",damageMin:0,damageMax:1,range:300,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#660033', worth:10, multi:0, rangeMult:3, projSpeedcap:15, projSize:8, projShape:"Square", projColour:"#87867c"}
 items[5]={name:"CR_IntoAveBasic",damageMin:1,damageMax:2,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[6]={name:"CR_IntroAveBoss",damageMin:12,damageMax:22,range:300,atkRate:200,lifeSteal:0,defence:0,type:"CR_Special1", colour:'#191919', worth:-1, multi:1, rangeMult:3}
-items[7]={name:"CR_IntroAveRanged",damageMin:1,damageMax:2,range:130,atkRate:200,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3}
+items[6]={name:"CR_IntroAveBoss",damageMin:12,damageMax:22,range:300,atkRate:200,lifeSteal:0,defence:0,type:"CR_Special1", colour:'#191919', worth:-1, multi:1, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[7]={name:"CR_IntroAveRanged",damageMin:1,damageMax:2,range:130,atkRate:200,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
 items[8]={name:"CR_IntroAveStrong",damageMin:5,damageMax:10,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[9]={name:"CR_IntroAveWeak",damageMin:0,damageMax:1,range:45,atkRate:400,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 items[10]={name:"CR_GrassyFieldFlyingMelee",damageMin:19,damageMax:25,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:300,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3}
+items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:300,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
 items[12]={name:"CR_GrassyFieldWeakMelee",damageMin:4,damageMax:6,range:45,atkRate:300,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:200,atkRate:50,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 items[14]={name:"Sharpened Flint",damageMin:6,damageMax:10,range:25,atkRate:50,lifeSteal:0,defence:0,type:"Sword", colour:'#872424', worth:33, multi:0, rangeMult:0.1}
 items[15]={name:"Decent Wood Shield",damageMin:2,damageMax:3,range:15,atkRate:100,lifeSteal:0,defence:5,type:"Shield", colour:'#5a8224', worth:33, multi:0, rangeMult:0.1}
-items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:66,lifeSteal:0,defence:0,type:"Bow", colour:'#42330d', worth:10, multi:33, rangeMult:3}
-items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:3}
+items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:66,lifeSteal:0,defence:0,type:"Bow", colour:'#42330d', worth:33, multi:0, rangeMult:3, projSpeedcap:12, projSize:10, projShape:"Rect", projColour:"#d6d198"}
+items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:3, projSpeedcap:20, projSize:8, projShape:"Square", projColour:"#87867c"}
 
 items[18]={name:"CR_ShadedWoodMelee",damageMin:3,damageMax:8,range:60,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[19]={name:"CR_ShadedWoodFlying",damageMin:1,damageMax:20,range:50,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
@@ -526,6 +527,7 @@ area[9]={name:"Foggy Clearing",subAreaCount:2,unlocked:0,x:325,y:285,cleared:0,s
 function renderStage(){ //Stage loading
     land=[]
     enemy=[]
+    projectiles=[]
     i=0
     droppedItem=[]//update for each new level when make level making levels
     if(area[loadedAreaID].name==="Menu"){//Main menu
@@ -1342,6 +1344,9 @@ function component(width, height, color, x, y) {//draw new boxes
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
                 ctx.globalCompositeOperation='source-over';
+            }else if(this.type==="Projectile"){ //todo projectile
+                ctx.fillStyle = color;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
             }else{
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -1458,131 +1463,21 @@ function component(width, height, color, x, y) {//draw new boxes
                                    ((Math.abs(enemy[nearTarget].y+(enemy[nearTarget].size/2) - this.y) < this.item.range+(this.rangePoints*this.item.rangeMult)+(enemy[nearTarget].size/2)) || (enemy[nearTarget].gravity>0))) {
                                     
                                 if(this.atkCD<=0){
+
+                                    if(this.item.rangeMult===3){//todo Projectile logic
+                                        spawnProjectile(this,this.item.projSpeedcap,this.item.projSize,this.item.projShape,this.item.projColour,Math.floor(this.item.damageMin+(this.dmgPoints*0.2))*((100+this.dmgPoints)/100),Math.floor(this.item.damageMax+(this.dmgPoints*0.3)*((100+this.dmgPoints)/100)),this.item.multi,((enemy[nearTarget].x+enemy[nearTarget].size/2)-(this.x+this.size/2)),((enemy[nearTarget].y+enemy[nearTarget].size/2)-(this.y+this.size/2)))
+                                    }else{
                 
                                     enemy[nearTarget].hp=enemy[nearTarget].hp-randomDmg(Math.floor((this.item.damageMin+(this.dmgPoints*0.2))*((100+this.dmgPoints)/100)), Math.floor((this.item.damageMax+(this.dmgPoints*0.3))*((100+this.dmgPoints)/100)))//damage enemy, will need to be changed for ranged
                                     if(enemy[nearTarget].hp>enemy[nearTarget].maxhp){
                                         enemy[nearTarget].hp=enemy[nearTarget].maxhp
                                     }
+                                }
                                     this.atkCD=Math.floor(this.item.atkRate/((100+this.cdPoints*2.5)/100))
                                 }else{
                                     this.atkCD=this.atkCD-1
                                 }
                 
-                                if(enemy[nearTarget].hp<=0){//enemy drops to 0 hp
-                                    
-                                    if(Object.keys(enemy[nearTarget].drops).length>0){ //enemy dropping items
-                
-                                        
-                                        lootRoll=Math.floor(Math.random()*50)
-                                        if((debugXmas===1||debugXmas===2)&&lootRoll===25){
-                                            droppedItem[droppedItem.length] = new component(17, 17, items[21].colour, enemy[nearTarget].x, enemy[nearTarget].y);
-                                            droppedItem[droppedItem.length-1].data={
-                                                value:21,
-                                                cooldown:150
-                                            }
-                                            droppedItem[droppedItem.length-1].size=16
-                                            droppedItem[droppedItem.length-1].type="item"
-                                            droppedItem[droppedItem.length-1].gravity = 0.1;
-                                            droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[nearTarget].size/200)
-                                            droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[nearTarget].size/100)
-                                        }
-
-                                        lootRoll=Math.random()*100
-                                        if(enemy[nearTarget].drops.coinChance!==0){
-                                            if(lootRoll<enemy[nearTarget].drops.coinChance){
-                                                droppedItem[droppedItem.length] = new component(15, 15, "gold", enemy[nearTarget].x, enemy[nearTarget].y);
-                                                droppedItem[droppedItem.length-1].data={
-                                                    value:enemy[nearTarget].drops.coin,
-                                                    cooldown:150
-                                                }
-                                                droppedItem[droppedItem.length-1].size=15
-                                                droppedItem[droppedItem.length-1].type="coin"
-                                                droppedItem[droppedItem.length-1].gravity = 0.5;
-                                                droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[nearTarget].size/200)
-                                                droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[nearTarget].size/100)
-                                            }
-                                        }
-                                        lootRoll=Math.random()*100
-                                        if(enemy[nearTarget].drops.healChance!==0){
-                                            if(lootRoll<enemy[nearTarget].drops.healChance){
-                                                droppedItem[droppedItem.length] = new component(15, 15, "#ff756b", enemy[nearTarget].x+(enemy[nearTarget].size/2), enemy[nearTarget].y+(enemy[nearTarget].size/2));
-                                                droppedItem[droppedItem.length-1].data={
-                                                    value:enemy[nearTarget].drops.healPotion,
-                                                    cooldown:150
-                                                }
-                                                droppedItem[droppedItem.length-1].size=15
-                                                droppedItem[droppedItem.length-1].type="health"
-                                                droppedItem[droppedItem.length-1].gravity = 0.5;
-                                                droppedItem[droppedItem.length-1].speedX=(Math.random()*3)-1.5+(enemy[nearTarget].size/400)
-                                                droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[nearTarget].size/200)
-                                            }
-                                        }
-                                        lootRoll=Math.random()*100
-                                        if(enemy[nearTarget].drops.itemID1Chance!==0){
-                                            if(lootRoll<enemy[nearTarget].drops.itemID1Chance){
-                                                droppedItem[droppedItem.length] = new component(15, 15, items[enemy[nearTarget].drops.itemID1].colour, enemy[nearTarget].x+(enemy[nearTarget].size/2), enemy[nearTarget].y+(enemy[nearTarget].size/2));
-                                                droppedItem[droppedItem.length-1].data={
-                                                    value:enemy[nearTarget].drops.itemID1,
-                                                    cooldown:150
-                                                }
-                                                droppedItem[droppedItem.length-1].size=15
-                                                droppedItem[droppedItem.length-1].type="item"
-                                                droppedItem[droppedItem.length-1].gravity = 0.5;
-                                                droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[nearTarget].size/200)
-                                                droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[nearTarget].size/100)
-                                            }
-                                        }
-                                        lootRoll=Math.random()*100
-                                        if(enemy[nearTarget].drops.itemID2Chance!==0){
-                                            if(lootRoll<enemy[nearTarget].drops.itemID2Chance){
-                                                droppedItem[droppedItem.length] = new component(15, 15, items[enemy[nearTarget].drops.itemID2].colour, enemy[nearTarget].x+(enemy[nearTarget].size/2), enemy[nearTarget].y+(enemy[nearTarget].size/2));
-                                                droppedItem[droppedItem.length-1].data={
-                                                    value:enemy[nearTarget].drops.itemID2,
-                                                    cooldown:150
-                                                }
-                                                droppedItem[droppedItem.length-1].size=15
-                                                droppedItem[droppedItem.length-1].type="item"
-                                                droppedItem[droppedItem.length-1].gravity = 0.5;
-                                                droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[nearTarget].size/200)
-                                                droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[nearTarget].size/100)
-                                            }
-                                        }
-                                        lootRoll=Math.random()*100
-                                        if(enemy[nearTarget].drops.itemID3Chance!==0){
-                                            if(lootRoll<enemy[nearTarget].drops.itemID3Chance){
-                                                droppedItem[droppedItem.length] = new component(15, 15, items[enemy[nearTarget].drops.itemID3].colour, enemy[nearTarget].x+(enemy[nearTarget].size/2), enemy[nearTarget].y+(enemy[nearTarget].size/2));
-                                                droppedItem[droppedItem.length-1].data={
-                                                    value:enemy[nearTarget].drops.itemID3,
-                                                    cooldown:150
-                                                }
-                                                droppedItem[droppedItem.length-1].size=15
-                                                droppedItem[droppedItem.length-1].type="item"
-                                                droppedItem[droppedItem.length-1].gravity = 0.5;
-                                                droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[nearTarget].size/200)
-                                                droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[nearTarget].size/100)
-                                            }
-                                        }
-                                        lootRoll=Math.random()*100
-                                        if(enemy[nearTarget].drops.itemID4Chance!==0){
-                                            if(lootRoll<enemy[nearTarget].drops.itemID4Chance){
-                                                droppedItem[droppedItem.length] = new component(15, 15, items[enemy[nearTarget].drops.itemID4].colour, enemy[nearTarget].x+(enemy[nearTarget].size/2), enemy[nearTarget].y+(enemy[nearTarget].size/2));
-                                                droppedItem[droppedItem.length-1].data={
-                                                    value:enemy[nearTarget].drops.itemID4,
-                                                    cooldown:150
-                                                }
-                                                droppedItem[droppedItem.length-1].size=15
-                                                droppedItem[droppedItem.length-1].type="item"
-                                                droppedItem[droppedItem.length-1].gravity = 0.5;
-                                                droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[nearTarget].size/200)
-                                                droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[nearTarget].size/100)
-                                            }
-                                        }
-                                    totalEXP=totalEXP+enemy[nearTarget].exp
-                                    lastmoney=-1
-                                    enemy.splice(nearTarget,1)
-                                    i=enemy.length 
-                                    }
-                                }
                             }else{
                             if(enemy.length!==0){//if not in range move towards
                                 if ((Math.abs(enemy[nearTarget].x+(enemy[nearTarget].size/2) - this.x) < this.item.range+(this.rangePoints*this.item.rangeMult)+350+(enemy[nearTarget].size/2)||
@@ -2028,7 +1923,15 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         enemy[j].update()
         enemy[j].newPos()
 
-        if(enemy[j].atkCD<=0){
+        if(enemy[j].atkCD<=0&&(playerNumber.hp>0||playerNumber2.hp>0||playerNumber3.hp>0||playerNumber4.hp>0)){
+            closestPlayer=findClosestPlayer()
+            closestDist=Math.abs(closestPlayer.x-(enemy[j].x-(closestPlayer.size/2)+(enemy[j].size/2)))
+            closestDistY=Math.abs(closestPlayer.y-(enemy[j].y-(closestPlayer.size/2)+(enemy[j].size/2)))
+            if(enemy[j].weapon.rangeMult===3&&(closestDistY<enemy[j].weapon.range&&closestDist<enemy[j].weapon.range&&closestPlayer.hp>0)){//todo Projectile logic
+                
+                spawnProjectile(enemy[j],enemy[j].weapon.projSpeedcap,enemy[j].weapon.projSize,enemy[j].weapon.projShape,enemy[j].weapon.projColour,enemy[j].weapon.damageMin,enemy[j].weapon.damageMax,enemy[j].weapon.multi,(closestPlayer.x+closestPlayer.size/2)-(enemy[j].x+enemy[j].size/2),(closestPlayer.y+closestPlayer.size/2)-(enemy[j].y+enemy[j].size/2))
+                enemy[j].atkCD=enemy[j].weapon.atkRate
+            }else{
             if(enemy[j].weapon.multi===1){
                 if(redPDistY<enemy[j].weapon.range&&redPDist<enemy[j].weapon.range&&playerNumber.hp>0){
                     if(enemy[j].weapon.damageMin-playerNumber.item.defence<1){
@@ -2127,7 +2030,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                 }
             
             }
-
+        }
         }else{
             enemy[j].atkCD=enemy[j].atkCD-1
         }
@@ -2159,6 +2062,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
 
     if(playerNumber.hp===0&&playerNumber2.hp===0&&playerNumber3.hp===0&&playerNumber4.hp===0&&gameover>-1){ //Check for TPK, game over
         gameover=gameover-1
+        projectiles=[]
         if(gameover<450){
             ctx.font = `bold ${((500-gameover)/5)+5}px serif`;
             ctx.fillStyle = "#850a04"
@@ -2168,6 +2072,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             gameover=500
             land=[]
             enemy=[]
+            projectiles=[]
             i=0
             subArea=1
             droppedItem=[]
@@ -2326,26 +2231,33 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         }
     }
 
-    healRngNum=Math.floor(Math.random() * 40)
+    healRngNum=Math.floor(Math.random() * 20)
     if(area[loadedAreaID].name==="Town"){
     if(healRngNum===14){
-        playerNumber.hp+=Math.floor((playerNumber.maxhp+(playerNumber.hpPoints*20))/80)
+        playerNumber.hp+=Math.floor((playerNumber.maxhp+(playerNumber.hpPoints*20))/40)
         if(playerNumber.hp>playerNumber.maxhp+(playerNumber.hpPoints*20)){
             playerNumber.hp=playerNumber.maxhp+(playerNumber.hpPoints*20)
         }
-        playerNumber2.hp+=Math.floor((playerNumber2.maxhp+(playerNumber2.hpPoints*20))/80)
+    }
+    if(healRngNum===13){
+        playerNumber2.hp+=Math.floor((playerNumber2.maxhp+(playerNumber2.hpPoints*20))/40)
         if(playerNumber2.hp>playerNumber2.maxhp+(playerNumber2.hpPoints*20)){
             playerNumber2.hp=playerNumber2.maxhp+(playerNumber2.hpPoints*20)
         }
-        playerNumber3.hp+=Math.floor((playerNumber3.maxhp+(playerNumber3.hpPoints*20))/80)
+    }
+    if(healRngNum===12){
+        playerNumber3.hp+=Math.floor((playerNumber3.maxhp+(playerNumber3.hpPoints*20))/40)
         if(playerNumber3.hp>playerNumber3.maxhp+(playerNumber3.hpPoints*20)){
             playerNumber3.hp=playerNumber3.maxhp+(playerNumber3.hpPoints*20)
         }
-        playerNumber4.hp+=Math.floor((playerNumber4.maxhp+(playerNumber4.hpPoints*20))/80)
+    }
+    if(healRngNum===11){
+        playerNumber4.hp+=Math.floor((playerNumber4.maxhp+(playerNumber4.hpPoints*20))/40)
         if(playerNumber4.hp>playerNumber4.maxhp+(playerNumber4.hpPoints*20)){
             playerNumber4.hp=playerNumber4.maxhp+(playerNumber4.hpPoints*20)
         }
     }
+
 }
 
 
@@ -2563,6 +2475,215 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             }
         }
     }
+    if(projectiles.length>0){//todo projectiles //check if hitting player / enemy and do damage (based on proj type)
+        for(ag=0;ag<projectiles.length;ag++){
+            projectiles[ag].newPos()
+            projectiles[ag].update()
+            closeGuy=findClosestPlayer()
+            if(projectiles[ag].affiliation==="Enemy"){
+                
+                if(projectiles[ag].multi===1){
+                if(projectiles[ag].x<playerNumber.x+playerNumber.size+projectiles[ag].projSpeedcap&&projectiles[ag].x>playerNumber.x-projectiles[ag].projSpeedcap&&projectiles[ag].y<playerNumber.y+playerNumber.size+projectiles[ag].projSpeedcap&&projectiles[ag].y>playerNumber.y-projectiles[ag].projSpeedcap){
+                    if(!projectiles[ag].hit.includes(playerNumber.id)){
+                        playerNumber.hp=playerNumber.hp-randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
+                        projectiles[ag].hit[projectiles[ag].hit.length]=playerNumber.id
+                        if(playerNumber.hp<0){
+                            playerNumber.hp=0
+                        }
+                    }
+                }
+                if(projectiles[ag].x<playerNumber2.x+playerNumber2.size+projectiles[ag].projSpeedcap&&projectiles[ag].x>playerNumber2.x-projectiles[ag].projSpeedcap&&projectiles[ag].y<playerNumber2.y+playerNumber2.size+projectiles[ag].projSpeedcap&&projectiles[ag].y>playerNumber2.y-projectiles[ag].projSpeedcap){
+                    if(!projectiles[ag].hit.includes(playerNumber2.id)){
+                        playerNumber2.hp=playerNumber2.hp-randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
+                        projectiles[ag].hit[projectiles[ag].hit.length]=playerNumber2.id
+                        if(playerNumber2.hp<0){
+                            playerNumber2.hp=0
+                        }
+                    }
+                }
+                if(projectiles[ag].x<playerNumber3.x+playerNumber3.size+projectiles[ag].projSpeedcap&&projectiles[ag].x>playerNumber3.x-projectiles[ag].projSpeedcap&&projectiles[ag].y<playerNumber3.y+playerNumber3.size+projectiles[ag].projSpeedcap&&projectiles[ag].y>playerNumber3.y-projectiles[ag].projSpeedcap){
+                    if(!projectiles[ag].hit.includes(playerNumber3.id)){
+                        playerNumber3.hp=playerNumber3.hp-randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
+                        projectiles[ag].hit[projectiles[ag].hit.length]=playerNumber3.id
+                        if(playerNumber3.hp<0){
+                            playerNumber3.hp=0
+                        }
+                    }
+                }
+                if(projectiles[ag].x<playerNumber4.x+playerNumber4.size+projectiles[ag].projSpeedcap&&projectiles[ag].x>playerNumber4.x-projectiles[ag].projSpeedcap&&projectiles[ag].y<playerNumber4.y+playerNumber4.size+projectiles[ag].projSpeedcap&&projectiles[ag].y>playerNumber4.y-projectiles[ag].projSpeedcap){
+                    if(!projectiles[ag].hit.includes(playerNumber4.id)){
+                        playerNumber4.hp=playerNumber4.hp-randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
+                        projectiles[ag].hit[projectiles[ag].hit.length]=playerNumber4.id
+                        if(playerNumber4.hp<0){
+                            playerNumber4.hp=0
+                        }
+                    }
+                }  
+            }else{
+
+                if(projectiles[ag].x<closeGuy.x+closeGuy.size+projectiles[ag].projSpeedcap&&projectiles[ag].x>closeGuy.x-projectiles[ag].projSpeedcap&&projectiles[ag].y<closeGuy.y+closeGuy.size+projectiles[ag].projSpeedcap&&projectiles[ag].y>closeGuy.y-projectiles[ag].projSpeedcap){
+                    closeGuy.hp=closeGuy.hp-randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
+                    if(playerNumber2.hp<0){
+                        playerNumber2.hp=0
+                    }
+                    if(playerNumber3.hp<0){
+                        playerNumber3.hp=0
+                    }
+                    if(playerNumber4.hp<0){
+                        playerNumber4.hp=0
+                    }
+                    if(playerNumber.hp<0){
+                        playerNumber.hp=0
+                    }
+                    projectiles.splice(ag,1)
+                    
+                }else if(projectiles[ag].y>600||projectiles[ag].x<1||projectiles[ag].y<-10||projectiles[ag].x>1000){
+                    projectiles.splice(ag,1)
+                }
+            }
+            }else if(projectiles[ag].affiliation==="Friendly"){
+                for(ah=0;ah<enemy.length;ah++){
+                    if(projectiles.length>ag){
+                if(projectiles[ag].x<enemy[ah].x+enemy[ah].size+projectiles[ag].projSpeedcap&&projectiles[ag].x>enemy[ah].x-projectiles[ag].projSpeedcap&&projectiles[ag].y<enemy[ah].y+enemy[ah].size+projectiles[ag].projSpeedcap&&projectiles[ag].y>enemy[ah].y-projectiles[ag].projSpeedcap){
+                    if(!projectiles[ag].hit.includes(enemy[ah].id)){
+                    enemy[ah].hp=enemy[ah].hp-randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
+                    projectiles[ag].hit[projectiles[ag].hit.length]=enemy[ah].id
+                    }
+                    if(enemy[ah].hp>0){
+                        enemy[ah].hp=0
+                    }
+                    if(projectiles[ag].multi===0){
+                        projectiles.splice(ag,1)
+                        }
+                }else if(projectiles[ag].y>600||projectiles[ag].x<1||projectiles[ag].y<-10||projectiles[ag].x>1000){
+                    projectiles.splice(ag,1)
+                }
+            }
+        }
+        }
+        }
+    }
+
+
+    for(ai=0;ai<enemy.length;ai++){
+    if(enemy[ai].hp<=0){//enemy drops to 0 hp
+                                    
+        if(Object.keys(enemy[ai].drops).length>0){ //enemy dropping items
+
+            
+            lootRoll=Math.floor(Math.random()*50)
+            if((debugXmas===1||debugXmas===2)&&lootRoll===25){
+                droppedItem[droppedItem.length] = new component(17, 17, items[21].colour, enemy[ai].x, enemy[ai].y);
+                droppedItem[droppedItem.length-1].data={
+                    value:21,
+                    cooldown:150
+                }
+                droppedItem[droppedItem.length-1].size=16
+                droppedItem[droppedItem.length-1].type="item"
+                droppedItem[droppedItem.length-1].gravity = 0.1;
+                droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[ai].size/200)
+                droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[ai].size/100)
+            }
+
+            lootRoll=Math.random()*100
+            if(enemy[ai].drops.coinChance!==0){
+                if(lootRoll<enemy[ai].drops.coinChance){
+                    droppedItem[droppedItem.length] = new component(15, 15, "gold", enemy[ai].x, enemy[ai].y);
+                    droppedItem[droppedItem.length-1].data={
+                        value:enemy[ai].drops.coin,
+                        cooldown:150
+                    }
+                    droppedItem[droppedItem.length-1].size=15
+                    droppedItem[droppedItem.length-1].type="coin"
+                    droppedItem[droppedItem.length-1].gravity = 0.5;
+                    droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[ai].size/200)
+                    droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[ai].size/100)
+                }
+            }
+            lootRoll=Math.random()*100
+            if(enemy[ai].drops.healChance!==0){
+                if(lootRoll<enemy[ai].drops.healChance){
+                    droppedItem[droppedItem.length] = new component(15, 15, "#ff756b", enemy[ai].x+(enemy[ai].size/2), enemy[ai].y+(enemy[ai].size/2));
+                    droppedItem[droppedItem.length-1].data={
+                        value:enemy[ai].drops.healPotion,
+                        cooldown:150
+                    }
+                    droppedItem[droppedItem.length-1].size=15
+                    droppedItem[droppedItem.length-1].type="health"
+                    droppedItem[droppedItem.length-1].gravity = 0.5;
+                    droppedItem[droppedItem.length-1].speedX=(Math.random()*3)-1.5+(enemy[ai].size/400)
+                    droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[ai].size/200)
+                }
+            }
+            lootRoll=Math.random()*100
+            if(enemy[ai].drops.itemID1Chance!==0){
+                if(lootRoll<enemy[ai].drops.itemID1Chance){
+                    droppedItem[droppedItem.length] = new component(15, 15, items[enemy[ai].drops.itemID1].colour, enemy[ai].x+(enemy[ai].size/2), enemy[ai].y+(enemy[ai].size/2));
+                    droppedItem[droppedItem.length-1].data={
+                        value:enemy[ai].drops.itemID1,
+                        cooldown:150
+                    }
+                    droppedItem[droppedItem.length-1].size=15
+                    droppedItem[droppedItem.length-1].type="item"
+                    droppedItem[droppedItem.length-1].gravity = 0.5;
+                    droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[ai].size/200)
+                    droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[ai].size/100)
+                }
+            }
+            lootRoll=Math.random()*100
+            if(enemy[ai].drops.itemID2Chance!==0){
+                if(lootRoll<enemy[ai].drops.itemID2Chance){
+                    droppedItem[droppedItem.length] = new component(15, 15, items[enemy[ai].drops.itemID2].colour, enemy[ai].x+(enemy[ai].size/2), enemy[ai].y+(enemy[ai].size/2));
+                    droppedItem[droppedItem.length-1].data={
+                        value:enemy[ai].drops.itemID2,
+                        cooldown:150
+                    }
+                    droppedItem[droppedItem.length-1].size=15
+                    droppedItem[droppedItem.length-1].type="item"
+                    droppedItem[droppedItem.length-1].gravity = 0.5;
+                    droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[ai].size/200)
+                    droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[ai].size/100)
+                }
+            }
+            lootRoll=Math.random()*100
+            if(enemy[ai].drops.itemID3Chance!==0){
+                if(lootRoll<enemy[ai].drops.itemID3Chance){
+                    droppedItem[droppedItem.length] = new component(15, 15, items[enemy[ai].drops.itemID3].colour, enemy[ai].x+(enemy[ai].size/2), enemy[ai].y+(enemy[ai].size/2));
+                    droppedItem[droppedItem.length-1].data={
+                        value:enemy[ai].drops.itemID3,
+                        cooldown:150
+                    }
+                    droppedItem[droppedItem.length-1].size=15
+                    droppedItem[droppedItem.length-1].type="item"
+                    droppedItem[droppedItem.length-1].gravity = 0.5;
+                    droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[ai].size/200)
+                    droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[ai].size/100)
+                }
+            }
+            lootRoll=Math.random()*100
+            if(enemy[ai].drops.itemID4Chance!==0){
+                if(lootRoll<enemy[ai].drops.itemID4Chance){
+                    droppedItem[droppedItem.length] = new component(15, 15, items[enemy[ai].drops.itemID4].colour, enemy[ai].x+(enemy[ai].size/2), enemy[ai].y+(enemy[ai].size/2));
+                    droppedItem[droppedItem.length-1].data={
+                        value:enemy[ai].drops.itemID4,
+                        cooldown:150
+                    }
+                    droppedItem[droppedItem.length-1].size=15
+                    droppedItem[droppedItem.length-1].type="item"
+                    droppedItem[droppedItem.length-1].gravity = 0.5;
+                    droppedItem[droppedItem.length-1].speedX=(Math.random()*6)-3+(enemy[ai].size/200)
+                    droppedItem[droppedItem.length-1].speedY=-Math.random()*9-(enemy[ai].size/100)
+                }
+            }
+        totalEXP=totalEXP+enemy[ai].exp
+        lastmoney=-1
+        enemy.splice(ai,1)
+        i=enemy.length 
+        }
+    }
+    }
+
+
     if(area[loadedAreaID].special==="Snow"||((debugXmas===1||debugXmas===2)&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Rainy Woods"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave")){
         spawnSnow()
         for(af=0;af<snow.length;af++){
@@ -2600,7 +2721,7 @@ function clearStage(){
     if(area[loadedAreaID].cleared!==2){
     area[loadedAreaID].cleared=1
     if(area[loadedAreaID].stageToUnlock1>=area.length||area[loadedAreaID].stageToUnlock2>=area.length){
-        alert("More stages to come!")//todo
+        alert("More stages to come!")//todo stages
     }else{
         if(area[loadedAreaID].stageToUnlock1>-1){
     area[area[loadedAreaID].stageToUnlock1].unlocked=1
@@ -2875,6 +2996,52 @@ function spawnSnow(){
     snow[snow.length-1].type="Snow"
 }
 
+let projectiles = [] //todo projectiles
+function spawnProjectile(user,speedCap,size,shape,colour,damageMin,damageMax,multi,aimX,aimY){
+    if(shape==="Rect"){
+    projectiles[projectiles.length] = new component(size,size/2,colour,user.x+user.size/2-size/2,user.y+user.size/2-size/4)
+    }else if(shape==="Square"){
+    projectiles[projectiles.length] = new component(size,size,colour,user.x+user.size/2-size/2,user.y+user.size/2-size/2)
+    }
+    projectiles[projectiles.length-1].damageMax=damageMax
+    projectiles[projectiles.length-1].damageMin=damageMin
+    projectiles[projectiles.length-1].multi=multi
+    projectiles[projectiles.length-1].gravity=0
+    projectiles[projectiles.length-1].projSpeedcap=speedCap
+    projectiles[projectiles.length-1].type="Projectile"
+    projectiles[projectiles.length-1].hit=[]
+    if(Math.abs(aimX)>speedCap&&Math.abs(aimX)>Math.abs(aimY)){
+        
+        if(aimX>0){
+            aimY=aimY*(speedCap/aimX)
+            aimX=speedCap
+        }else{
+            aimY=-aimY*(speedCap/aimX)
+            aimX=-speedCap
+        }
+    }
+    if(Math.abs(aimY)>speedCap&&Math.abs(aimY)>Math.abs(aimX)){
+       
+        if(aimY>0){
+            aimX=aimX*(speedCap/aimY)
+            aimY=speedCap
+        }else{
+            aimX=-aimX*(speedCap/aimY)
+            aimY=-speedCap
+        }
+    }
+    projectiles[projectiles.length-1].speedX=aimX
+    projectiles[projectiles.length-1].speedY=aimY
+    if(user.type==="player"){
+        projectiles[projectiles.length-1].affiliation="Friendly"
+    }else{
+        projectiles[projectiles.length-1].affiliation="Enemy"
+    }
+
+    
+
+}
+
 let i = 0
 let enemy=[]
 function spawnEnemy(_size,_colour,_posX,_posY,_gravity,_hp,_movementType,_exp,_weapon,_coinValue,_coinChance,
@@ -2883,6 +3050,7 @@ function spawnEnemy(_size,_colour,_posX,_posY,_gravity,_hp,_movementType,_exp,_w
     enemy[i].size=_size
     enemy[i].gravity = _gravity;
     enemy[i].hp=_hp
+    enemy[i].id=i
     enemy[i].maxhp=enemy[i].hp
     enemy[i].type="enemy"
     enemy[i].movementType=_movementType
@@ -2912,6 +3080,36 @@ function spawnEnemy(_size,_colour,_posX,_posY,_gravity,_hp,_movementType,_exp,_w
     }
     i++
 }
+
+function findClosestPlayer(){
+    if((playerNumber.item.type!=="Shield"&&playerNumber2.item.type!=="Shield"&&playerNumber3.item.type!=="Shield"&&
+            playerNumber4.item.type!=="Shield")||
+            (playerNumber.item.type==="Shield"&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
+            playerNumber4.item.type==="Shield")){
+                if((redPDist<bluPDist||playerNumber2.hp===0)&&(redPDist<grnPDist||playerNumber3.hp===0)&&(redPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber.hp>0){
+                    return playerNumber
+                }else if((bluPDist<grnPDist||playerNumber3.hp===0)&&(bluPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber2.hp>0){
+                    return playerNumber2
+                }else if((grnPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber3.hp>0){
+                    return playerNumber3
+                }else if(playerNumber4.hp>0){
+                    return playerNumber4
+                }
+            }else{
+                if((redPDist<bluPDist||playerNumber2.hp===0||playerNumber2.item.type!=="Shield")&&(redPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(redPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber.hp>0&&playerNumber.item.type==="Shield"){
+                    return playerNumber
+                }else if((bluPDist<grnPDist||playerNumber3.hp===0||playerNumber3.item.type!=="Shield")&&(bluPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber2.hp>0&&playerNumber2.item.type==="Shield"){
+                    return playerNumber2
+                }else if((grnPDist<ylwPDist||playerNumber4.hp===0||playerNumber4.item.type!=="Shield")&&playerNumber3.hp>0&&playerNumber3.item.type==="Shield"){
+                    return playerNumber3
+                }else if(playerNumber4.hp>0&&playerNumber4.item.type==="Shield"){
+                    return playerNumber4
+            }
+        }
+    }
+
+
+
 
 document.addEventListener('keydown', logKey);//enemy spawning
 
