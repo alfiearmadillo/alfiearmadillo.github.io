@@ -1,6 +1,4 @@
-//projectiles die on hitting terrain
 //player multihit projectiles only hit once
-//only highest speed is 30, other is lowered to arrive at cursor at same time as higher speed one //pain
 //path of the swordsman, tanky enemies, full range
 //path of the archer, fairly melee enemies
 //path of the caster, mid range v high dps enemies
@@ -1368,6 +1366,28 @@ function component(width, height, color, x, y) {//draw new boxes
     }
     this.newPos = function() {//find new positions
         this.speedY += this.gravity;
+        
+        if(this.type==="player"){
+        if(Math.abs(this.speedX)>30&&Math.abs(this.speedX)>Math.abs(this.speedY)){
+            if(this.speedX>0){
+                this.speedY=this.speedY*(30/this.speedX)
+                this.speedX=30
+            }else{
+                this.speedY=-this.speedY*(30/this.speedX)
+                this.speedX=-30
+            }
+        }
+        if(Math.abs(this.speedY)>30&&Math.abs(this.speedY)>Math.abs(this.speedX)){
+           
+            if(this.speedY>0){
+                this.speedX=this.speedX*(30/this.speedY)
+                this.speedY=30
+            }else{
+                this.speedX=-this.speedX*(30/this.speedY)
+                this.speedY=-30
+            }
+        }
+    }else{
         if(this.speedX>30){
             this.speedX=30
         }
@@ -1380,6 +1400,8 @@ function component(width, height, color, x, y) {//draw new boxes
         if(this.speedY<-30){
             this.speedY=-30
         }
+    }
+
         
         this.x += this.speedX;
         this.y += this.speedY;
@@ -1418,8 +1440,10 @@ function component(width, height, color, x, y) {//draw new boxes
             }
             document.getElementById(inv.length-1).style.background='#5c5c5c'
         }
+        if(this.type!=="Projectile"){
         this.hitLeft();
         this.hitRight();
+        }
         this.hitNewLand();
     }
 
@@ -1599,9 +1623,9 @@ function updateGameArea() {
         }
         if(enemy[j].movementType==="Playerlike"){
             if(Math.floor(Math.random()*4)===0&&Math.abs(Math.round(enemy[j].speedY*10)/10)<0.4&&Math.abs(Math.round(enemy[j].speedX*10)/10)===0){
-            if((playerNumber.item.type!=="Shield"&&playerNumber2.item.type!=="Shield"&&playerNumber3.item.type!=="Shield"&&
-            playerNumber4.item.type!=="Shield")||
-            (playerNumber.item.type==="Shield"&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
+            if(((playerNumber.item.type!=="Shield"||playerNumber.hp===0)&&(playerNumber2.item.type!=="Shield"||playerNumber2.hp===0)
+            &&(playerNumber3.item.type!=="Shield"||playerNumber3.hp===0)&&(playerNumber4.item.type!=="Shield"||playerNumber4.hp===0))||
+            ((playerNumber.item.type==="Shield")&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
             playerNumber4.item.type==="Shield")){
                 if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber2.hp===0))&&(redPDist<bluPDist||playerNumber2.hp===0)&&(redPDist<grnPDist||playerNumber3.hp===0)&&(redPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber.hp>0){
                     if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
@@ -3087,9 +3111,9 @@ function findClosestPlayer(me){
     bluMeDist=Math.abs(playerNumber2.x-(me.x-(playerNumber2.size/2)+(me.size/2)))
     grnMeDist=Math.abs(playerNumber3.x-(me.x-(playerNumber3.size/2)+(me.size/2)))
     ylwMeDist=Math.abs(playerNumber4.x-(me.x-(playerNumber4.size/2)+(me.size/2)))
-    if((playerNumber.item.type!=="Shield"&&playerNumber2.item.type!=="Shield"&&playerNumber3.item.type!=="Shield"&&
-            playerNumber4.item.type!=="Shield")||
-            (playerNumber.item.type==="Shield"&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
+    if(((playerNumber.item.type!=="Shield"||playerNumber.hp===0)&&(playerNumber2.item.type!=="Shield"||playerNumber2.hp===0)
+            &&(playerNumber3.item.type!=="Shield"||playerNumber3.hp===0)&&(playerNumber4.item.type!=="Shield"||playerNumber4.hp===0))||
+            ((playerNumber.item.type==="Shield")&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
             playerNumber4.item.type==="Shield")){
                 if((redMeDist<bluMeDist||playerNumber2.hp===0)&&(redMeDist<grnMeDist||playerNumber3.hp===0)&&(redMeDist<ylwMeDist||playerNumber4.hp===0)&&playerNumber.hp>0){
                     return playerNumber
