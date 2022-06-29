@@ -1,4 +1,4 @@
-//xmas make all grass snow, rain to snow ,/
+
 //only highest speed is 30, other is lowered to arrive at cursor at same time as higher speed one //pain
 //path of the swordsman, tanky enemies, full range
 //path of the archer, fairly melee enemies
@@ -1053,9 +1053,86 @@ function renderStage(){ //Stage loading
             playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
             signY=478
         }
+        if(subArea===2){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30) //all flying
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===3){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30) //all flying
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===4){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30) //all flying
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===5){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30) //all flying
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===6){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30) //all flying
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
     }
     if(area[loadedAreaID].name==="Rainy Woods"){//5
         if(subArea===1){
+            newLand(-1,510,1000,5400) //none flying
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===2){
+            newLand(-1,510,1000,5400) //none flying
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===3){
+            newLand(-1,510,1000,5400) //none flying
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===4){
+            newLand(-1,510,1000,5400) //none flying
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===5){
             newLand(-1,510,1000,5400) //none flying
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
@@ -1074,9 +1151,44 @@ function renderStage(){ //Stage loading
             playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
             signY=478
         }
+        if(subArea===2){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30)//enemies that blend in with bg
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===3){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30)//enemies that blend in with bg
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===4){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30)//enemies that blend in with bg
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
     }
     if(area[loadedAreaID].name==="Foggy Clearing"){//2
         if(subArea===1){
+            newLand(-1,510,1000,5400) //swarm stage1, 1 big tanky stage 2
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===2){
             newLand(-1,510,1000,5400) //swarm stage1, 1 big tanky stage 2
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
             playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
