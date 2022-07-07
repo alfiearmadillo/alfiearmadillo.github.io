@@ -1672,7 +1672,7 @@ function updateGameArea() {
             &&(playerNumber3.item.type!=="Shield"||playerNumber3.hp===0)&&(playerNumber4.item.type!=="Shield"||playerNumber4.hp===0))||
             ((playerNumber.item.type==="Shield")&&playerNumber2.item.type==="Shield"&&playerNumber3.item.type==="Shield"&&
             playerNumber4.item.type==="Shield")){
-                if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber2.hp===0))&&(redPDist<bluPDist||playerNumber2.hp===0)&&(redPDist<grnPDist||playerNumber3.hp===0)&&(redPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber.hp>0){
+                if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.hp===0))&&(redPDist<bluPDist||playerNumber2.hp===0)&&(redPDist<grnPDist||playerNumber3.hp===0)&&(redPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber.hp>0){
                     if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
@@ -1685,7 +1685,7 @@ function updateGameArea() {
                     enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
                     enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                 }
-                }else if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber2.hp===0))&&(bluPDist<grnPDist||playerNumber3.hp===0)&&(bluPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber2.hp>0){
+                }else if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.hp===0))&&(bluPDist<grnPDist||playerNumber3.hp===0)&&(bluPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber2.hp>0){
                     if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber2.x-(enemy[j].x-(playerNumber2.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
@@ -1698,7 +1698,7 @@ function updateGameArea() {
                     enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
                     enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                 }
-                }else if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber2.hp===0))&&(grnPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber3.hp>0){
+                }else if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.hp===0))&&(grnPDist<ylwPDist||playerNumber4.hp===0)&&playerNumber3.hp>0){
                     if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber3.x-(enemy[j].x-(playerNumber3.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
@@ -1711,7 +1711,7 @@ function updateGameArea() {
                     enemy[j].speedX=enemy[j].speedX+Math.random()*4-2
                     enemy[j].speedY=enemy[j].speedY-Math.random()*5-1
                 }
-                }else if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber2.hp===0))&&playerNumber4.hp>0){
+                }else if(((redPDist>enemy[j].weapon.range||playerNumber.hp===0)&&(bluPDist>enemy[j].weapon.range||playerNumber2.hp===0)&&(grnPDist>enemy[j].weapon.range||playerNumber3.hp===0)&&(ylwPDist>enemy[j].weapon.range||playerNumber4.hp===0))&&playerNumber4.hp>0){
                     if(Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))<enemy[j].weapon.range+550){
                     if((playerNumber4.x-(enemy[j].x-(playerNumber4.size/2)+(enemy[j].size/2)))>0){
                         enemy[j].speedX=enemy[j].speedX+Math.random()*2+1
