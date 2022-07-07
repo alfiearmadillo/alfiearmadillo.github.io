@@ -1449,6 +1449,7 @@ function component(width, height, color, x, y) {//draw new boxes
                     }else if(droppedItem[b].type==="health"&&droppedItem[b].data.cooldown===0){
                         if(this.hp!==this.maxhp+(this.hpPoints*20)){
                         this.hp=this.hp+Math.floor(droppedItem[b].data.value*(this.maxhp+(this.hpPoints*20)))
+                        spawnDamageNumber(this, Math.floor(droppedItem[b].data.value*(this.maxhp+(this.hpPoints*20))))
                         if(this.hp>(this.maxhp+this.hpPoints*20)){
                             this.hp=(this.maxhp+this.hpPoints*20)
                         }
