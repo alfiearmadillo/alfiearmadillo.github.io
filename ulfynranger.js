@@ -153,7 +153,7 @@ items[8]={name:"CR_IntroAveStrong",damageMin:5,damageMax:10,range:45,atkRate:200
 items[9]={name:"CR_IntroAveWeak",damageMin:0,damageMax:1,range:45,atkRate:400,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 items[10]={name:"CR_GrassyFieldFlyingMelee",damageMin:19,damageMax:25,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:3,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:30,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
 items[12]={name:"CR_GrassyFieldWeakMelee",damageMin:4,damageMax:6,range:45,atkRate:300,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:200,atkRate:50,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
@@ -2657,11 +2657,11 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             }
         }
     }
-    sunTime+=0.01
-    if(sunTime>=24)
-    sunTime=0
+    // sunTime+=0.01
+    // if(sunTime>=24)
+    // sunTime=0
     if(area[loadedAreaID].name!=="Menu"&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Rainy Woods"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave"){//update for new levels without sun
-    //sunTime=day.getHours()+(day.getMinutes()/60)
+    sunTime=day.getHours()+(day.getMinutes()/60)
         if(sunTime<8){ //past midnight
             celestialBody.x = (sunTime+4)*72
             celestialBody.y = 580-Math.sin((sunTime+4)/4)*500
