@@ -68,6 +68,9 @@ let lastLevelExp=0
 let gameover = 500
 let lastRevCostShown=-1
 let land=[]
+let celestialBody = new component(50, 50, "#000000", 300, 300);
+celestialBody.type="celestialBody"
+let sunTime=0
 
 function startGame() {
     playerNumber = new component(30, 30, "#ff0000", 130, 370);
@@ -268,6 +271,12 @@ function goToMap(){
     subArea=1
     renderStage()
     }
+}
+
+stars=[]
+for(sf=0;sf<400;sf++){
+    tmpStarSize=Math.floor(Math.random()*2)+2
+    stars[stars.length] = new component(tmpStarSize,tmpStarSize,"#FFFFFF",Math.floor(Math.random()*960),Math.floor(Math.random()*540))
 }
 
 
@@ -1375,6 +1384,11 @@ function component(width, height, color, x, y) {//draw new boxes
             }else if(this.type==="Projectile"){ //todo projectile
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
+            }else if(this.type==="celestialBody"){
+                ctx.globalCompositeOperation='destination-over';
+                ctx.fillStyle = this.colour;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.globalCompositeOperation='source-over';
             }else{
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -1449,7 +1463,7 @@ function component(width, height, color, x, y) {//draw new boxes
                     }else if(droppedItem[b].type==="health"&&droppedItem[b].data.cooldown===0){
                         if(this.hp!==this.maxhp+(this.hpPoints*20)){
                         this.hp=this.hp+Math.floor(droppedItem[b].data.value*(this.maxhp+(this.hpPoints*20)))
-                        spawnDamageNumber(this, Math.floor(droppedItem[b].data.value*(this.maxhp+(this.hpPoints*20))))
+                        spawnDamageNumber(this, -Math.floor(droppedItem[b].data.value*(this.maxhp+(this.hpPoints*20))))
                         if(this.hp>(this.maxhp+this.hpPoints*20)){
                             this.hp=(this.maxhp+this.hpPoints*20)
                         }
@@ -2741,6 +2755,68 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             }
         }
     }
+    // sunTime+=0.1
+    // if(sunTime>=24)
+    // sunTime=0
+    if(area[loadedAreaID].name!=="Menu"&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Rainy Woods"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave"){//update for new levels without sun
+    sunTime=day.getHours()+(day.getMinutes()/60)
+        if(sunTime<8){ //past midnight
+            celestialBody.x = (sunTime+4)*72
+            celestialBody.y = 540-Math.sin((sunTime+4)/4)*500
+            celestialBody.colour="#FEFCD7"
+
+            ctx = myGameArea.context;
+            if(sunTime+4<6.4){
+                ctx.globalAlpha = (sunTime+4)/16
+            }else{
+                ctx.globalAlpha = ((12-(sunTime+4))/16)
+            }
+
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0, 0, 960, 540);
+
+            ctx.globalCompositeOperation='destination-over';
+            if(sunTime+4<6.4){
+                ctx.globalAlpha = (sunTime+4)/6.4
+            }else{
+                ctx.globalAlpha = ((12-(sunTime+4))/6.4)
+            }
+            for(aj=0;aj<stars.length;aj++){
+                stars[aj].update();
+            }
+            ctx.globalCompositeOperation='source-over';
+
+            ctx.globalAlpha = 1
+
+        }else if(sunTime>20){ //pre midnight
+            celestialBody.x = (sunTime-20)*72
+            celestialBody.y = 540-Math.sin((sunTime-20)/4)*500
+            celestialBody.colour="#FEFCD7"
+
+            ctx = myGameArea.context;
+            ctx.globalAlpha = (sunTime-20)/16
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0, 0, 960, 540);
+
+            ctx.globalCompositeOperation='destination-over';
+            ctx.globalAlpha = (sunTime-20)/6.4
+            for(aj=0;aj<stars.length;aj++){
+                stars[aj].update();
+            }
+            ctx.globalCompositeOperation='source-over';
+
+            ctx.globalAlpha = 1
+
+        }else{ //daytime
+            celestialBody.x = (sunTime-8)*72
+            celestialBody.y = 540-Math.sin((sunTime-8)/4)*500
+            celestialBody.colour="#FCE570"
+
+        }
+    celestialBody.update()
+
+    }
+    
 
     ctx = myGameArea.context;
     ctx.fillStyle = "#8a8a8a"
@@ -3028,6 +3104,8 @@ function spawnRain(){
     rain[rain.length-1].type="Rain"
     
 }
+
+
 
 let snow = []
 function spawnSnow(){
