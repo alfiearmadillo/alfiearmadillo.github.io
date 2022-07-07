@@ -2164,104 +2164,6 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         ctx.globalCompositeOperation="source-over";
     }
 
-    if(area[loadedAreaID].name==="Town" && shopOpen===1){//new item new level update shop pics
-        ctx = myGameArea.context;
-        ctx.fillStyle = "#4a4a4a" //shop bg
-        ctx.fillRect(100, 100, 760, 340);
-
-        ctx.fillStyle = "#ff0000" //close button
-        ctx.fillRect(830, 100, 30, 30);
-
-        ctx.fillStyle = "#911616" //item sp
-        ctx.fillRect(150, 150, 30, 30);
-        if(area[3].cleared===1){
-        ctx.fillStyle = `${items[1].colour}` //item 1
-        ctx.fillRect(190, 150, 30, 30);
-        ctx.fillStyle = `${items[2].colour}` //item 2
-        ctx.fillRect(230, 150, 30, 30);
-        ctx.fillStyle = `${items[3].colour}` //item 3
-        ctx.fillRect(270, 150, 30, 30);
-        ctx.fillStyle = `${items[4].colour}` //item 4
-        ctx.fillRect(310, 150, 30, 30);
-        }
-        if(area[4].cleared===1){
-        ctx.fillStyle = `${items[14].colour}` //item 5
-        ctx.fillRect(350, 150, 30, 30);
-        ctx.fillStyle = `${items[15].colour}` //item 6
-        ctx.fillRect(390, 150, 30, 30);
-        ctx.fillStyle = `${items[16].colour}` //item 7
-        ctx.fillRect(430, 150, 30, 30);
-        ctx.fillStyle = `${items[17].colour}` //item 8
-        ctx.fillRect(470, 150, 30, 30);
-        }
-
-
-        if(level*10<=money){//respec
-            ctx.fillStyle = "#6b6b6b"
-            ctx.fillRect( 223, 395,115,38)
-            ctx.fillStyle = "#25801b"
-            ctx.fillRect( 228, 400,105,28)
-            ctx.font = '13px serif';
-            ctx.fillStyle = "#000000"
-            ctx.fillText(`Respec SP: £${level*10}`, 234, 418)
-        }else{
-            ctx.fillStyle = "#6b6b6b"
-            ctx.fillRect( 223, 395,115,38)
-            ctx.fillStyle = "#7d2323"
-            ctx.fillRect( 228, 400,105,28)
-            ctx.font = '13px serif';
-            ctx.fillStyle = "#000000"
-            ctx.fillText(`Respec SP: £${level*10}`, 234, 418)
-        }
-
-        if(itemToBuy!==-1){
-            switch( itemToBuy){
-                case "SP":
-                    if(spPrice<=money){
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#25801b"
-                        ctx.fillRect( 438, 400,95,28)
-                    }else{
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#7d2323"
-                        ctx.fillRect( 438, 400,95,28)
-                    }
-                break
-                default:
-                    if(items[itemToBuy].worth*3<=money){
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#25801b"
-                        ctx.fillRect( 438, 400,95,28)
-                    }else{
-                        ctx.fillStyle = "#6b6b6b"
-                        ctx.fillRect( 433, 395,105,38)
-                        ctx.fillStyle = "#7d2323"
-                        ctx.fillRect( 438, 400,95,28)
-                    }
-                break
-        }
-    }
-
-        ctx.font = 'bold 20px serif';
-        ctx.fillStyle = "#000000"
-
-        switch(itemToBuy){
-            case "SP":
-            ctx.fillText("+1 Skill Point", 431, 140)
-            ctx.fillText(`${spPrice}`, 443, 420)
-            break;
-            case -1:
-            break
-            default:
-            ctx.fillText(`${items[itemToBuy].name}`, 438-(items[itemToBuy].name.length*2), 140)
-            ctx.fillText(`${items[itemToBuy].worth*3}`, 443, 420)
-            break;
-        }
-    }
-
     healRngNum=Math.floor(Math.random() * 20)
     if(area[loadedAreaID].name==="Town"){
     if(healRngNum===14){
@@ -2755,32 +2657,22 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             }
         }
     }
-    // sunTime+=0.1
-    // if(sunTime>=24)
-    // sunTime=0
+    sunTime+=0.01
+    if(sunTime>=24)
+    sunTime=0
     if(area[loadedAreaID].name!=="Menu"&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Rainy Woods"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave"){//update for new levels without sun
-    sunTime=day.getHours()+(day.getMinutes()/60)
+    //sunTime=day.getHours()+(day.getMinutes()/60)
         if(sunTime<8){ //past midnight
             celestialBody.x = (sunTime+4)*72
-            celestialBody.y = 540-Math.sin((sunTime+4)/4)*500
+            celestialBody.y = 580-Math.sin((sunTime+4)/4)*500
             celestialBody.colour="#FEFCD7"
 
             ctx = myGameArea.context;
-            if(sunTime+4<6.4){
-                ctx.globalAlpha = (sunTime+4)/16
-            }else{
-                ctx.globalAlpha = ((12-(sunTime+4))/16)
-            }
-
+            ctx.globalAlpha = Math.sin((sunTime+4)/(12/Math.PI))/1.8
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, 960, 540);
 
             ctx.globalCompositeOperation='destination-over';
-            if(sunTime+4<6.4){
-                ctx.globalAlpha = (sunTime+4)/6.4
-            }else{
-                ctx.globalAlpha = ((12-(sunTime+4))/6.4)
-            }
             for(aj=0;aj<stars.length;aj++){
                 stars[aj].update();
             }
@@ -2790,11 +2682,11 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
 
         }else if(sunTime>20){ //pre midnight
             celestialBody.x = (sunTime-20)*72
-            celestialBody.y = 540-Math.sin((sunTime-20)/4)*500
+            celestialBody.y = 580-Math.sin((sunTime-20)/4)*500
             celestialBody.colour="#FEFCD7"
 
             ctx = myGameArea.context;
-            ctx.globalAlpha = (sunTime-20)/16
+            ctx.globalAlpha = Math.sin((sunTime-20)/(12/Math.PI))/1.8
             ctx.fillStyle = "#000000";
             ctx.fillRect(0, 0, 960, 540);
 
@@ -2809,7 +2701,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
 
         }else{ //daytime
             celestialBody.x = (sunTime-8)*72
-            celestialBody.y = 540-Math.sin((sunTime-8)/4)*500
+            celestialBody.y = 580-Math.sin((sunTime-8)/4)*500
             celestialBody.colour="#FCE570"
 
         }
@@ -2817,6 +2709,104 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
 
     }
     
+    if(area[loadedAreaID].name==="Town" && shopOpen===1){//new item new level update shop pics
+        ctx = myGameArea.context;
+        ctx.fillStyle = "#4a4a4a" //shop bg
+        ctx.fillRect(100, 100, 760, 340);
+
+        ctx.fillStyle = "#ff0000" //close button
+        ctx.fillRect(830, 100, 30, 30);
+
+        ctx.fillStyle = "#911616" //item sp
+        ctx.fillRect(150, 150, 30, 30);
+        if(area[3].cleared===1){
+        ctx.fillStyle = `${items[1].colour}` //item 1
+        ctx.fillRect(190, 150, 30, 30);
+        ctx.fillStyle = `${items[2].colour}` //item 2
+        ctx.fillRect(230, 150, 30, 30);
+        ctx.fillStyle = `${items[3].colour}` //item 3
+        ctx.fillRect(270, 150, 30, 30);
+        ctx.fillStyle = `${items[4].colour}` //item 4
+        ctx.fillRect(310, 150, 30, 30);
+        }
+        if(area[4].cleared===1){
+        ctx.fillStyle = `${items[14].colour}` //item 5
+        ctx.fillRect(350, 150, 30, 30);
+        ctx.fillStyle = `${items[15].colour}` //item 6
+        ctx.fillRect(390, 150, 30, 30);
+        ctx.fillStyle = `${items[16].colour}` //item 7
+        ctx.fillRect(430, 150, 30, 30);
+        ctx.fillStyle = `${items[17].colour}` //item 8
+        ctx.fillRect(470, 150, 30, 30);
+        }
+
+
+        if(level*10<=money){//respec
+            ctx.fillStyle = "#6b6b6b"
+            ctx.fillRect( 223, 395,115,38)
+            ctx.fillStyle = "#25801b"
+            ctx.fillRect( 228, 400,105,28)
+            ctx.font = '13px serif';
+            ctx.fillStyle = "#000000"
+            ctx.fillText(`Respec SP: £${level*10}`, 234, 418)
+        }else{
+            ctx.fillStyle = "#6b6b6b"
+            ctx.fillRect( 223, 395,115,38)
+            ctx.fillStyle = "#7d2323"
+            ctx.fillRect( 228, 400,105,28)
+            ctx.font = '13px serif';
+            ctx.fillStyle = "#000000"
+            ctx.fillText(`Respec SP: £${level*10}`, 234, 418)
+        }
+
+        if(itemToBuy!==-1){
+            switch( itemToBuy){
+                case "SP":
+                    if(spPrice<=money){
+                        ctx.fillStyle = "#6b6b6b"
+                        ctx.fillRect( 433, 395,105,38)
+                        ctx.fillStyle = "#25801b"
+                        ctx.fillRect( 438, 400,95,28)
+                    }else{
+                        ctx.fillStyle = "#6b6b6b"
+                        ctx.fillRect( 433, 395,105,38)
+                        ctx.fillStyle = "#7d2323"
+                        ctx.fillRect( 438, 400,95,28)
+                    }
+                break
+                default:
+                    if(items[itemToBuy].worth*3<=money){
+                        ctx.fillStyle = "#6b6b6b"
+                        ctx.fillRect( 433, 395,105,38)
+                        ctx.fillStyle = "#25801b"
+                        ctx.fillRect( 438, 400,95,28)
+                    }else{
+                        ctx.fillStyle = "#6b6b6b"
+                        ctx.fillRect( 433, 395,105,38)
+                        ctx.fillStyle = "#7d2323"
+                        ctx.fillRect( 438, 400,95,28)
+                    }
+                break
+        }
+    }
+
+        ctx.font = 'bold 20px serif';
+        ctx.fillStyle = "#000000"
+
+        switch(itemToBuy){
+            case "SP":
+            ctx.fillText("+1 Skill Point", 431, 140)
+            ctx.fillText(`${spPrice}`, 443, 420)
+            break;
+            case -1:
+            break
+            default:
+            ctx.fillText(`${items[itemToBuy].name}`, 438-(items[itemToBuy].name.length*2), 140)
+            ctx.fillText(`${items[itemToBuy].worth*3}`, 443, 420)
+            break;
+        }
+    }
+
 
     ctx = myGameArea.context;
     ctx.fillStyle = "#8a8a8a"
