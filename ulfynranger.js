@@ -20,7 +20,7 @@
 //backgrounds
 
 //beating current highest stage
-//Projectiles for players & enemies (bows arc, wand straight)
+//arcing projectiles
 //terrain side collision?
 //textures?
 //more levels, enemies, weapons, content
@@ -2661,7 +2661,8 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
     // if(sunTime>=24)
     // sunTime=0
     if(area[loadedAreaID].name!=="Menu"&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Rainy Woods"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave"){//update for new levels without sun
-    sunTime=day.getHours()+(day.getMinutes()/60)
+        day = new Date();
+        sunTime=day.getHours()+(day.getMinutes()/60)
         if(sunTime<8){ //past midnight
             celestialBody.x = (sunTime+4)*72
             celestialBody.y = 580-Math.sin((sunTime+4)/4)*500
