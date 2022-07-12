@@ -3,7 +3,7 @@
 //path of the archer, fairly melee enemies
 //path of the caster, mid range v high dps enemies
 //path of the tank, swarms of mid damage(reduced to 1 with shield) low hp mid atk speed enemies (mid range also)
-//legendary weapons, very rare global drop, changed which one every 5 levels
+//legendary weapons, very rare global drop, changed which one every average +10sp assigned
 //village - exclusive items
 //hamlet - Enchanter - perm boost into 2 of an items stats, random, legendary get boost to all stats
 //parish - Player Recolouring, global weather change, Money Sink
@@ -144,23 +144,23 @@ items[0]={name:"None",damageMin:1,damageMax:1,range:11,atkRate:100,lifeSteal:0,d
 
 items[1]={name:"Slightly Sharp Stick",damageMin:2,damageMax:4,range:25,atkRate:50,lifeSteal:0,defence:0,type:"Sword", colour:'#a83232', worth:10, multi:0, rangeMult:0.1}
 items[2]={name:"Cardboard Shield",damageMin:1,damageMax:1,range:15,atkRate:100,lifeSteal:0,defence:1,type:"Shield", colour:'#75a832', worth:10, multi:0, rangeMult:0.1}
-items[3]={name:"Cheap Toy Bow",damageMin:1,damageMax:3,range:160,atkRate:66,lifeSteal:0,defence:0,type:"Bow", colour:'#634f1c', worth:10, multi:0, rangeMult:3, projSpeedcap:10, projSize:10, projShape:"Rect", projColour:"#d6d198"}
-items[4]={name:"Small Plastic Wand",damageMin:0,damageMax:1,range:300,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#660033', worth:10, multi:0, rangeMult:3, projSpeedcap:15, projSize:8, projShape:"Square", projColour:"#87867c"}
+items[3]={name:"Cheap Toy Bow",damageMin:1,damageMax:3,range:160,atkRate:80,lifeSteal:0,defence:0,type:"Bow", colour:'#634f1c', worth:10, multi:0, rangeMult:5, projSpeedcap:10, projSize:10, projShape:"Rect", projColour:"#d6d198"}
+items[4]={name:"Small Plastic Wand",damageMin:0,damageMax:1,range:300,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#660033', worth:10, multi:0, rangeMult:5, projSpeedcap:15, projSize:8, projShape:"Square", projColour:"#87867c"}
 items[5]={name:"CR_IntoAveBasic",damageMin:1,damageMax:2,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[6]={name:"CR_IntroAveBoss",damageMin:12,damageMax:22,range:300,atkRate:200,lifeSteal:0,defence:0,type:"CR_Special1", colour:'#191919', worth:-1, multi:1, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
-items[7]={name:"CR_IntroAveRanged",damageMin:1,damageMax:2,range:130,atkRate:200,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[6]={name:"CR_IntroAveBoss",damageMin:12,damageMax:22,range:300,atkRate:200,lifeSteal:0,defence:0,type:"CR_Special1", colour:'#191919', worth:-1, multi:1, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[7]={name:"CR_IntroAveRanged",damageMin:1,damageMax:2,range:130,atkRate:200,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
 items[8]={name:"CR_IntroAveStrong",damageMin:5,damageMax:10,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[9]={name:"CR_IntroAveWeak",damageMin:0,damageMax:1,range:45,atkRate:400,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 items[10]={name:"CR_GrassyFieldFlyingMelee",damageMin:19,damageMax:25,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:30,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:3, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:30,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
 items[12]={name:"CR_GrassyFieldWeakMelee",damageMin:4,damageMax:6,range:45,atkRate:300,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:200,atkRate:50,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:140,atkRate:50,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 items[14]={name:"Sharpened Flint",damageMin:6,damageMax:10,range:25,atkRate:50,lifeSteal:0,defence:0,type:"Sword", colour:'#872424', worth:33, multi:0, rangeMult:0.1}
 items[15]={name:"Decent Wood Shield",damageMin:2,damageMax:3,range:15,atkRate:100,lifeSteal:0,defence:5,type:"Shield", colour:'#5a8224', worth:33, multi:0, rangeMult:0.1}
-items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:66,lifeSteal:0,defence:0,type:"Bow", colour:'#42330d', worth:33, multi:0, rangeMult:3, projSpeedcap:12, projSize:10, projShape:"Rect", projColour:"#d6d198"}
-items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:3, projSpeedcap:20, projSize:8, projShape:"Square", projColour:"#87867c"}
+items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:80,lifeSteal:0,defence:0,type:"Bow", colour:'#42330d', worth:33, multi:0, rangeMult:5, projSpeedcap:12, projSize:10, projShape:"Rect", projColour:"#d6d198"}
+items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:5, projSpeedcap:20, projSize:8, projShape:"Square", projColour:"#87867c"}
 
 items[18]={name:"CR_ShadedWoodMelee",damageMin:3,damageMax:8,range:60,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 items[19]={name:"CR_ShadedWoodFlying",damageMin:1,damageMax:20,range:50,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
@@ -538,7 +538,7 @@ function loadSaveFromCode(){//saveload
 area[0]={name:"Menu",subAreaCount:1,unlocked:0,cleared:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"} //Stage list
 area[1]={name:"Town",subAreaCount:1,unlocked:1,x:100,y:300,cleared:2,stageToUnlock1:3,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
 area[2]={name:"Map",subAreaCount:1,unlocked:0,cleared:-1, skyColour:"#658a5a"}
-area[3]={name:"Intro Avenue",subAreaCount:9,unlocked:1,x:150,y:300,cleared:0,stageToUnlock1:4,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
+area[3]={name:"Intro Gardens",subAreaCount:9,unlocked:1,x:150,y:300,cleared:0,stageToUnlock1:4,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
 area[4]={name:"Grassy Fields",subAreaCount:7,unlocked:0,x:180,y:250,cleared:0,stageToUnlock1:5,stageToUnlock2:-1, dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
 area[5]={name:"Shaded Woods",subAreaCount:4,unlocked:0,x:230,y:270,cleared:0,stageToUnlock1:6,stageToUnlock2:7, special:"LowDark", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
 area[6]={name:"Hidden Cave",subAreaCount:6,unlocked:0,x:240,y:320,cleared:0,stageToUnlock1:8,stageToUnlock2:-1, special:"MidDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
@@ -582,7 +582,7 @@ function renderStage(){ //Stage loading
         playerNumber.x=130;playerNumber.y=1370;playerNumber.speedX=0;playerNumber.speedY=0
         signY=-1
     }
-    if(area[loadedAreaID].name==="Intro Avenue"){
+    if(area[loadedAreaID].name==="Intro Gardens"){
         if(subArea===1){
         newLand(-1,510,1000,5400)
         spawnEnemy(20,"#8e17b3",550,400,0.5,5,"SlowWalk",1,1,1,55,0.2,10,1,1,2,1,3,1,4,1)
@@ -725,7 +725,7 @@ function renderStage(){ //Stage loading
             spawnEnemy(12,"#067806",357,400,0.5,3,"SlowWalk",1,9,1,30,0.2,35,1,1,2,1,3,1,4,1)
             spawnEnemy(20,"#8e17b3",490,400,0.5,10,"SlowWalk",2,5,2,55,0.2,10,1,2,2,2,3,2,4,2)
             spawnEnemy(35,"#7a2b27",682,400,0.5,25,"SlowWalk",5,8,10,40,0.2,10,1,2,2,2,3,2,4,2)
-            spawnEnemy(65,"#3c4b4d",800,400,0.5,200,"SlowWalk",33,6,100,100,1,100,1,10,2,10,3,10,4,10)
+            spawnEnemy(65,"#3c4b4d",800,400,0.5,140,"SlowWalk",33,6,100,100,1,100,1,10,2,10,3,10,4,10)
             spawnEnemy(15,"#1b1280",880,400,0.5,5,"SlowWalk",3,7,10,25,0.2,10,1,5,2,5,3,5,4,5)
             spawnEnemy(15,"#1b1280",910,400,0.5,5,"SlowWalk",3,7,10,25,0.2,10,1,5,2,5,3,5,4,5)
             playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
@@ -1533,7 +1533,7 @@ function component(width, height, color, x, y) {//draw new boxes
                                     
                                 if(this.atkCD<=0){
 
-                                    if(this.item.rangeMult===3){//todo Projectile logic
+                                    if(this.item.rangeMult===5){//todo Projectile logic
                                         spawnProjectile(this,this.item.projSpeedcap,this.item.projSize,this.item.projShape,this.item.projColour,Math.floor(this.item.damageMin+(this.dmgPoints*0.2))*((100+this.dmgPoints)/100),Math.floor(this.item.damageMax+(this.dmgPoints*0.3)*((100+this.dmgPoints)/100)),this.item.multi,((enemy[nearTarget].x+enemy[nearTarget].size/2)-(this.x+this.size/2)),((enemy[nearTarget].y+enemy[nearTarget].size/2)-(this.y+this.size/2)))
                                     }else{
                                         tempDamageStorage=randomDmg(Math.floor((this.item.damageMin+(this.dmgPoints*0.2))*((100+this.dmgPoints)/100)), Math.floor((this.item.damageMax+(this.dmgPoints*0.3))*((100+this.dmgPoints)/100)))
@@ -1996,18 +1996,20 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             closestPlayer=findClosestPlayer(enemy[j])
             closestDist=Math.abs(closestPlayer.x-(enemy[j].x-(closestPlayer.size/2)+(enemy[j].size/2)))
             closestDistY=Math.abs(closestPlayer.y-(enemy[j].y-(closestPlayer.size/2)+(enemy[j].size/2)))
-            if(enemy[j].weapon.rangeMult===3&&(closestDistY<enemy[j].weapon.range&&closestDist<enemy[j].weapon.range&&closestPlayer.hp>0)){//todo Projectile logic
+            if(enemy[j].weapon.rangeMult===5&&(closestDistY<enemy[j].weapon.range&&closestDist<enemy[j].weapon.range&&closestPlayer.hp>0)){//todo Projectile logic
                 spawnProjectile(enemy[j],enemy[j].weapon.projSpeedcap,enemy[j].weapon.projSize,enemy[j].weapon.projShape,enemy[j].weapon.projColour,enemy[j].weapon.damageMin,enemy[j].weapon.damageMax,enemy[j].weapon.multi,(closestPlayer.x+closestPlayer.size/2)-(enemy[j].x+enemy[j].size/2),(closestPlayer.y+closestPlayer.size/2)-(enemy[j].y+enemy[j].size/2))
                 enemy[j].atkCD=enemy[j].weapon.atkRate
             }else{
                 if(redPDistY<enemy[j].weapon.range&&redPDist<enemy[j].weapon.range&&playerNumber.hp>0){
                     if(enemy[j].weapon.damageMin-playerNumber.item.defence<1){
                     playerNumber.hp=playerNumber.hp-1
+                    if(playerNumber.hp>0)
                     spawnDamageNumber(playerNumber, 1)
                     enemy[j].atkCD=enemy[j].weapon.atkRate
                     }else{
                         tempDamageStorage=Math.max(0, randomDmg(enemy[j].weapon.damageMin, enemy[j].weapon.damageMax)-playerNumber.item.defence)
                     playerNumber.hp=playerNumber.hp-tempDamageStorage
+                    if(playerNumber.hp>0)
                     spawnDamageNumber(playerNumber, tempDamageStorage)
                     enemy[j].atkCD=enemy[j].weapon.atkRate
                 }
@@ -2018,11 +2020,13 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                 if(bluPDistY<enemy[j].weapon.range&&bluPDist<enemy[j].weapon.range&&playerNumber2.hp>0){
                     if(enemy[j].weapon.damageMin-playerNumber2.item.defence<1){
                         playerNumber2.hp=playerNumber2.hp-1
+                        if(playerNumber2.hp>0)
                         spawnDamageNumber(playerNumber2, 1)
                         enemy[j].atkCD=enemy[j].weapon.atkRate
                         }else{
                             tempDamageStorage=Math.max(0, randomDmg(enemy[j].weapon.damageMin, enemy[j].weapon.damageMax)-playerNumber2.item.defence)
                     playerNumber2.hp=playerNumber2.hp-tempDamageStorage
+                    if(playerNumber2.hp>0)
                     spawnDamageNumber(playerNumber2, tempDamageStorage)
                     enemy[j].atkCD=enemy[j].weapon.atkRate        
                 }
@@ -2033,11 +2037,13 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                 if(grnPDistY<enemy[j].weapon.range&&grnPDist<enemy[j].weapon.range&&playerNumber3.hp>0){
                     if(enemy[j].weapon.damageMin-playerNumber3.item.defence<1){
                         playerNumber3.hp=playerNumber3.hp-1
+                        if(playerNumber3.hp>0)
                         spawnDamageNumber(playerNumber3, 1)
                         enemy[j].atkCD=enemy[j].weapon.atkRate
                         }else{
                             tempDamageStorage=Math.max(0, randomDmg(enemy[j].weapon.damageMin, enemy[j].weapon.damageMax)-playerNumber3.item.defence)
                     playerNumber3.hp=playerNumber3.hp-tempDamageStorage
+                    if(playerNumber3.hp>0)
                     spawnDamageNumber(playerNumber3, tempDamageStorage)
                     enemy[j].atkCD=enemy[j].weapon.atkRate       
                 }
@@ -2048,11 +2054,13 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                 if(ylwPDistY<enemy[j].weapon.range&&ylwPDist<enemy[j].weapon.range&&playerNumber4.hp>0){
                     if(enemy[j].weapon.damageMin-playerNumber4.item.defence<1){
                         playerNumber4.hp=playerNumber4.hp-1
+                        if(playerNumber4.hp>0)
                         spawnDamageNumber(playerNumber4, 1)
                         enemy[j].atkCD=enemy[j].weapon.atkRate
                         }else{
                             tempDamageStorage=Math.max(0, randomDmg(enemy[j].weapon.damageMin, enemy[j].weapon.damageMax)-playerNumber4.item.defence)
                     playerNumber4.hp=playerNumber4.hp-tempDamageStorage
+                    if(playerNumber4.hp>0)
                     spawnDamageNumber(playerNumber4, tempDamageStorage)
                     enemy[j].atkCD=enemy[j].weapon.atkRate       
                 }
@@ -2287,7 +2295,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         }
     
 
-    if(signY>0 && (enemy.length===0||area[loadedAreaID].subAreaCount!==subArea)){
+    if(signY>0 && (area[loadedAreaID].subAreaCount>subArea+1)){
         ctx = myGameArea.context;
         ctx.fillStyle = "#61330b"
         ctx.fillRect(895, signY+7, 53, -26);
@@ -2295,6 +2303,22 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         ctx.font = '16px serif';
         ctx.fillStyle = "#140b02"
         ctx.fillText("NEXT", 900, signY)
+    }else if(signY>0 && (area[loadedAreaID].subAreaCount===subArea+1)){//sign text
+        ctx = myGameArea.context;
+        ctx.fillStyle = "#61330b"
+        ctx.fillRect(895, signY+7, 53, -26);
+        ctx.fillRect(917, signY+7, 10, 25);
+        ctx.font = '16px serif';
+        ctx.fillStyle = "#140b02"
+        ctx.fillText("BOSS", 900, signY)
+    }else if(signY>0 && (enemy.length===0&&area[loadedAreaID].subAreaCount===subArea)){
+        ctx = myGameArea.context;
+        ctx.fillStyle = "#61330b"
+        ctx.fillRect(895, signY+7, 53, -26);
+        ctx.fillRect(917, signY+7, 10, 25);
+        ctx.font = '16px serif';
+        ctx.fillStyle = "#140b02"
+        ctx.fillText(" MAP", 900, signY)
     }
 
     
@@ -2431,6 +2455,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                     if(!projectiles[ag].hit.includes(playerNumber.id)){
                         tempDamageStorage=randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
                         playerNumber.hp=playerNumber.hp-tempDamageStorage
+                        if(playerNumber.hp>0)
                         spawnDamageNumber(playerNumber,tempDamageStorage)
                         projectiles[ag].hit[projectiles[ag].hit.length]=playerNumber.id
                         if(playerNumber.hp<0){
@@ -2442,6 +2467,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                     if(!projectiles[ag].hit.includes(playerNumber2.id)){
                         tempDamageStorage=randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
                         playerNumber2.hp=playerNumber2.hp-tempDamageStorage
+                        if(playerNumber2.hp>0)
                         spawnDamageNumber(playerNumber2,tempDamageStorage)
                         projectiles[ag].hit[projectiles[ag].hit.length]=playerNumber2.id
                         if(playerNumber2.hp<0){
@@ -2453,6 +2479,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                     if(!projectiles[ag].hit.includes(playerNumber3.id)){
                         tempDamageStorage=randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
                         playerNumber3.hp=playerNumber3.hp-tempDamageStorage
+                        if(playerNumber3.hp>0)
                         spawnDamageNumber(playerNumber3,tempDamageStorage)
                         projectiles[ag].hit[projectiles[ag].hit.length]=playerNumber3.id
                         if(playerNumber3.hp<0){
@@ -2464,6 +2491,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                     if(!projectiles[ag].hit.includes(playerNumber4.id)){
                         tempDamageStorage=randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
                         playerNumber4.hp=playerNumber4.hp-tempDamageStorage
+                        if(playerNumber4.hp>0)
                         spawnDamageNumber(playerNumber4,tempDamageStorage)
                         projectiles[ag].hit[projectiles[ag].hit.length]=playerNumber4.id
                         if(playerNumber4.hp<0){
@@ -2476,6 +2504,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                 if(projectiles[ag].x<closeGuy.x+closeGuy.size+projectiles[ag].projSpeedcap&&projectiles[ag].x>closeGuy.x-projectiles[ag].projSpeedcap&&projectiles[ag].y<closeGuy.y+closeGuy.size+projectiles[ag].projSpeedcap&&projectiles[ag].y>closeGuy.y-projectiles[ag].projSpeedcap){
                     tempDamageStorage=randomDmg(projectiles[ag].damageMin,projectiles[ag].damageMax)
                     closeGuy.hp=closeGuy.hp-tempDamageStorage
+                    if(closeGuy.hp>0)
                     spawnDamageNumber(closeGuy,tempDamageStorage)
                     if(playerNumber2.hp<0){
                         playerNumber2.hp=0
@@ -2803,7 +2832,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             break
             default:
             ctx.fillText(`${items[itemToBuy].name}`, 438-(items[itemToBuy].name.length*2), 140)
-            ctx.fillText(`${items[itemToBuy].worth*3}`, 443, 420)
+            ctx.fillText(`${items[itemToBuy].worth*5}`, 443, 420)//shop cost mult
             break;
         }
     }
