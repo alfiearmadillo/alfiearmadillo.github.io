@@ -9,6 +9,14 @@
 //parish - Player Recolouring, global weather change, Money Sink
 //city - bank?
 
+//slow projectile high dmg enemies cave 1
+//hanging enemies? (tree)
+//roof crawler enemies, drop when above
+
+//dont save infinite money, save as 1e300
+
+//switch static 4 drops to an array of objects
+
 //piercing / terrain piercing
 //homing
 
@@ -70,7 +78,8 @@ let lastRevCostShown=-1
 let land=[]
 let celestialBody = new component(50, 50, "#000000", 300, 300);
 celestialBody.type="celestialBody"
-let sunTime=0
+let sunTime=20
+let debugTime=0
 
 function startGame() {
     playerNumber = new component(30, 30, "#ff0000", 130, 370);
@@ -1626,6 +1635,35 @@ function updateGameArea() {
         debugXmas=0
     }
 
+    if(signY>0 && (area[loadedAreaID].subAreaCount>subArea+1)){
+        ctx = myGameArea.context;
+        ctx.fillStyle = "#61330b"
+        ctx.fillRect(895, signY+7, 53, -26);
+        ctx.fillRect(917, signY+7, 10, 25);
+        ctx.font = '16px serif';
+        ctx.fillStyle = "#140b02"
+        ctx.fillText("NEXT", 900, signY)
+    }else if(signY>0 && (area[loadedAreaID].subAreaCount===subArea+1)){//sign text
+        ctx = myGameArea.context;
+        ctx.fillStyle = "#61330b"
+        ctx.fillRect(895, signY+7, 53, -26);
+        ctx.fillRect(917, signY+7, 10, 25);
+        ctx.font = '16px serif';
+        ctx.fillStyle = "#140b02"
+        ctx.fillText("BOSS", 900, signY)
+    }else if(signY>0 && (enemy.length===0&&area[loadedAreaID].subAreaCount===subArea)){
+        ctx = myGameArea.context;
+        ctx.fillStyle = "#61330b"
+        ctx.fillRect(895, signY+7, 53, -26);
+        ctx.fillRect(917, signY+7, 10, 25);
+        ctx.font = '16px serif';
+        ctx.fillStyle = "#140b02"
+        ctx.fillText(" MAP", 900, signY)
+    }
+
+
+
+
     for(j=0;j<enemy.length;j++){
 
         redPDist=Math.abs(playerNumber.x-(enemy[j].x-(playerNumber.size/2)+(enemy[j].size/2)))
@@ -2075,6 +2113,8 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
 
     }
 
+
+    
     playerNumber.newPos();
     playerNumber.update();
     playerNumber2.newPos();
@@ -2295,32 +2335,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         }
     
 
-    if(signY>0 && (area[loadedAreaID].subAreaCount>subArea+1)){
-        ctx = myGameArea.context;
-        ctx.fillStyle = "#61330b"
-        ctx.fillRect(895, signY+7, 53, -26);
-        ctx.fillRect(917, signY+7, 10, 25);
-        ctx.font = '16px serif';
-        ctx.fillStyle = "#140b02"
-        ctx.fillText("NEXT", 900, signY)
-    }else if(signY>0 && (area[loadedAreaID].subAreaCount===subArea+1)){//sign text
-        ctx = myGameArea.context;
-        ctx.fillStyle = "#61330b"
-        ctx.fillRect(895, signY+7, 53, -26);
-        ctx.fillRect(917, signY+7, 10, 25);
-        ctx.font = '16px serif';
-        ctx.fillStyle = "#140b02"
-        ctx.fillText("BOSS", 900, signY)
-    }else if(signY>0 && (enemy.length===0&&area[loadedAreaID].subAreaCount===subArea)){
-        ctx = myGameArea.context;
-        ctx.fillStyle = "#61330b"
-        ctx.fillRect(895, signY+7, 53, -26);
-        ctx.fillRect(917, signY+7, 10, 25);
-        ctx.font = '16px serif';
-        ctx.fillStyle = "#140b02"
-        ctx.fillText(" MAP", 900, signY)
-    }
-
+   
     
 
 
@@ -2689,9 +2704,12 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
     // sunTime+=0.01
     // if(sunTime>=24)
     // sunTime=0
-    if(area[loadedAreaID].name!=="Menu"&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Rainy Woods"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave"){//update for new levels without sun
+    if(area[loadedAreaID].name!=="Menu"&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave"){//update for new levels without sun
         day = new Date();
         sunTime=day.getHours()+(day.getMinutes()/60)
+        if(debugTime!==0){
+            sunTime=debugTime
+        }
         if(sunTime<8){ //past midnight
             celestialBody.x = (sunTime+4)*72
             celestialBody.y = 580-Math.sin((sunTime+4)/4)*500
