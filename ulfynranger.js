@@ -28,7 +28,6 @@
 //backgrounds
 
 //beating current highest stage
-//arcing projectiles
 //terrain side collision?
 //textures?
 //more levels, enemies, weapons, content
@@ -1426,13 +1425,27 @@ function component(width, height, color, x, y) {//draw new boxes
                 ctx.shadowColor = "rgba(0, 0, 0, 0)"
                 ctx.globalAlpha=1
             }else if(this.type==="Projectile"){ //todo projectile
-                if(this.shape="Rect"){
-                    ctx.translate(this.x+this.size/2, this.y+this.size);
-                    if(this.speedCap!==-1){
-                    ctx.rotate((this.speedY/(this.speedX+1))/Math.PI);
+                if(this.shape==="Rect"){
+                    ctx.translate(this.x+this.size, this.y+this.size);
+                    if(this.speedX!==-1){
+                        if(this.speedX>0){
+                            this.angle=((this.speedY/(this.speedX/2+1))/Math.PI)/1.2
+                        }else if(this.speedX<0){
+                            this.angle=((this.speedY/(this.speedX/2-1))/Math.PI)/1.2
+                        }else{
+                            this.angle=Math.PI/2
+                        }
+                        if(this.angle>Math.PI/2){
+                            this.angle=Math.PI/2
+                        }else if(this.angle<-Math.PI/2){
+                            this.angle=-Math.PI/2
+                        }
+                    ctx.rotate(this.angle);
                     }
                     ctx.fillStyle = color;
+                    ctx.globalAlpha = 1-(this.markedForDeletion/30)
                     ctx.fillRect(-this.size, -this.size, this.width, this.height);
+                    ctx.globalAlpha = 1
                     ctx.setTransform(1, 0, 0, 1, 0, 0);
                 }else{
                 ctx.fillStyle = color;
@@ -1632,9 +1645,14 @@ function component(width, height, color, x, y) {//draw new boxes
                         this.speedY=-Math.abs(this.speedY-this.speedY*0.3)
                         this.speedX=this.speedX-this.speedX*0.3
                         }else{
+
+                            if(this.angle<0){
+                                this.y-=this.size
+                            }
+
                             this.markedForDeletion+=1
                             this.speedX=0
-                            if(this.markedForDeletion>2){
+                            if(this.markedForDeletion>30){
                                 this.x=-100
                             }
                         }
@@ -3290,6 +3308,7 @@ function spawnProjectile(user,speedCap,size,shape,colour,damageMin,damageMax,mul
     projectiles[projectiles.length-1].hit=[]
     projectiles[projectiles.length-1].shape=shape
     projectiles[projectiles.length-1].markedForDeletion=0
+    projectiles[projectiles.length-1].angle
     if(Math.abs(aimX)>speedCap&&Math.abs(aimX)>Math.abs(aimY)&&shape!=="Rect"){
         
         if(aimX>0){
