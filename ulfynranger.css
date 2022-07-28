@@ -345,6 +345,29 @@ body {
    
   }
 
+  #helpButton {
+    position: relative;
+    z-index:1;
+    padding: 1px 5px;
+    min-width: 38px;
+    max-width: 38px;
+    min-height: 20px;
+    max-height: 20px;
+    background-color: #b4b4b4;
+    border: 5px solid #8a8a8a;
+  
+    left: 292px;
+    bottom: 1179px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+   
+  }
+
   #saveCodeDisplay{
     position: relative;
     color:#FFFFFF;
