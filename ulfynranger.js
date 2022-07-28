@@ -1426,8 +1426,18 @@ function component(width, height, color, x, y) {//draw new boxes
                 ctx.shadowColor = "rgba(0, 0, 0, 0)"
                 ctx.globalAlpha=1
             }else if(this.type==="Projectile"){ //todo projectile
+                if(this.shape="Rect"){
+                    ctx.translate(this.x+this.size/2, this.y+this.size);
+                    if(this.speedCap!==-1){
+                    ctx.rotate((this.speedY/(this.speedX+1))/Math.PI);
+                    }
+                    ctx.fillStyle = color;
+                    ctx.fillRect(-this.size, -this.size, this.width, this.height);
+                    ctx.setTransform(1, 0, 0, 1, 0, 0);
+                }else{
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
+                }
             }else if(this.type==="celestialBody"){
                 ctx.globalCompositeOperation='destination-over';
                 ctx.fillStyle = this.colour;
@@ -1578,7 +1588,7 @@ function component(width, height, color, x, y) {//draw new boxes
                                 if(this.atkCD<=0){
 
                                     if(this.item.rangeMult===5){//todo Projectile logic
-                                        spawnProjectile(this,this.item.projSpeedcap,this.item.projSize,this.item.projShape,this.item.projColour,Math.floor(this.item.damageMin+(this.dmgPoints*0.2))*((100+this.dmgPoints)/100),Math.floor(this.item.damageMax+(this.dmgPoints*0.3)*((100+this.dmgPoints)/100)),this.item.multi,((enemy[nearTarget].x+enemy[nearTarget].size/2)-(this.x+this.size/2)),((enemy[nearTarget].y+enemy[nearTarget].size/2)-(this.y+this.size/2)))
+                                        spawnProjectile(this,this.item.projSpeedcap,this.item.projSize,this.item.projShape,this.item.projColour,Math.floor(this.item.damageMin+(this.dmgPoints*0.2))*((100+this.dmgPoints)/100),Math.floor(this.item.damageMax+(this.dmgPoints*0.3)*((100+this.dmgPoints)/100)),this.item.multi,((enemy[nearTarget].x+enemy[nearTarget].size/2)-(this.x+this.size/2)),((enemy[nearTarget].y+enemy[nearTarget].size/2)-(this.y+this.size/2)),enemy[nearTarget].size)
                                     }else{
                                         tempDamageStorage=randomDmg(Math.floor((this.item.damageMin+(this.dmgPoints*0.2))*((100+this.dmgPoints)/100)), Math.floor((this.item.damageMax+(this.dmgPoints*0.3))*((100+this.dmgPoints)/100)))
                                     enemy[nearTarget].hp=enemy[nearTarget].hp-tempDamageStorage
@@ -1618,8 +1628,16 @@ function component(width, height, color, x, y) {//draw new boxes
                         this.speedY=0
                         this.speedX=this.speedX*0.5
                     }else{
+                        if(this.shape!=="Rect"){
                         this.speedY=-Math.abs(this.speedY-this.speedY*0.3)
                         this.speedX=this.speedX-this.speedX*0.3
+                        }else{
+                            this.markedForDeletion+=1
+                            this.speedX=0
+                            if(this.markedForDeletion>2){
+                                this.x=-100
+                            }
+                        }
                     }
             }else{
                 this.y =land[c].y2;
@@ -2071,7 +2089,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             closestDist=Math.abs(closestPlayer.x-(enemy[j].x-(closestPlayer.size/2)+(enemy[j].size/2)))
             closestDistY=Math.abs(closestPlayer.y-(enemy[j].y-(closestPlayer.size/2)+(enemy[j].size/2)))
             if(enemy[j].weapon.rangeMult===5&&(closestDistY<enemy[j].weapon.range&&closestDist<enemy[j].weapon.range&&closestPlayer.hp>0)){//todo Projectile logic
-                spawnProjectile(enemy[j],enemy[j].weapon.projSpeedcap,enemy[j].weapon.projSize,enemy[j].weapon.projShape,enemy[j].weapon.projColour,enemy[j].weapon.damageMin,enemy[j].weapon.damageMax,enemy[j].weapon.multi,(closestPlayer.x+closestPlayer.size/2)-(enemy[j].x+enemy[j].size/2),(closestPlayer.y+closestPlayer.size/2)-(enemy[j].y+enemy[j].size/2))
+                spawnProjectile(enemy[j],enemy[j].weapon.projSpeedcap,enemy[j].weapon.projSize,enemy[j].weapon.projShape,enemy[j].weapon.projColour,enemy[j].weapon.damageMin,enemy[j].weapon.damageMax,enemy[j].weapon.multi,(closestPlayer.x+closestPlayer.size/2)-(enemy[j].x+enemy[j].size/2),(closestPlayer.y+closestPlayer.size/2)-(enemy[j].y+enemy[j].size/2),enemy[j].size)
                 enemy[j].atkCD=enemy[j].weapon.atkRate
             }else{
                 if(redPDistY<enemy[j].weapon.range&&redPDist<enemy[j].weapon.range&&playerNumber.hp>0){
@@ -3256,7 +3274,7 @@ function spawnDamageNumber(origin, hpChange){
 }
 
 let projectiles = [] //todo projectiles
-function spawnProjectile(user,speedCap,size,shape,colour,damageMin,damageMax,multi,aimX,aimY){
+function spawnProjectile(user,speedCap,size,shape,colour,damageMin,damageMax,multi,aimX,aimY,targetSize){
     if(shape==="Rect"){
     projectiles[projectiles.length] = new component(size,size/2,colour,user.x+user.size/2-size/2,user.y+user.size/2-size/4)
     }else if(shape==="Square"){
@@ -3270,7 +3288,9 @@ function spawnProjectile(user,speedCap,size,shape,colour,damageMin,damageMax,mul
     projectiles[projectiles.length-1].projSpeedcap=speedCap
     projectiles[projectiles.length-1].type="Projectile"
     projectiles[projectiles.length-1].hit=[]
-    if(Math.abs(aimX)>speedCap&&Math.abs(aimX)>Math.abs(aimY)){
+    projectiles[projectiles.length-1].shape=shape
+    projectiles[projectiles.length-1].markedForDeletion=0
+    if(Math.abs(aimX)>speedCap&&Math.abs(aimX)>Math.abs(aimY)&&shape!=="Rect"){
         
         if(aimX>0){
             aimY=aimY*(speedCap/aimX)
@@ -3280,7 +3300,7 @@ function spawnProjectile(user,speedCap,size,shape,colour,damageMin,damageMax,mul
             aimX=-speedCap
         }
     }
-    if(Math.abs(aimY)>speedCap&&Math.abs(aimY)>Math.abs(aimX)){
+    if(Math.abs(aimY)>speedCap&&Math.abs(aimY)>Math.abs(aimX)&&shape!=="Rect"){
        
         if(aimY>0){
             aimX=aimX*(speedCap/aimY)
@@ -3290,8 +3310,15 @@ function spawnProjectile(user,speedCap,size,shape,colour,damageMin,damageMax,mul
             aimY=-speedCap
         }
     }
+    
     projectiles[projectiles.length-1].speedX=aimX
     projectiles[projectiles.length-1].speedY=aimY
+    if(shape==="Rect"){
+        projectiles[projectiles.length-1].gravity=0.5
+        projectiles[projectiles.length-1].speedY-=(aimY)/1.04
+        projectiles[projectiles.length-1].speedY-=12
+        projectiles[projectiles.length-1].speedX-=(aimX)/1.0225
+    }
     if(user.type==="player"){
         projectiles[projectiles.length-1].affiliation="Friendly"
     }else{
