@@ -79,6 +79,7 @@ let sunTime=20
 let debugTime=0
 let helpBoxOpen=0
 let overSlot=-1
+let playerDot = new component(8, 8, "#fcbf17", 0, 0);
 
 function startGame() {
     playerNumber = new component(30, 30, "#ff0000", 130, 370);
@@ -1474,12 +1475,12 @@ function component(width, height, color, x, y) {//draw new boxes
         
         if(this.type==="enemy"||this.type==="player" && this.hp>0){//draw hp bars
             ctx.fillStyle = "#ff0000";
-            ctx.fillRect(this.x, this.y-15, this.size, 2);
+            ctx.fillRect(this.x, this.y-10, this.size, 2);
             ctx.fillStyle = "#007f00";
             if(this.type==="player"){
-            ctx.fillRect(this.x-1, this.y-16, ((this.hp/(this.maxhp+this.hpPoints*20))*this.size)+2, 4);
+            ctx.fillRect(this.x-1, this.y-11, ((this.hp/(this.maxhp+this.hpPoints*20))*this.size)+2, 4);
             }else{
-                ctx.fillRect(this.x-1, this.y-16, ((this.hp/this.maxhp)*this.size)+2, 4);
+                ctx.fillRect(this.x-1, this.y-11, ((this.hp/this.maxhp)*this.size)+2, 4);
             }
         }
         
@@ -2219,6 +2220,12 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
     playerNumber4.newPos();
     playerNumber4.update();
     inv[14].storedItem=0
+
+    ctx.globalAlpha=0.5
+    playerDot.x=playerNumberStatsShown.x+(playerNumberStatsShown.size/2)-4
+    playerDot.y=playerNumberStatsShown.y-25
+    playerDot.update()
+    ctx.globalAlpha=1
     
     if(p1Held===1){ //Check if any player is held, if they are, start dragging them
         lastslot=3
