@@ -81,6 +81,16 @@ let helpBoxOpen=0
 let overSlot=-1
 let playerDot = new component(8, 8, "#fcbf17", 0, 0);
 let debugCommands=0
+let cursorHor = new component(2, 8, "#000000", -110, 0);
+let cursorVer = new component(8, 2, "#000000", -110, 0);
+cursorHor.x=0
+cursorHor.y=0
+cursorVer.x=0
+cursorVer.y=0
+cursorHor.colour="#000000"
+cursorVer.colour="#000000"
+cursorHor.type="cursor"
+cursorVer.type="cursor"
 
 function startGame() {
     playerNumber = new component(30, 30, "#ff0000", 130, 370);
@@ -178,9 +188,11 @@ items[20]={name:"CR_ShadedWoodBoss",damageMin:8,damageMax:8,range:50,atkRate:100
 
 items[21]={name:"Present",damageMin:-10,damageMax:-10,range:100,atkRate:10-2,lifeSteal:0,defence:10,type:"Special", colour:'#9c0012', worth:10, multi:0, rangeMult:0}
 
-items[22]={name:"CR_TestBigMan",damageMin:1,damageMax:100000000,range:200,atkRate:10-2,lifeSteal:0,defence:0,type:"CR_Special1", colour:'#191919', worth:-1, multi:1, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[22]={name:"CR_TestBigMan",damageMin:1,damageMax:100000000,range:200,atkRate:10-2,lifeSteal:0,defence:0,type:"CR_Special", colour:'#191919', worth:-1, multi:1, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
 
 items[23]={name:"Imposter's Knife",damageMin:1,damageMax:100,range:15,atkRate:2000-2,lifeSteal:0,defence:0,type:"Special", colour:'#D71E22', worth:1000, multi:0, rangeMult:0.1}
+
+items[24]={name:"CR_TargetDummy",damageMin:0,damageMax:0,range:0,atkRate:1000-2,lifeSteal:0,defence:0,type:"CR_Special", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
 function addItem(player, itemID){//clean this
     switch(player){
@@ -1382,6 +1394,7 @@ var myGameArea = {
         this.canvas.id="canvas"
         this.canvas.width = 960;
         this.canvas.height = 540;
+        //this.canvas.style.cursor="none"
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -1490,6 +1503,8 @@ function component(width, height, color, x, y) {//draw new boxes
     this.y = y;
     this.gravity = 0;
     this.update = function() {
+        
+
 
         if(this.type==="item"||this.type==="health"||this.type==="coin"){//draw hp item coin
             if((Math.floor(this.data.cooldown/5))%2===1){
@@ -1562,6 +1577,9 @@ function component(width, height, color, x, y) {//draw new boxes
                 ctx.fillStyle = this.colour;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
                 ctx.globalCompositeOperation='source-over';
+            }else if(this.type==="cursor"){
+                ctx.fillStyle = this.colour;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
             }else{
                 ctx.fillStyle = color;
                 ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -2316,6 +2334,8 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
     playerNumber4.newPos();
     playerNumber4.update();
     inv[14].storedItem=0
+
+    
 
     ctx.globalAlpha=0.5
     playerDot.x=playerNumberStatsShown.x+(playerNumberStatsShown.size/2)-4
@@ -3143,6 +3163,9 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
     }
     
 }
+
+// cursorHor.update()
+// cursorVer.update()
 }
 
 function updateSaveCode(){// update if add new stage :) new level update for
@@ -3416,6 +3439,12 @@ document.addEventListener("mousemove",updateMouseCoords)
 function updateMouseCoords(event){ //Mouse position tracking
     pointerX = event.pageX-(playerNumber.size/2)-(window.innerWidth-960)/2;
     pointerY = event.pageY-(playerNumber.size/2)-(window.innerHeight-540-250)/2;
+    if(cursorHor.x!==pointerX-5||cursorVer.x!==pointerX-1||cursorHor.y!==pointerY+1||cursorVer.y!==pointerY+5){
+        cursorHor.x=pointerX+14
+        cursorVer.x=pointerX+11
+        cursorHor.y=pointerY+11
+        cursorVer.y=pointerY+14
+    }
 }
 
 function playerMoveToMouse(playerHeld, event){ //Move player currently held towards mouse
@@ -3715,7 +3744,7 @@ function logKey(e) {
     i++
   }
   if(e.code==="KeyD"){
-    enemy[i] = new component(20, 20, "purple", pointerX-10, pointerY+10);
+    enemy[i] = new component(20, 20, "purple", pointerX, pointerY);
     enemy[i].size=20
     enemy[i].gravity = 0;
     enemy[i].hp=1000000000000000000000000
@@ -3723,7 +3752,7 @@ function logKey(e) {
     enemy[i].type="enemy"
     enemy[i].movementType="none"
     enemy[i].exp=15
-    enemy[i].weapon=items[0]
+    enemy[i].weapon=items[24]
     enemy[i].atkCD=0
     enemy[i].drops={
         coin:100,
