@@ -3641,7 +3641,6 @@ function findClosestPlayer(me){
     document.addEventListener('keyup', logKeyUp);
 document.addEventListener('keydown', logKey);//enemy spawning
 function logKeyUp(e){
-    if(debugCommands!==0){
     if(e.code==="ShiftLeft"){
         lastslot=-1
         document.getElementById(14).style.borderColor='#8a8a8a'
@@ -3649,6 +3648,7 @@ function logKeyUp(e){
 }
 
 function logKey(e) {
+    if(debugCommands!==0){
   if(e.code==="KeyA"){
     enemy[i] = new component(20, 20, "purple", 480, 270);
     enemy[i].size=20
