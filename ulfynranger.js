@@ -80,6 +80,7 @@ let debugTime=0
 let helpBoxOpen=0
 let overSlot=-1
 let playerDot = new component(8, 8, "#fcbf17", 0, 0);
+let debugCommands=0
 
 function startGame() {
     playerNumber = new component(30, 30, "#ff0000", 130, 370);
@@ -149,35 +150,37 @@ function startGame() {
 
 //update for new level
 
-items[0]={name:"None",damageMin:1,damageMax:1,range:11,atkRate:100,lifeSteal:0,defence:0,type:"None", colour:'#b4b4b4', worth:0, multi:0, rangeMult:0.1}
+items[0]={name:"None",damageMin:1,damageMax:1,range:11,atkRate:100-2,lifeSteal:0,defence:0,type:"None", colour:'#b4b4b4', worth:0, multi:0, rangeMult:0.1}
 
-items[1]={name:"Slightly Sharp Stick",damageMin:2,damageMax:4,range:25,atkRate:50,lifeSteal:0,defence:0,type:"Sword", colour:'#a83232', worth:10, multi:0, rangeMult:0.1}
-items[2]={name:"Cardboard Shield",damageMin:1,damageMax:1,range:15,atkRate:100,lifeSteal:0,defence:1,type:"Shield", colour:'#75a832', worth:10, multi:0, rangeMult:0.1}
-items[3]={name:"Cheap Toy Bow",damageMin:1,damageMax:3,range:160,atkRate:80,lifeSteal:0,defence:0,type:"Bow", colour:'#634f1c', worth:10, multi:0, rangeMult:5, projSpeedcap:10, projSize:10, projShape:"Rect", projColour:"#d6d198"}
-items[4]={name:"Small Plastic Wand",damageMin:0,damageMax:1,range:300,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#660033', worth:10, multi:0, rangeMult:5, projSpeedcap:15, projSize:8, projShape:"Square", projColour:"#87867c"}
-items[5]={name:"CR_IntoAveBasic",damageMin:1,damageMax:2,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[6]={name:"CR_IntroAveBoss",damageMin:12,damageMax:22,range:300,atkRate:200,lifeSteal:0,defence:0,type:"CR_Special1", colour:'#191919', worth:-1, multi:1, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
-items[7]={name:"CR_IntroAveRanged",damageMin:1,damageMax:2,range:130,atkRate:200,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
-items[8]={name:"CR_IntroAveStrong",damageMin:5,damageMax:10,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[9]={name:"CR_IntroAveWeak",damageMin:0,damageMax:1,range:45,atkRate:400,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[1]={name:"Slightly Sharp Stick",damageMin:2,damageMax:4,range:25,atkRate:50-2,lifeSteal:0,defence:0,type:"Sword", colour:'#a83232', worth:10, multi:0, rangeMult:0.1}
+items[2]={name:"Cardboard Shield",damageMin:1,damageMax:1,range:15,atkRate:100-2,lifeSteal:0,defence:1,type:"Shield", colour:'#75a832', worth:10, multi:0, rangeMult:0.1}
+items[3]={name:"Cheap Toy Bow",damageMin:1,damageMax:3,range:160,atkRate:80-2,lifeSteal:0,defence:0,type:"Bow", colour:'#634f1c', worth:10, multi:0, rangeMult:5, projSpeedcap:10, projSize:10, projShape:"Rect", projColour:"#d6d198"}
+items[4]={name:"Small Plastic Wand",damageMin:0,damageMax:1,range:300,atkRate:200-2,lifeSteal:0,defence:0,type:"Staff", colour:'#660033', worth:10, multi:0, rangeMult:5, projSpeedcap:15, projSize:8, projShape:"Square", projColour:"#87867c"}
+items[5]={name:"CR_IntoAveBasic",damageMin:1,damageMax:2,range:45,atkRate:200-2,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[6]={name:"CR_IntroAveBoss",damageMin:12,damageMax:22,range:300,atkRate:200-2,lifeSteal:0,defence:0,type:"CR_Special1", colour:'#191919', worth:-1, multi:1, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[7]={name:"CR_IntroAveRanged",damageMin:1,damageMax:2,range:130,atkRate:200-2,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[8]={name:"CR_IntroAveStrong",damageMin:5,damageMax:10,range:45,atkRate:200-2,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[9]={name:"CR_IntroAveWeak",damageMin:0,damageMax:1,range:45,atkRate:400-2,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
-items[10]={name:"CR_GrassyFieldFlyingMelee",damageMin:19,damageMax:25,range:45,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:30,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
-items[12]={name:"CR_GrassyFieldWeakMelee",damageMin:4,damageMax:6,range:45,atkRate:300,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:140,atkRate:50,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[10]={name:"CR_GrassyFieldFlyingMelee",damageMin:19,damageMax:25,range:45,atkRate:200-2,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[11]={name:"CR_GrassyFieldFlyingRanged",damageMin:3,damageMax:4,range:120,atkRate:30-2,lifeSteal:0,defence:0,type:"CR_Ranged", colour:'#191919', worth:-1, multi:0, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[12]={name:"CR_GrassyFieldWeakMelee",damageMin:4,damageMax:6,range:45,atkRate:300-2,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[13]={name:"CR_GrassyFieldBoss",damageMin:6,damageMax:6,range:140,atkRate:50-2,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
-items[14]={name:"Sharpened Flint",damageMin:6,damageMax:10,range:25,atkRate:50,lifeSteal:0,defence:0,type:"Sword", colour:'#872424', worth:33, multi:0, rangeMult:0.1}
-items[15]={name:"Decent Wood Shield",damageMin:2,damageMax:3,range:15,atkRate:100,lifeSteal:0,defence:5,type:"Shield", colour:'#5a8224', worth:33, multi:0, rangeMult:0.1}
-items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:80,lifeSteal:0,defence:0,type:"Bow", colour:'#42330d', worth:33, multi:0, rangeMult:5, projSpeedcap:12, projSize:10, projShape:"Rect", projColour:"#d6d198"}
-items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:5, projSpeedcap:20, projSize:8, projShape:"Square", projColour:"#87867c"}
+items[14]={name:"Sharpened Flint",damageMin:6,damageMax:10,range:25,atkRate:50-2,lifeSteal:0,defence:0,type:"Sword", colour:'#872424', worth:33, multi:0, rangeMult:0.1}
+items[15]={name:"Decent Wood Shield",damageMin:2,damageMax:3,range:15,atkRate:100-2,lifeSteal:0,defence:5,type:"Shield", colour:'#5a8224', worth:33, multi:0, rangeMult:0.1}
+items[16]={name:"Handmade Bow",damageMin:4,damageMax:7,range:160,atkRate:80-2,lifeSteal:0,defence:0,type:"Bow", colour:'#42330d', worth:33, multi:0, rangeMult:5, projSpeedcap:12, projSize:10, projShape:"Rect", projColour:"#d6d198"}
+items[17]={name:"Maybe Magical Stick",damageMin:0,damageMax:3,range:250,atkRate:200-2,lifeSteal:0,defence:0,type:"Staff", colour:'#4a0226', worth:33, multi:0, rangeMult:5, projSpeedcap:20, projSize:8, projShape:"Square", projColour:"#87867c"}
 
-items[18]={name:"CR_ShadedWoodMelee",damageMin:3,damageMax:8,range:60,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[19]={name:"CR_ShadedWoodFlying",damageMin:1,damageMax:20,range:50,atkRate:200,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
-items[20]={name:"CR_ShadedWoodBoss",damageMin:8,damageMax:8,range:50,atkRate:100,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[18]={name:"CR_ShadedWoodMelee",damageMin:3,damageMax:8,range:60,atkRate:200-2,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[19]={name:"CR_ShadedWoodFlying",damageMin:1,damageMax:20,range:50,atkRate:200-2,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
+items[20]={name:"CR_ShadedWoodBoss",damageMin:8,damageMax:8,range:50,atkRate:100-2,lifeSteal:0,defence:0,type:"CR_Melee", colour:'#191919', worth:-1, multi:0, rangeMult:0.1}
 
-items[21]={name:"Present",damageMin:-10,damageMax:-10,range:100,atkRate:10,lifeSteal:0,defence:10,type:"Special", colour:'#9c0012', worth:10, multi:0, rangeMult:0}
+items[21]={name:"Present",damageMin:-10,damageMax:-10,range:100,atkRate:10-2,lifeSteal:0,defence:10,type:"Special", colour:'#9c0012', worth:10, multi:0, rangeMult:0}
 
-items[22]={name:"CR_TestBigMan",damageMin:1,damageMax:100000000,range:200,atkRate:10,lifeSteal:0,defence:0,type:"CR_Special1", colour:'#191919', worth:-1, multi:1, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+items[22]={name:"CR_TestBigMan",damageMin:1,damageMax:100000000,range:200,atkRate:10-2,lifeSteal:0,defence:0,type:"CR_Special1", colour:'#191919', worth:-1, multi:1, rangeMult:5, projSpeedcap:10, projSize:8, projShape:"Square", projColour:"#e86d61"}
+
+items[23]={name:"Imposter's Knife",damageMin:1,damageMax:100,range:15,atkRate:2000-2,lifeSteal:0,defence:0,type:"Special", colour:'#D71E22', worth:1000, multi:0, rangeMult:0.1}
 
 function addItem(player, itemID){//clean this
     switch(player){
@@ -565,8 +568,19 @@ function loadSaveFromCode(){//saveload
     if(splitSaveString[47]===1){
     area[9].unlocked=1
     }
-    area[8].cleared=splitSaveString[48]
-    area[9].cleared=splitSaveString[49]
+    area[8].cleared=splitSaveString[48]//deep dark
+    if(splitSaveString[48]===1){
+        area[10].unlocked=1
+        }
+    area[9].cleared=splitSaveString[49]//foggy clearing
+    area[10].cleared=splitSaveString[50]//crystal cavern
+    if(splitSaveString[50]===1){
+        area[11].unlocked=1
+        }
+    area[11].cleared=splitSaveString[51]//cave exit
+    if(splitSaveString[51]===1){
+        area[12].unlocked=1
+        }
     clickButton(0)
     clickButton(0)
     clickButton(1)
@@ -581,16 +595,22 @@ function loadSaveFromCode(){//saveload
 }
 
 //update for each new level when make level making levels
-area[0]={name:"Menu",subAreaCount:1,unlocked:0,cleared:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"} //Stage list
-area[1]={name:"Town",subAreaCount:1,unlocked:1,x:100,y:300,cleared:2,stageToUnlock1:3,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
-area[2]={name:"Map",subAreaCount:1,unlocked:0,cleared:-1, skyColour:"#658a5a"}
-area[3]={name:"Intro Gardens",subAreaCount:9,unlocked:1,x:150,y:300,cleared:0,stageToUnlock1:4,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3"}
-area[4]={name:"Grassy Fields",subAreaCount:7,unlocked:0,x:180,y:250,cleared:0,stageToUnlock1:5,stageToUnlock2:-1, dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
-area[5]={name:"Shaded Woods",subAreaCount:4,unlocked:0,x:230,y:270,cleared:0,stageToUnlock1:6,stageToUnlock2:7, special:"LowDark", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
-area[6]={name:"Hidden Cave",subAreaCount:6,unlocked:0,x:240,y:320,cleared:0,stageToUnlock1:8,stageToUnlock2:-1, special:"MidDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
-area[7]={name:"Rainy Woods",subAreaCount:5,unlocked:0,x:280,y:275,cleared:0,stageToUnlock1:9,stageToUnlock2:-1, special:"Rain", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#6d6f82"}
-area[8]={name:"Deep Dark",subAreaCount:4,unlocked:0,x:235,y:370,cleared:0,stageToUnlock1:10,stageToUnlock2:-1, special:"HighDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54"}
-area[9]={name:"Foggy Clearing",subAreaCount:2,unlocked:0,x:325,y:285,cleared:0,stageToUnlock1:11,stageToUnlock2:-1, special:"Fog", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3"}
+area[0]={name:"Menu",subAreaCount:1,unlocked:0,cleared:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3", sun:0} //Stage list
+area[1]={name:"Town",subAreaCount:1,unlocked:1,x:100,y:300,cleared:2,stageToUnlock1:3,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3", sun:1}
+area[2]={name:"Map",subAreaCount:1,unlocked:0,cleared:-1, skyColour:"#658a5a", sun:0}
+area[3]={name:"Intro Gardens",subAreaCount:9,unlocked:1,x:150,y:300,cleared:0,stageToUnlock1:4,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3", sun:1}
+area[4]={name:"Grassy Fields",subAreaCount:7,unlocked:0,x:180,y:250,cleared:0,stageToUnlock1:5,stageToUnlock2:-1, dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3", sun:1}
+area[5]={name:"Shaded Woods",subAreaCount:4,unlocked:0,x:230,y:270,cleared:0,stageToUnlock1:6,stageToUnlock2:7, special:"LowDark", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3", sun:1}
+area[6]={name:"Hidden Cave",subAreaCount:6,unlocked:0,x:240,y:320,cleared:0,stageToUnlock1:8,stageToUnlock2:-1, special:"MidDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54", sun:0}
+area[7]={name:"Rainy Woods",subAreaCount:5,unlocked:0,x:280,y:275,cleared:0,stageToUnlock1:9,stageToUnlock2:-1, special:"Rain", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#6d6f82", sun:1}
+area[8]={name:"Deep Dark",subAreaCount:4,unlocked:0,x:235,y:370,cleared:0,stageToUnlock1:10,stageToUnlock2:-1, special:"HighDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54", sun:0}
+area[9]={name:"Foggy Clearing",subAreaCount:2,unlocked:0,x:325,y:285,cleared:0,stageToUnlock1:13,stageToUnlock2:-1, special:"Fog", dirtColour:"#694616", grassColour:"#0d5c03", skyColour:"#9097d3", sun:1}
+area[10]={name:"Crystal Cavern",subAreaCount:5,unlocked:0,x:240,y:420,cleared:0,stageToUnlock1:11,stageToUnlock2:-1, special:"MidDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54", sun:0}
+area[11]={name:"Cave Exit",subAreaCount:2,unlocked:0,x:250,y:465,cleared:0,stageToUnlock1:12,stageToUnlock2:-1, special:"MidDark", dirtColour:"#878178", grassColour:"#878178", skyColour:"#615c54", sun:0}
+area[12]={name:"Village",subAreaCount:1,unlocked:0,x:290,y:490,cleared:2,stageToUnlock1:-1,stageToUnlock2:-1, dirtColour:"#7b531b", grassColour:"#17740b", skyColour:"#9097d3", sun:1}
+
+
+
 
 function renderStage(){ //Stage loading
     land=[]
@@ -1268,6 +1288,81 @@ function renderStage(){ //Stage loading
             signY=478
         }
     }
+    if(area[loadedAreaID].name==="Crystal Cavern"){//4
+        if(subArea===1){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30)
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===2){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30)
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===3){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30)
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===4){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30)
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+        if(subArea===5){
+            newLand(-1,510,1000,5400)
+            newLand(-1,-1000,1000,30)
+            playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+            playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+            playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+            playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+            signY=478
+        }
+    }
+    if(area[loadedAreaID].name==="Cave Exit"){//4
+    if(subArea===1){
+        newLand(-1,510,1000,5400)
+        newLand(-1,-1000,1000,30)
+        playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+        playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+        playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+        playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+        signY=478
+    }
+    if(subArea===2){
+        newLand(-1,510,1000,5400)
+        newLand(-1,-1000,1000,30)
+        playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+        playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+        playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+        playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+        signY=478
+    }
+    }
+    if(area[loadedAreaID].name==="Village"){//Main menu
+        newLand(-1,510,1000,5400)
+        playerNumber4.x=10;playerNumber4.y=370;playerNumber4.speedX=0;playerNumber4.speedY=0
+        playerNumber3.x=50;playerNumber3.y=370;playerNumber3.speedX=0;playerNumber3.speedY=0
+        playerNumber2.x=90;playerNumber2.y=370;playerNumber2.speedX=0;playerNumber2.speedY=0
+        playerNumber.x=130;playerNumber.y=370;playerNumber.speedX=0;playerNumber.speedY=0
+        signY=478
+    }
 }
 
 //create more terrain
@@ -1350,16 +1445,16 @@ function refreshPlayerStatsBox(){
 
     playerStatsBox.innerHTML=`
     <br />
-    Health:${playerNumberStatsShown.hp}/${(playerNumberStatsShown.maxhp+playerNumberStatsShown.hpPoints*20)}<br/>
-    Damage:${Math.floor((playerNumberStatsShown.item.damageMin+(playerNumberStatsShown.dmgPoints*0.2))*((100+playerNumberStatsShown.dmgPoints)/100))}–${Math.floor((playerNumberStatsShown.item.damageMax+(playerNumberStatsShown.dmgPoints*0.3))*((100+playerNumberStatsShown.dmgPoints)/100))}<br/>
+    Hp:${playerNumberStatsShown.hp}/${(playerNumberStatsShown.maxhp+playerNumberStatsShown.hpPoints*20)}<br/>
+    Dmg:${Math.floor((playerNumberStatsShown.item.damageMin+(playerNumberStatsShown.dmgPoints*0.2))*((100+playerNumberStatsShown.dmgPoints)/100))}–${Math.floor((playerNumberStatsShown.item.damageMax+(playerNumberStatsShown.dmgPoints*0.3))*((100+playerNumberStatsShown.dmgPoints)/100))}<br/>
     Range:${playerNumberStatsShown.item.range+Math.round((playerNumberStatsShown.rangePoints*playerNumberStatsShown.item.rangeMult) * 10) / 10}<br/>
-    Attack Delay:${Math.floor(playerNumberStatsShown.item.atkRate/((100+playerNumberStatsShown.cdPoints*2.5)/100))}<br/>
-    Defence:${playerNumberStatsShown.item.defence}<br/>
-    Lifesteal:${playerNumberStatsShown.item.lifeSteal}<br/>
+    Delay:${Math.floor(playerNumberStatsShown.item.atkRate/((100+playerNumberStatsShown.cdPoints*2.5)/100))+2}<br/>
+    Def:${playerNumberStatsShown.item.defence}<br/>
+    Leech:${playerNumberStatsShown.item.lifeSteal}<br/>
     <br/>
     <br/>
-    Level: ${level} SP: ${playerNumberStatsShown.skillPoints}<br/>
-    EXP: ${totalEXP}
+    Lv: ${level} Sp: ${playerNumberStatsShown.skillPoints}<br/>
+    Exp: ${totalEXP}
     `
     playerStatsPic.style.background=playerNumberStatsShown.colour
     playerNumberStatsChanged=playerNumberStatsShown.hp
@@ -1372,11 +1467,11 @@ function refreshItemStatsBox(){
     itemStatsBox.innerHTML=`
     <br/>
     Name: ${items[inv[lastslot].storedItem].name}<br/>
-    Damage: ${items[inv[lastslot].storedItem].damageMin}–${items[inv[lastslot].storedItem].damageMax}<br/>
+    Dmg: ${items[inv[lastslot].storedItem].damageMin}–${items[inv[lastslot].storedItem].damageMax}<br/>
     Range: ${items[inv[lastslot].storedItem].range}<br/>
-    Attack Delay: ${items[inv[lastslot].storedItem].atkRate}<br/>
-    Defence: ${items[inv[lastslot].storedItem].defence}<br/>
-    Lifesteal: ${items[inv[lastslot].storedItem].lifeSteal}<br/>
+    Delay: ${items[inv[lastslot].storedItem].atkRate+2}<br/>
+    Def: ${items[inv[lastslot].storedItem].defence}<br/>
+    Leech: ${items[inv[lastslot].storedItem].lifeSteal}<br/>
     Value: £${items[inv[lastslot].storedItem].worth}
     `
     itemStatsPic.style.background=items[inv[lastslot].storedItem].colour
@@ -1439,22 +1534,23 @@ function component(width, height, color, x, y) {//draw new boxes
                     ctx.translate(this.x+this.size/2, this.y+this.size);
                     if(this.speedX!==-1){
                         if(this.speedX>0){
-                            this.angle=((this.speedY/(this.speedX/2+1))/Math.PI)/1.2
+                            this.angle=((this.speedY/(this.speedX/2+1))/Math.PI)/1.1
                         }else if(this.speedX<0){
-                            this.angle=((this.speedY/(this.speedX/2-1))/Math.PI)/1.2
+                            this.angle=((this.speedY/(this.speedX/2-1))/Math.PI)/1.1
                         }else{
-                            this.angle=Math.PI/2
+                            
                         }
                         if(this.angle>Math.PI/2){
                             this.angle=Math.PI/2
                         }else if(this.angle<-Math.PI/2){
                             this.angle=-Math.PI/2
                         }
-                    ctx.rotate(this.angle);
+                        ctx.rotate(this.angle);
                     }
                     ctx.fillStyle = color;
                     ctx.globalAlpha = 1-(this.markedForDeletion/30)
                     ctx.fillRect(-this.size, -this.size/2, this.width, this.height);
+                    
                     ctx.globalAlpha = 1
                     ctx.setTransform(1, 0, 0, 1, 0, 0);
                 }else{
@@ -1620,7 +1716,7 @@ function component(width, height, color, x, y) {//draw new boxes
                                         enemy[nearTarget].hp=enemy[nearTarget].maxhp
                                     }
                                 }
-                                    this.atkCD=Math.floor(this.item.atkRate/((100+this.cdPoints*2.5)/100))
+                                    this.atkCD=Math.floor(this.item.atkRate/((100+this.cdPoints*2.5)/100))+2
                                 }else{
                                     this.atkCD=this.atkCD-1
                                 }
@@ -2118,7 +2214,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
             closestDistY=Math.abs(closestPlayer.y-(enemy[j].y-(closestPlayer.size/2)+(enemy[j].size/2)))
             if(enemy[j].weapon.rangeMult===5&&(closestDistY<enemy[j].weapon.range&&closestDist<enemy[j].weapon.range&&closestPlayer.hp>0)){//todo Projectile logic
                 spawnProjectile(enemy[j],enemy[j].weapon.projSpeedcap,enemy[j].weapon.projSize,enemy[j].weapon.projShape,enemy[j].weapon.projColour,enemy[j].weapon.damageMin,enemy[j].weapon.damageMax,enemy[j].weapon.multi,(closestPlayer.x+closestPlayer.size/2)-(enemy[j].x+enemy[j].size/2),(closestPlayer.y+closestPlayer.size/2)-(enemy[j].y+enemy[j].size/2),enemy[j].size)
-                enemy[j].atkCD=enemy[j].weapon.atkRate
+                enemy[j].atkCD=enemy[j].weapon.atkRate+2
             }else{
                 if(redPDistY<enemy[j].weapon.range&&redPDist<enemy[j].weapon.range&&playerNumber.hp>0){
                     if(enemy[j].weapon.damageMin-playerNumber.item.defence<1){
@@ -2126,14 +2222,14 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                         spawnDamageNumber(playerNumber, 1)
                         playerNumber.hp=playerNumber.hp-1
                     
-                    enemy[j].atkCD=enemy[j].weapon.atkRate
+                    enemy[j].atkCD=enemy[j].weapon.atkRate+2
                     }else{
                         tempDamageStorage=Math.max(0, randomDmg(enemy[j].weapon.damageMin, enemy[j].weapon.damageMax)-playerNumber.item.defence)
                         if(playerNumber.hp>0)
                         spawnDamageNumber(playerNumber, tempDamageStorage)
                         playerNumber.hp=playerNumber.hp-tempDamageStorage
 
-                    enemy[j].atkCD=enemy[j].weapon.atkRate
+                    enemy[j].atkCD=enemy[j].weapon.atkRate+2
                 }
                     if(playerNumber.hp<0){
                         playerNumber.hp=0
@@ -2145,14 +2241,14 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                         spawnDamageNumber(playerNumber2, 1)
                         playerNumber2.hp=playerNumber2.hp-1
                         
-                        enemy[j].atkCD=enemy[j].weapon.atkRate
+                        enemy[j].atkCD=enemy[j].weapon.atkRate+2
                         }else{
                             tempDamageStorage=Math.max(0, randomDmg(enemy[j].weapon.damageMin, enemy[j].weapon.damageMax)-playerNumber2.item.defence)
                             if(playerNumber2.hp>0)
                             spawnDamageNumber(playerNumber2, tempDamageStorage)
                             playerNumber2.hp=playerNumber2.hp-tempDamageStorage
                    
-                    enemy[j].atkCD=enemy[j].weapon.atkRate        
+                    enemy[j].atkCD=enemy[j].weapon.atkRate +2       
                 }
                     if(playerNumber2.hp<0){
                         playerNumber2.hp=0
@@ -2164,14 +2260,14 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                         spawnDamageNumber(playerNumber3, 1)
                         playerNumber3.hp=playerNumber3.hp-1
                         
-                        enemy[j].atkCD=enemy[j].weapon.atkRate
+                        enemy[j].atkCD=enemy[j].weapon.atkRate+2
                         }else{
                             tempDamageStorage=Math.max(0, randomDmg(enemy[j].weapon.damageMin, enemy[j].weapon.damageMax)-playerNumber3.item.defence)
                             if(playerNumber3.hp>0)
                             spawnDamageNumber(playerNumber3, tempDamageStorage)
                             playerNumber3.hp=playerNumber3.hp-tempDamageStorage
                     
-                    enemy[j].atkCD=enemy[j].weapon.atkRate       
+                    enemy[j].atkCD=enemy[j].weapon.atkRate+2  
                 }
                     if(playerNumber3.hp<0){
                         playerNumber3.hp=0
@@ -2183,14 +2279,14 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                         spawnDamageNumber(playerNumber4, 1) 
                         playerNumber4.hp=playerNumber4.hp-1
                         
-                        enemy[j].atkCD=enemy[j].weapon.atkRate
+                        enemy[j].atkCD=enemy[j].weapon.atkRate+2
                         }else{
                             tempDamageStorage=Math.max(0, randomDmg(enemy[j].weapon.damageMin, enemy[j].weapon.damageMax)-playerNumber4.item.defence)
                             if(playerNumber4.hp>0)
                             spawnDamageNumber(playerNumber4, tempDamageStorage)
                             playerNumber4.hp=playerNumber4.hp-tempDamageStorage
                     
-                    enemy[j].atkCD=enemy[j].weapon.atkRate       
+                    enemy[j].atkCD=enemy[j].weapon.atkRate+2
                 }
                     if(playerNumber4.hp<0){
                         playerNumber4.hp=0
@@ -2229,18 +2325,22 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
     
     if(p1Held===1){ //Check if any player is held, if they are, start dragging them
         lastslot=3
+        playerNumber.atkCD=playerNumber.atkRate+2
         playerMoveToMouse(playerNumber)
     }
     if(p2Held===1){
         lastslot=2
+        playerNumber2.atkCD=playerNumber2.atkRate+2
         playerMoveToMouse(playerNumber2)
     }
     if(p3Held===1){
         lastslot=1
+        playerNumber3.atkCD=playerNumber3.atkRate+2
         playerMoveToMouse(playerNumber3)
     }
     if(p4Held===1){
         lastslot=0
+        playerNumber4.atkCD=playerNumber4.atkRate+2
         playerMoveToMouse(playerNumber4)
     }
 
@@ -2301,7 +2401,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         }
     }
 
-    if(area[loadedAreaID].name==="Town"){
+    if(area[loadedAreaID].name==="Town"||area[loadedAreaID].name==="Village"){
         ctx = myGameArea.context;
         ctx.globalCompositeOperation='destination-over';
         ctx.font = 'bold 25px serif';
@@ -2319,7 +2419,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
     }
 
     healRngNum=Math.floor(Math.random() * 20)
-    if(area[loadedAreaID].name==="Town"){
+    if(area[loadedAreaID].name==="Town"||area[loadedAreaID].name==="Village"){
     if(healRngNum===14){
         if(playerNumber.hp<playerNumber.maxhp+(playerNumber.hpPoints*20)){
         playerNumber.hp+=Math.floor((playerNumber.maxhp+(playerNumber.hpPoints*20))/40)
@@ -2409,7 +2509,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                                 ctx.globalCompositeOperation="source-over";
                                 ctx.font = '16px serif';
                                 ctx.fillStyle = "#072b4a"
-                                ctx.fillText(`${area[r].name}`, area[r].x-area[r].name.length*2, area[r].y-16)
+                                ctx.fillText(`${area[r].name}`, area[r].x-area[r].name.length*2.5, area[r].y-16)
                             }
                         }else if(area[r].cleared===1){
                             ctx.fillStyle = "#2bc4a1"
@@ -2421,7 +2521,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
                                 ctx.globalCompositeOperation="source-over";
                                 ctx.font = '16px serif';
                                 ctx.fillStyle = "#072b4a"
-                                ctx.fillText(`${area[r].name}`, area[r].x-area[r].name.length*2, area[r].y-16)
+                                ctx.fillText(`${area[r].name}`, area[r].x-area[r].name.length*2.5, area[r].y-16)
                             }
                         }else if(area[r].cleared===2){
                             ctx.fillStyle = "#FFFFFF"
@@ -2816,7 +2916,7 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
     // sunTime+=0.01
     // if(sunTime>=24)
     // sunTime=0
-    if(area[loadedAreaID].name!=="Menu"&&area[loadedAreaID].name!=="Map"&&area[loadedAreaID].name!=="Deep Dark"&&area[loadedAreaID].name!=="Hidden Cave"){//update for new levels without sun
+    if(area[loadedAreaID].sun===1){
         day = new Date();
         sunTime=day.getHours()+(day.getMinutes()/60)
         if(debugTime!==0){
@@ -2868,8 +2968,8 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
     celestialBody.update()
 
     }
-    
-    if(area[loadedAreaID].name==="Town" && shopOpen===1){//new item new level update shop pics
+
+    if(area[loadedAreaID].name==="Village" && shopOpen===1){//new item new level update shop pics update for
         ctx = myGameArea.context;
         ctx.fillStyle = "#4a4a4a" //shop bg
         ctx.fillRect(100, 100, 760, 340);
@@ -2879,6 +2979,86 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
 
         ctx.fillStyle = "#911616" //item sp
         ctx.fillRect(150, 150, 30, 30);
+
+        if(level>5){
+            ctx.fillStyle = `${items[1].colour}` //item 1
+            ctx.fillRect(190, 150, 30, 30);
+        }
+
+        if(level*10<=money){//respec
+            ctx.fillStyle = "#6b6b6b"
+            ctx.fillRect( 223, 395,115,38)
+            ctx.fillStyle = "#25801b"
+            ctx.fillRect( 228, 400,105,28)
+            ctx.font = '13px serif';
+            ctx.fillStyle = "#000000"
+            ctx.fillText(`Respec SP: £${level*10}`, 234, 418)
+        }else{
+            ctx.fillStyle = "#6b6b6b"
+            ctx.fillRect( 223, 395,115,38)
+            ctx.fillStyle = "#7d2323"
+            ctx.fillRect( 228, 400,105,28)
+            ctx.font = '13px serif';
+            ctx.fillStyle = "#000000"
+            ctx.fillText(`Respec SP: £${level*10}`, 234, 418)
+        }
+
+        if(itemToBuy!==-1){
+            switch( itemToBuy){
+                case "SP":
+                    if(spPrice<=money){
+                        ctx.fillStyle = "#6b6b6b"
+                        ctx.fillRect( 433, 395,105,38)
+                        ctx.fillStyle = "#25801b"
+                        ctx.fillRect( 438, 400,95,28)
+                    }else{
+                        ctx.fillStyle = "#6b6b6b"
+                        ctx.fillRect( 433, 395,105,38)
+                        ctx.fillStyle = "#7d2323"
+                        ctx.fillRect( 438, 400,95,28)
+                    }
+                break
+                default:
+                    if(items[itemToBuy].worth*3<=money){
+                        ctx.fillStyle = "#6b6b6b"
+                        ctx.fillRect( 433, 395,105,38)
+                        ctx.fillStyle = "#25801b"
+                        ctx.fillRect( 438, 400,95,28)
+                    }else{
+                        ctx.fillStyle = "#6b6b6b"
+                        ctx.fillRect( 433, 395,105,38)
+                        ctx.fillStyle = "#7d2323"
+                        ctx.fillRect( 438, 400,95,28)
+                    }
+                break
+        }
+    }
+
+    ctx.font = 'bold 20px serif';
+    ctx.fillStyle = "#000000"
+
+    switch(itemToBuy){
+        case "SP":
+        ctx.fillText("+1 Skill Point", 431, 140)
+        ctx.fillText(`${spPrice}`, 443, 420)
+        break;
+        case -1:
+        break
+        default:
+        ctx.fillText(`${items[itemToBuy].name}`, 438-(items[itemToBuy].name.length*2), 140)
+        ctx.fillText(`${items[itemToBuy].worth*5}`, 443, 420)//shop cost mult
+        break;
+    }
+    }
+    
+    if(area[loadedAreaID].name==="Town" && shopOpen===1){//new item new level update shop pics update for
+        ctx = myGameArea.context;
+        ctx.fillStyle = "#4a4a4a" //shop bg
+        ctx.fillRect(100, 100, 760, 340);
+
+        ctx.fillStyle = "#ff0000" //close button
+        ctx.fillRect(830, 100, 30, 30);
+
         if(area[3].cleared===1){
         ctx.fillStyle = `${items[1].colour}` //item 1
         ctx.fillRect(190, 150, 30, 30);
@@ -2898,25 +3078,6 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
         ctx.fillRect(430, 150, 30, 30);
         ctx.fillStyle = `${items[17].colour}` //item 8
         ctx.fillRect(470, 150, 30, 30);
-        }
-
-
-        if(level*10<=money){//respec
-            ctx.fillStyle = "#6b6b6b"
-            ctx.fillRect( 223, 395,115,38)
-            ctx.fillStyle = "#25801b"
-            ctx.fillRect( 228, 400,105,28)
-            ctx.font = '13px serif';
-            ctx.fillStyle = "#000000"
-            ctx.fillText(`Respec SP: £${level*10}`, 234, 418)
-        }else{
-            ctx.fillStyle = "#6b6b6b"
-            ctx.fillRect( 223, 395,115,38)
-            ctx.fillStyle = "#7d2323"
-            ctx.fillRect( 228, 400,105,28)
-            ctx.font = '13px serif';
-            ctx.fillStyle = "#000000"
-            ctx.fillText(`Respec SP: £${level*10}`, 234, 418)
         }
 
         if(itemToBuy!==-1){
@@ -2984,8 +3145,8 @@ if(enemy[j].movementType==="PlayerlikeFlying"){
 }
 }
 
-function updateSaveCode(){// update if add new stage :) new level
-    saveString=`${inv[0].storedItem};${inv[1].storedItem};${inv[2].storedItem};${inv[3].storedItem};${inv[4].storedItem};${inv[5].storedItem};${inv[6].storedItem};${inv[7].storedItem};${inv[8].storedItem};${inv[9].storedItem};${inv[10].storedItem};${inv[11].storedItem};${inv[12].storedItem};${inv[13].storedItem};${playerNumber.hp};${playerNumber.hpPoints};${playerNumber.dmgPoints};${playerNumber.rangePoints};${playerNumber.cdPoints};${playerNumber.skillPoints};${playerNumber2.hp};${playerNumber2.hpPoints};${playerNumber2.dmgPoints};${playerNumber2.rangePoints};${playerNumber2.cdPoints};${playerNumber2.skillPoints};${playerNumber3.hp};${playerNumber3.hpPoints};${playerNumber3.dmgPoints};${playerNumber3.rangePoints};${playerNumber3.cdPoints};${playerNumber3.skillPoints};${playerNumber4.hp};${playerNumber4.hpPoints};${playerNumber4.dmgPoints};${playerNumber4.rangePoints};${playerNumber4.cdPoints};${playerNumber4.skillPoints};${money};${area[3].cleared};${area[4].cleared};${spPrice};${totalEXP};${level};${expToLevelUp};${area[5].cleared};${area[6].cleared};${area[7].cleared};${area[8].cleared};${area[9].cleared}`
+function updateSaveCode(){// update if add new stage :) new level update for
+    saveString=`${inv[0].storedItem};${inv[1].storedItem};${inv[2].storedItem};${inv[3].storedItem};${inv[4].storedItem};${inv[5].storedItem};${inv[6].storedItem};${inv[7].storedItem};${inv[8].storedItem};${inv[9].storedItem};${inv[10].storedItem};${inv[11].storedItem};${inv[12].storedItem};${inv[13].storedItem};${playerNumber.hp};${playerNumber.hpPoints};${playerNumber.dmgPoints};${playerNumber.rangePoints};${playerNumber.cdPoints};${playerNumber.skillPoints};${playerNumber2.hp};${playerNumber2.hpPoints};${playerNumber2.dmgPoints};${playerNumber2.rangePoints};${playerNumber2.cdPoints};${playerNumber2.skillPoints};${playerNumber3.hp};${playerNumber3.hpPoints};${playerNumber3.dmgPoints};${playerNumber3.rangePoints};${playerNumber3.cdPoints};${playerNumber3.skillPoints};${playerNumber4.hp};${playerNumber4.hpPoints};${playerNumber4.dmgPoints};${playerNumber4.rangePoints};${playerNumber4.cdPoints};${playerNumber4.skillPoints};${money};${area[3].cleared};${area[4].cleared};${spPrice};${totalEXP};${level};${expToLevelUp};${area[5].cleared};${area[6].cleared};${area[7].cleared};${area[8].cleared};${area[9].cleared};${area[10].cleared};${area[11].cleared}`
     document.getElementById("saveCodeDisplay").innerHTML = `${saveString}`
 }
 
@@ -3044,7 +3205,7 @@ function drag(){ //Find which player clicked on / near, set to held
         if(blockToMouseX<40 && blockToMouseY<40){
             p1Held=1
         }else 
-        if(area[loadedAreaID].name==="Town"&&shopOpen!==1&&pointerX>402&&pointerX<402+190&&pointerY>360&&pointerY<360+150){
+        if((area[loadedAreaID].name==="Town"||area[loadedAreaID].name==="Village")&&shopOpen!==1&&pointerX>402&&pointerX<402+190&&pointerY>360&&pointerY<360+150){
             shopOpen=1
         }
 
@@ -3105,42 +3266,7 @@ function drag(){ //Find which player clicked on / near, set to held
         }
     }
 
-        if(area[loadedAreaID].name==="Town"&&shopOpen===1){//new item new level update shop buying
-            if(pointerX>223&&pointerX<223+115&&pointerY>395&&pointerY<395+38){
-                money=money-level*10
-                playerNumber.skillPoints=playerNumber.skillPoints+playerNumber.hpPoints+playerNumber.dmgPoints+playerNumber.rangePoints+playerNumber.cdPoints
-                playerNumber.hpPoints=0
-                playerNumber.dmgPoints=0
-                playerNumber.rangePoints=0
-                playerNumber.cdPoints=0
-                playerNumber.hp=playerNumber.maxhp
-
-                playerNumber2.skillPoints=playerNumber2.skillPoints+playerNumber2.hpPoints+playerNumber2.dmgPoints+playerNumber2.rangePoints+playerNumber2.cdPoints
-                playerNumber2.hpPoints=0
-                playerNumber2.dmgPoints=0
-                playerNumber2.rangePoints=0
-                playerNumber2.cdPoints=0
-                playerNumber2.hp=playerNumber2.maxhp
-
-                playerNumber3.skillPoints=playerNumber3.skillPoints+playerNumber3.hpPoints+playerNumber3.dmgPoints+playerNumber3.rangePoints+playerNumber3.cdPoints
-                playerNumber3.hpPoints=0
-                playerNumber3.dmgPoints=0
-                playerNumber3.rangePoints=0
-                playerNumber3.cdPoints=0
-                playerNumber3.hp=playerNumber3.maxhp
-
-                playerNumber4.skillPoints=playerNumber4.skillPoints+playerNumber4.hpPoints+playerNumber4.dmgPoints+playerNumber4.rangePoints+playerNumber4.cdPoints
-                playerNumber4.hpPoints=0
-                playerNumber4.dmgPoints=0
-                playerNumber4.rangePoints=0
-                playerNumber4.cdPoints=0
-                playerNumber4.hp=playerNumber4.maxhp
-                lastmoney=-1
-            }
-            
-            if(pointerX>150&&pointerX<150+30&&pointerY>150&&pointerY<150+30){
-                itemToBuy="SP"
-            }
+    if(area[loadedAreaID].name==="Town"&&shopOpen===1){//new item new level update shop buying update for
             if(area[3].cleared===1){
             if(pointerX>190&&pointerX<190+30&&pointerY>150&&pointerY<150+30){
                 itemToBuy=1
@@ -3170,18 +3296,6 @@ function drag(){ //Find which player clicked on / near, set to held
             }
         }
             if(itemToBuy!==-1&&pointerX>433&&pointerX<433+105&&pointerY>395&&pointerY<395+38){
-                    switch( itemToBuy){
-                        case "SP":
-                            if(spPrice<=money){
-                                money=money-spPrice
-                                spPrice=spPrice*10
-                                playerNumber.skillPoints++
-                                playerNumber2.skillPoints++
-                                playerNumber3.skillPoints++
-                                playerNumber4.skillPoints++
-                            }
-                        break
-                        default:
                             if(items[itemToBuy].worth*3<=money){
                                 money=money-items[itemToBuy].worth*3
                                 droppedItem[droppedItem.length] = new component(15, 15, items[itemToBuy].colour, 480, 270);
@@ -3195,13 +3309,84 @@ function drag(){ //Find which player clicked on / near, set to held
                                 droppedItem[droppedItem.length-1].speedX=Math.random()*8-4
                                 droppedItem[droppedItem.length-1].speedY=-Math.random()*15
                             }
-                        break
-                        
-            }
         }
     }
 
+    if(area[loadedAreaID].name==="Village"&&shopOpen===1){//new item new level update shop buying update for
+        if(level>5){
+            if(pointerX>190&&pointerX<190+30&&pointerY>150&&pointerY<150+30){
+                itemToBuy=23
+            }
+        }
+        if(pointerX>223&&pointerX<223+115&&pointerY>395&&pointerY<395+38){
+            money=money-level*10
+            playerNumber.skillPoints=playerNumber.skillPoints+playerNumber.hpPoints+playerNumber.dmgPoints+playerNumber.rangePoints+playerNumber.cdPoints
+            playerNumber.hpPoints=0
+            playerNumber.dmgPoints=0
+            playerNumber.rangePoints=0
+            playerNumber.cdPoints=0
+            playerNumber.hp=playerNumber.maxhp
 
+            playerNumber2.skillPoints=playerNumber2.skillPoints+playerNumber2.hpPoints+playerNumber2.dmgPoints+playerNumber2.rangePoints+playerNumber2.cdPoints
+            playerNumber2.hpPoints=0
+            playerNumber2.dmgPoints=0
+            playerNumber2.rangePoints=0
+            playerNumber2.cdPoints=0
+            playerNumber2.hp=playerNumber2.maxhp
+
+            playerNumber3.skillPoints=playerNumber3.skillPoints+playerNumber3.hpPoints+playerNumber3.dmgPoints+playerNumber3.rangePoints+playerNumber3.cdPoints
+            playerNumber3.hpPoints=0
+            playerNumber3.dmgPoints=0
+            playerNumber3.rangePoints=0
+            playerNumber3.cdPoints=0
+            playerNumber3.hp=playerNumber3.maxhp
+
+            playerNumber4.skillPoints=playerNumber4.skillPoints+playerNumber4.hpPoints+playerNumber4.dmgPoints+playerNumber4.rangePoints+playerNumber4.cdPoints
+            playerNumber4.hpPoints=0
+            playerNumber4.dmgPoints=0
+            playerNumber4.rangePoints=0
+            playerNumber4.cdPoints=0
+            playerNumber4.hp=playerNumber4.maxhp
+            lastmoney=-1
+        }
+        
+        if(pointerX>150&&pointerX<150+30&&pointerY>150&&pointerY<150+30){
+            itemToBuy="SP"
+        }
+
+        if(itemToBuy!==-1&&pointerX>433&&pointerX<433+105&&pointerY>395&&pointerY<395+38){
+            switch( itemToBuy){
+                case "SP":
+                    if(spPrice<=money){
+                        money=money-spPrice
+                        spPrice=spPrice*10
+                        playerNumber.skillPoints++
+                        playerNumber2.skillPoints++
+                        playerNumber3.skillPoints++
+                        playerNumber4.skillPoints++
+                    }
+                break
+                default:
+                    if(items[itemToBuy].worth*3<=money){
+                        money=money-items[itemToBuy].worth*3
+                        droppedItem[droppedItem.length] = new component(15, 15, items[itemToBuy].colour, 480, 270);
+                        droppedItem[droppedItem.length-1].data={
+                            value:itemToBuy,
+                            cooldown:150
+                        }
+                        droppedItem[droppedItem.length-1].size=15
+                        droppedItem[droppedItem.length-1].type="item"
+                        droppedItem[droppedItem.length-1].gravity = 0.5;
+                        droppedItem[droppedItem.length-1].speedX=Math.random()*8-4
+                        droppedItem[droppedItem.length-1].speedY=-Math.random()*15
+                    }
+                break
+                
+    }
+}
+
+
+    }
 
     checkClickOnLevelOnMap()
     }
@@ -3238,7 +3423,7 @@ function playerMoveToMouse(playerHeld, event){ //Move player currently held towa
         refreshItemStatsBox()
         lastslot=-1
     }
-    playerHeld.atkCD=Math.floor(playerHeld.item.atkRate/((100+playerHeld.cdPoints*2.5)/100))
+    playerHeld.atkCD=Math.floor(playerHeld.item.atkRate/((100+playerHeld.cdPoints*2.5)/100))+2
             if(playerNumberStatsShown.id!==0){
             playerNumberStatsShown=playerHeld
             }
@@ -3371,9 +3556,9 @@ function spawnProjectile(user,speedCap,size,shape,colour,damageMin,damageMax,mul
     projectiles[projectiles.length-1].speedY=aimY
     if(shape==="Rect"){
         projectiles[projectiles.length-1].gravity=0.5
-        projectiles[projectiles.length-1].speedY-=(aimY)/1.04
-        projectiles[projectiles.length-1].speedY-=12
-        projectiles[projectiles.length-1].speedX-=((aimX)/1.0225)*(1+(-aimY/32000))
+        projectiles[projectiles.length-1].speedY-=(aimY)/1.032
+        projectiles[projectiles.length-1].speedY-=10.5
+        projectiles[projectiles.length-1].speedX-=((aimX)/1.025)*(1+(-aimY/44000))
     }
     
 
@@ -3456,6 +3641,7 @@ function findClosestPlayer(me){
     document.addEventListener('keyup', logKeyUp);
 document.addEventListener('keydown', logKey);//enemy spawning
 function logKeyUp(e){
+    if(debugCommands!==0){
     if(e.code==="ShiftLeft"){
         lastslot=-1
         document.getElementById(14).style.borderColor='#8a8a8a'
@@ -3528,6 +3714,34 @@ function logKey(e) {
     }
     i++
   }
+  if(e.code==="KeyD"){
+    enemy[i] = new component(20, 20, "purple", pointerX-10, pointerY+10);
+    enemy[i].size=20
+    enemy[i].gravity = 0;
+    enemy[i].hp=1000000000000000000000000
+    enemy[i].maxhp=enemy[i].hp
+    enemy[i].type="enemy"
+    enemy[i].movementType="none"
+    enemy[i].exp=15
+    enemy[i].weapon=items[0]
+    enemy[i].atkCD=0
+    enemy[i].drops={
+        coin:100,
+        coinChance:20,
+        healPotion:1,
+        healChance:100,
+        itemID1:1,
+        itemID1Chance:10,
+        itemID2:2,
+        itemID2Chance:10,
+        itemID3:3,
+        itemID3Chance:10,
+        itemID4:4,
+        itemID4Chance:10
+    }
+    i++
+  }
+}
 }
 
 document.getElementById(inv.length-1).style.background='#5c5c5c' //Page background
